@@ -1,2 +1,6 @@
 # Don't track content of these folders
 automation/
+sass/import.scss/
+sass/style.min.scss/
+dist/css/
+.DS_Store
