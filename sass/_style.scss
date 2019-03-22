@@ -1,0 +1,168 @@
+/*  ==========================================================================
+    strategie.agency
+    ==========================================================================  */
+
+/*  ==========================================================================
+	Variables
+    ==========================================================================  */
+
+/*  ==========================================================================
+	Helpers
+    ==========================================================================  */
+
+body {
+	font-size: 16px;
+	color: #666;
+	line-height: 1.3;
+}
+
+button, input, optgroup, select, textarea {
+	font: inherit;
+}
+
+.text_left { text-align:left; }
+.text_right { text-align: right; }
+.text_center { text-align: center; }
+
+.strong { }
+.italic { font-style: italic; }
+.ttu{ text-transform: uppercase; }
+
+.vertical_align {
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.img_100 { max-width: 100%; }
+
+.overflow_hidden { overflow: hidden; }
+.overflow_visible { overflow: visible; }
+
+.third1 { width: 33.3%; }
+.third2 { width: 62%; }
+.third3_full { width: 66.7%; }
+
+.quart1 { width: 25%; }
+.quart3 { width: 70%; }
+.quart3_full { width: 75%; }
+
+.half { width: 48%; }
+.half_full { width: 50%; }
+
+.left { float: left; }
+.right { float: right; }
+
+.relative { position: relative; }
+.absolute { position: absolute; }
+
+.container {
+	padding-left: 80px;
+	padding-right: 80px;
+	max-width: 100%;
+	width: 1160px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.disabled {
+	pointer-events: none;
+}
+
+.margin_top_10 { margin-top: 10px; }
+.margin_bottom_10 { margin-bottom: 10px; }
+
+.clearfix:before, .clearfix:after { content: " "; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }
+
+.view_desktop { }
+.view_tablet { }
+.view_mobile { }
+
+::placeholder {
+    color: #666;
+    opacity: 1;
+}:-ms-input-placeholder {
+    color: #666;
+}::-ms-input-placeholder {
+    color: #666;
+}
+
+/*  ==========================================================================
+	Animations
+    ==========================================================================  */
+
+/*  ==========================================================================
+	Fonts
+    ==========================================================================  */
+
+/*  ==========================================================================
+	Decorations
+    ==========================================================================  */
+
+/*  ==========================================================================
+	Header
+	==========================================================================  */
+
+/*  ==========================================================================
+	Responsive
+    ==========================================================================  */
+
+.tablet_full {
+	@include mq("tablet")
+	{
+		width: 100%;
+	}
+}
+
+.tablet_half {
+	@include mq("tablet")
+	{
+		width: 50%;
+	}
+}
+
+.tablet_hidden {
+	@include mq("tablet")
+	{
+		display: none;
+	}
+}
+
+.tablet_show {
+	display: none;
+	@include mq("tablet")
+	{
+		display: block;
+	}
+}
+
+.mobile_hidden {
+	@include mq("mobile")
+	{
+		display: none;
+	}
+}
+
+.mobile_full {
+	@include mq("mobile")
+	{
+		width: 100%;
+	}
+}
+
+.tablet_third {
+	@include mq("tablet")
+	{
+		width: 33.3333%;
+	}
+}
+
+.mobile_half {
+	@include mq("mobile")
+	{
+		width: 50%;
+	}
+}
