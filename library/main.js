@@ -83,6 +83,49 @@ $(document).ready(function() {
     });
 
 /*  ==========================================================================
+    Parent view : active children
+    ==========================================================================  */
+
+    function displayActiveChildren(){
+	    $.getJSON('app/accountable/4').done(function(response) {
+
+	    	// list children
+	    	for (var i = 0, len = response.childs.length; i < len; i++) {
+	    		console.info(response,1);
+	    		var cloned = $(".json_children_active__item").last().clone(true);
+	    		cloned.appendTo(".json_children_active")
+	    		.attr('data-id',response.childs[i].pk)
+	    		.find(".json_children_active-firstname").text(response.childs[i].firstname)
+	    		.parents(".json_children_active__item")
+	    		.find(".json_children_active-lastname").text(response.childs[i].name)
+	    		.parents(".json_children_active__item")
+	    		.find(".json_children_active-picture").attr("src", "graphics/avatar_"+response.childs[i].avatar+".png");
+	    	}
+
+	    	// remove last clone
+	    	$(".json_children_active").find(".json_children_active__item").first().remove();
+
+	    	// get rides for each child
+    		$(".json_children_active__item").each(function(){
+    			var child_id = $(this).data("id");
+    			$.getJSON('app/child/'+child_id).done(function(response) {
+    				for (var i = 0, len = response.rides.length; i < len; i++) {
+	    				var cloned_child = $(".json_children_active__item[data-id="+child_id+"]").find(".json_trajets .json_trajet_active").last().clone(true);
+			    		cloned_child.appendTo(".json_children_active__item[data-id="+child_id+"] .json_trajets")
+			    		.attr('data-id',response.rides[i].id)
+			    		.find(".json_trajet_active_id").text(response.rides[i].id);
+		    		}
+    			});
+    		});
+
+	    });
+	}
+
+	if($(".json_children_active").is(":visible")){
+		displayActiveChildren();
+	}
+
+/*  ==========================================================================
     Parent view : map
     ==========================================================================  */
 
