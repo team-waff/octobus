@@ -1,6 +1,6 @@
 <?php
 // PAGENAME
-$page = "home";
+$page = "parent";
 ?>
 
 <?php 
@@ -8,9 +8,9 @@ $page = "home";
 include('includes/header.php');
 ?>
 
-<div class="child">
-	Prénom : <span class="child__name"></span>
-</div>
+<section class="global global--parent">
+	<div class="map map--parent" id="map_parent"></div>
+</section>
 
 <?php 
 // FOOTER
