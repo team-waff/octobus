@@ -30,7 +30,8 @@ class ChildDAO extends DAO{
     public function createObject($data,$flag=true){
         $rides=null;
         if($flag){
-            $rides = $this->fakeRideGen();
+            //TODO : Get les courses depuis les fk courses lié à l'enfant
+            $rides = new RideDAO()->getByIds();
         }
         $obj = new Child(
             $data['pk'],
@@ -44,13 +45,4 @@ class ChildDAO extends DAO{
         );
         return $obj;
     }
-
-    private function fakeRideGen() {
-        $obj = ['id' => 1, 'start_coords' => ['lat' => 50.4, 'lng' => 50.4], 'end_coords' => ['lat' => 51.4, 'lng' => 51.4]];
-        $obj2 = ['id' => 2, 'start_coords' => ['lat' => 50.4, 'lng' => 50.4], 'end_coords' => ['lat' => 51.4, 'lng' => 51.4]];
-        return [$obj, $obj2];
-    }
-
 }
-
-?>

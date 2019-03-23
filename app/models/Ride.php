@@ -6,9 +6,9 @@ class Ride {
     var $status;
     var $moment;
 
-    public function __construct($pk, $fk_course, $status, $start_time, $moment) {
+    public function __construct($pk, $course, $status, $start_time, $moment) {
         $this->pk = $pk;
-        $this->fk_course = $fk_course;
+        $this->course = $course;
         $this->status = $status;
         $this->start_time = $start_time;
         $this->moment = $moment;
