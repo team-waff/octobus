@@ -8,10 +8,16 @@ var baseroot = $("body").data("baseroot");
 $(document).ready(function() {
 
 /*  ==========================================================================
+    Markers
+    ==========================================================================  */
+
+
+
+/*  ==========================================================================
     Parent view : map
     ==========================================================================  */
 
-    if($(".global--parent").is(":visible")){
+	function initMapParent(){
 
     	$.getJSON('data/trajet.php').done(function(response) {
 
@@ -22,7 +28,7 @@ $(document).ready(function() {
 
     		// init
 
-			var mymap_parent = L.map('map_parent').setView([start_lat,start_lng], 20);
+			var mymap_parent = L.map('map_parent').setView([start_lat,start_lng], 18);
 
 			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 			    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -35,7 +41,19 @@ $(document).ready(function() {
 
 			var start_icon = L.icon({
 			    iconUrl: 'graphics/marker_start.png',
-			    shadowUrl: 'graphics/marker_start_shadow.png',
+			    shadowUrl: 'graphics/shadow.png',
+			    iconSize:     [50, 50],
+			    shadowSize:   [50, 50],
+			    iconAnchor:   [25, 25],
+			    shadowAnchor: [25, 25],
+			    popupAnchor:  [-3, -76]
+			});
+
+			// moving icon
+
+			var moving_icon = L.icon({
+			    iconUrl: 'graphics/marker_moving.png',
+			    shadowUrl: 'graphics/shadow.png',
 			    iconSize:     [50, 50],
 			    shadowSize:   [50, 50],
 			    iconAnchor:   [25, 25],
@@ -43,35 +61,43 @@ $(document).ready(function() {
 			    popupAnchor:  [-3, -76]
 			});	
 
-			L.marker([start_lat,start_lng], {icon: start_icon}).addTo(mymap_parent);
+			var marker_bus = L.marker([start_lat,start_lng], {icon: start_icon}).addTo(mymap_parent);
 
 			// refresh
 
 			setInterval(function(){
 
-					$.getJSON('data/trajet.php').done(function(response) {
+				$.getJSON('data/trajet.php').done(function(response) {
 
-						var status_bus = response.status;
-						console.log(status_bus);		
+					var status_bus = response.status;
+					console.log(status_bus);		
 
-						if(status_bus=="riding"){
+					if(status_bus=="riding"){
 
-							L.circle([response.now_lat,response.now_lng], {
-							    color: 'red',
-							    fillColor: '#f03',
-							    fillOpacity: 1,
-							    radius: 0.2
-							}).addTo(mymap_parent);
-							mymap_parent.panTo([response.now_lat, response.now_lng]);
+						// remove last marker then recreate & update pos
+						mymap_parent.removeLayer(marker_bus);
+						marker_bus = L.marker([response.now_lat,response.now_lng], {icon: start_icon}).addTo(mymap_parent);
 
-						}
+						L.circle([response.now_lat,response.now_lng], {
+						    color: 'red',
+						    fillColor: '#f03',
+						    fillOpacity: 1,
+						    radius: 2
+						}).addTo(mymap_parent);
+						mymap_parent.panTo([response.now_lat, response.now_lng]);
 
-					});
+					}
+
+				});
 
 			},2000);
 
     	});
 
+	}
+
+	if($("body").hasClass("page_parent")){
+		initMapParent();
 	}
 
 });
