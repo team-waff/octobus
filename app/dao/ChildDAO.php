@@ -15,6 +15,10 @@ class ChildDAO {
         return $childs;
     }
 
+    public function getAll() {
+        return $this->getByIds([1,2,3,4]);
+    }
+
     public function getById($id) {
         return $this->get($id);
     }
