@@ -12,7 +12,7 @@
             try {
                 $db = new PDO($dsn, $usernameDB, $passwordDB, $options);
             } catch (PDOException $e) {
-                var_dump($e);
+                return $e;
             }
             $this->db = $db;
     }

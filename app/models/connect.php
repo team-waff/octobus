@@ -33,7 +33,3 @@
     }
 
   }
-
-  //$r = new PDOConnect();
-  //var_dump($r->db);
-?>
