@@ -1,37 +1,43 @@
 <?php
-class AccountableDAO {
+include('DAO.php');
+include('../models/Accountable.php');
+
+class AccountableDAO extends DAO{
+
+    protected $table;
+
     public function __construct() {
-        $this->_names = ['Dupont', 'Smith', 'Tielemans'];
-        $this->_firstnames = ['Albert', 'Jean-Mi', 'Richard'];
-        $this->_emails = ['Albert@google.com', 'Jean-Mi@google.com', 'Richard'];
-        $this->_tels = ['+321010101', '+321010101', '+321010101'];
+        parent::__construct();
+        $this->table = "accountable";
     }
 
     public function getById($id) {
-        return $this->get($id);
+        $data = $this->get($id);
+        return $this->createObject($data);
     }
 
     public function getByIds($ids) {
         $accountables = array();
 
         foreach($ids as $id) {
-            array_push($accountables, $this->get($id));
+            array_push($accountables, $this->getById($id));
         }
         return $accountables;
     }
 
-    public function getAll() {
-        return $this->getByIds([1,2,3]);
+    public function createObject($data){ 
+        $childs = array();
+        $obj = new Accountable(
+            $data['pk'],
+            $data['name'],
+            $data['firstname'],
+            $data['email'],
+            $data['tel'],
+            false
+        );
+        return $obj;
     }
 
-    public function get($id) {
-        $name = $this->_names[$id-1];
-        $firstname = $this->_firstnames[$id-1];
-        $email = $this->_emails[$id-1];
-        $tel = $this->_tels[$id-1];
-        $childs = new ChildDAO();
-
-        return new Accountable($id, $name, $firstname, $email , $tel, $childs->getByIds([1, 2]));
-
-    }
 }
+
+?>

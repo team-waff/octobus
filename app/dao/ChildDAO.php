@@ -1,31 +1,43 @@
 <?php
+include('DAO.php');
+include('../models/Child.php');
 
-class ChildDAO {
+class ChildDAO extends DAO{
+
+    protected $table;
+
     public function __construct() {
-        $this->_names = ['Dupont', 'Smith', 'Tielemans', 'Jordans'];
-        $this->_firstnames = ['Kilian', 'Marie', 'Jean', 'Benoit'];
-    }
-
-    public function getByIds($ids) {
-        $childs = array();
-
-        foreach($ids as $id) {
-            array_push($childs, $this->get($id));
-        }
-        return $childs;
-    }
-
-    public function getAll() {
-        return $this->getByIds([1,2,3,4]);
+        parent::__construct();
+        $this->table = "child";
     }
 
     public function getById($id) {
-        return $this->get($id);
+        $data = $this->get($id);
+        return $this->createObject($data);
     }
 
-    public function get($id) {
-        $name = $this->_names[$id-1];
-        $firstname = $this->_firstnames[$id-1];
-        return new Child($id, $name, $firstname);
+    public function getByIds($ids) {
+        $data = array();
+
+        foreach($ids as $id) {
+            array_push($data, $this->getById($id));
+        }
+        return $data;
     }
+
+    public function createObject($data){ 
+        $childs = array()
+        $obj = new Child(
+            $data['pk'],
+            $data['name'],
+            $data['firstname'],
+            $data['birthdate'],
+            $data['isvalide'],
+            $data['validedate'],
+        );
+        return $obj;
+    }
+
 }
+
+?>

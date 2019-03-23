@@ -399,18 +399,40 @@ $selectric-font-size:       12px !default;                                      
 }
 
 
-
-
-/*.btn_bloc{
-	text-align: center;
-	display: inline-block;
+/* Slick */
+.slider_avatar_item{
+	display: block;
 	width: 100%;
+	img{
+		max-width: calc(100% - 120px);
+    	margin: 0 auto;
+	}
 }
 
-.btn{
-	display: inline-block;
-	padding: 10px 20px;
-	margin: 0 auto;
-	background: lightgrey;
-}*/
+.slick-list{
+	padding: 0px !important;
+}
+
+.slick-arrow{
+	overflow: hidden;
+	display: block;
+	width: 40px;
+	height: 40px;
+	background: blue;
+	text-indent: -999999px;
+	position: absolute;
+	top: 60%;
+	z-index: 9;
+	transform: translateY(-50%);
+	outline: none;
+	&.slick-prev{
+		left: 20px;
+	}
+	&.slick-next{
+		right: 20px;
+	}
+}
+
+
+
 

@@ -8,10 +8,52 @@ var baseroot = $("body").data("baseroot");
 $(document).ready(function() {
 
 /*  ==========================================================================
-    Markers
+    Login
     ==========================================================================  */
 
+    $(".js_login").click(function(e){
+    	e.preventDefault();
+    	var error = 0;
+    	$(".login__form").find(".form__input").each(function(){
+    		if($(this).val()==""){
+    			error++;
+    			$(this).parents(".form__line").addClass("form__line--error");
+    		} else {
+    			$(this).parents(".form__line").removeClass("form__line--error");
+    		}
+    	});
+   		if(error==0){
+    		if($("input[name=username]").val()=="enfant"){
+    			window.location.href = "enfant.php";
+    		} else {
+    			window.location.href = "parent.php";
+    		}
+		} 	
+    });
 
+/*  ==========================================================================
+    Parent view : children
+    ==========================================================================  */
+
+    function displayChildren(){
+	    $.getJSON('app/accountable/1').done(function(response) {
+	    	console.info(response,1);
+	    	// list children
+	    	for (var i = 0, len = response.childs.length; i < len; i++) {
+	    		var cloned = $(".json_listing_children__item").clone(true);
+	    		cloned.appendTo(".json_listing_children")
+	    		.attr('data-id',response.childs[i].id)
+	    		.find(".json_listing_children__item-firstname").text(response.childs[i].firstname)
+	    		.parents(".json_listing_children__item")
+	    		.find(".json_listing_children__item-lastname").text(response.childs[i].name);
+	    	}
+	    	$(".json_listing_children").find(".json_listing_children__item").last().remove();
+	    });
+	}
+
+	if($(".json_listing_children").is(":visible")){
+		displayChildren();
+	}
 
 /*  ==========================================================================
     Parent view : map

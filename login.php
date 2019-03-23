@@ -15,16 +15,19 @@
             </div>
             <div class="login__form">
                 <div class="form">
-                    <div class="form__item">
-                        <label class="form__label">Email</label>
-                        <input type="text" name="" class="form__input">
+                    <div class="form__line">
+                        <div class="form__item">
+                            <input type="text" name="username" placeholder="Nom d'utilisateur" class="form__input">
+                        </div>
                     </div>
-                    <div class="form__item">
-                        <label class="form__label">Pass</label>
-                        <input type="text" name="" class="form__input">
+                    <div class="form__line">
+                        <div class="form__item">
+                            <input type="password" name="password" placeholder="Mot de passe" class="form__input">
+                        </div>
                     </div>
-                    <div class="form__item">
-                        <a href="parent.php" class="form__submit">Submit</a>
+                    <div class="form__item form__item--centered">
+                        <a href="parent.php" class="form__submit button button--green js_login">Se connecter</a>
+                        <a class="form__mdp" href="#">Mot de passe oublié ?</a>
                     </div>
                 </div>
             </div>
