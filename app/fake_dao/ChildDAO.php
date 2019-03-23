@@ -26,6 +26,6 @@ class ChildDAO {
     public function get($id) {
         $name = $this->_names[$id-1];
         $firstname = $this->_firstnames[$id-1];
-        return new Child($id, $name, $firstname);
+        return new Child($id, $name, $firstname, 0, 0, 0);
     }
 }

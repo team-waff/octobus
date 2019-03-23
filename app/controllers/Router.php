@@ -25,6 +25,11 @@ class Router {
             $model = $parsed_uri[0];
             array_shift($parsed_uri);
             echo json_encode($this->get($model, $parsed_uri));
+
+        } else if ($parsed_uri[0] == 'doc'){
+
+            echo 'doc.html';
+            return 0;
         } else {
             echo json_encode(false);
         }
@@ -33,6 +38,7 @@ class Router {
     private function initDao() {
         $dao = $this->model.'DAO';
         $this->dao = new $dao();
+
     }
 
     public function get($model, $data) {
@@ -40,6 +46,7 @@ class Router {
         $this->initDao();
 
         $request = $this->generate_request($data);
+
         $params = $this->generate_params($data);
 
         if(!$params) {
@@ -49,6 +56,7 @@ class Router {
     }
 
     private function generate_request($data) {
+
         if($data) {
             if((int)$data[0]) {
                 return 'getById';
