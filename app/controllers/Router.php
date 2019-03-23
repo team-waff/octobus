@@ -73,7 +73,6 @@ class Router {
                 $params['id'] = (int)$data[0];
             }
         }
-
         if ($this->get) {
             foreach($this->get as $key => $value) {
                 $params[$key] = $value;
@@ -81,6 +80,5 @@ class Router {
         }
         return $params;
     }
-
 
 }
