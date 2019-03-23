@@ -232,15 +232,18 @@ button, input, optgroup, select, textarea {
 }
 
 .json_trajet_active_status[data-status="stop"]{
-	background: #7beaa5;
+	background: #7beaa5 url(../../graphics/status_stop.png) center center;
+	background-size: 40px 40px;
 }
 
 .json_trajet_active_status[data-status="running"]{
-	background: green;
+	background: #fff url(../../graphics/status_running.png) center center;
+	background-size: 40px 40px;
 }
 
 .json_trajet_active_status[data-status="start"]{
-	background: blue;
+	background: url(../../graphics/status_start.png) center center;
+	background-size: 40px 40px;
 }
 
 /*  ==========================================================================

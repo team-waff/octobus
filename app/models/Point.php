@@ -4,9 +4,9 @@ class Point {
     var $pk;
     var $lat;
     var $lng;
-    public function __construct($pk, $latitude, $longitude) {
+    public function __construct($pk, $lat, $lng) {
         $this->pk = $pk;
-        $this->lat = $latitude;
-        $this->lng = $longitude;
+        $this->lat = $lat;
+        $this->lng = $lng;
     }
 }

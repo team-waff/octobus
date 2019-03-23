@@ -8,8 +8,8 @@ class Course {
 
     function __construct($pk, $points, $name) {
         $this->pk = $pk;
-        $this->start_pos = ['lat'=>$points[0]->latitude, 'lng'=>$points[0]->longitude];
-        $this->end_pos = ['lat'=>$points[count($points)-1]->latitude, 'lng'=>$points[count($points)-1]->longitude];
+        $this->start_pos = ['lat'=>$points[0]->lat, 'lng'=>$points[0]->lng];
+        $this->end_pos = ['lat'=>$points[count($points)-1]->lat, 'lng'=>$points[count($points)-1]->lng];
         $this->points = $points;
         $this->name = $name;
     }
