@@ -10,7 +10,11 @@ class ChildDAO extends DAO{
     }
 
     public function getById($id,$flag=true) {
-        $data = $this->get($id['fk_child']);
+        if(!$flag){
+            $data = $this->get($id['fk_child']);
+        }else{
+            $data = $this->get($id);
+        }
         return $this->createObject($data, $flag);
     }
 
