@@ -56,7 +56,10 @@ class Router {
     }
 
     private function generate_request($data) {
-
+        if($this->post) {
+            return 'add';
+        }
+        
         if($data) {
             if((int)$data[0]) {
                 return 'getById';
