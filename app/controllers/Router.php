@@ -27,7 +27,7 @@ class Router {
 
         } else if ($parsed_uri[0] == 'doc'){
 
-            echo 'doc.html';
+            include('doc.html');
             return 0;
         } else {
             echo json_encode(false);
