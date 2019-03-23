@@ -10,7 +10,6 @@ class Ride {
         $this->name = $name;
         $this->start_time = $start_time;
         $this->start_date = $start_date;
-
     }
 
     function __get($attr) {
