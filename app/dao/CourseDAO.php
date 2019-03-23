@@ -10,8 +10,10 @@ class CourseDAO extends DAO{
         $this->table = "course";
     }
 
-    public function getById($id) {
+    public function getById($id, $params=false) {
+
         $data = $this->get($id);
+        var_dump($data);
         return $this->createObject($data);
     }
 
@@ -36,12 +38,4 @@ class CourseDAO extends DAO{
         return $obj;
     }
 
-    private function getChildsParent($pk){
-        $pk = (int)$pk;
-        $q = $this->pdo->getDb()->query('SELECT fk_child FROM accountable_child as b WHERE b.fk_parent ='.$pk);
-        $data = $q->fetchAll(PDO::FETCH_ASSOC);
-        return $data;
-    }
-
 }
-

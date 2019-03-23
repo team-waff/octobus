@@ -2,7 +2,7 @@
 
 class Router {
     public function __construct($req_uri, $get = null, $post = null) {
-        $this->models = ['accountable', 'child', 'ride', 'track'];
+        $this->models = ['accountable', 'child', 'ride', 'track', 'course'];
         $this->bypass = ['octobus', 'app', '', 'www', 'test'];
         $this->get = $get;
         $this->post = $post;
@@ -46,6 +46,7 @@ class Router {
         $this->initDao();
         $request = $this->generate_request($data);
         $params = $this->generate_params($data);
+        var_dump($params, $request,$this->model);
         if(!$params) {
             return $this->dao->$request();
         }

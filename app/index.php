@@ -5,6 +5,7 @@ include('dao/Connect.php');
 include('dao/DAO.php');
 include('dao/ChildDAO.php');
 include('dao/AccountableDAO.php');
+include('dao/CourseDAO.php');
 
 include('models/Child.php');
 include('models/Accountable.php');
