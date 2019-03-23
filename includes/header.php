@@ -42,10 +42,6 @@
 
     <img src="graphics/deco_top.png" class="deco_top" />
 
-    <div class="burger js_menu_open">
-        Menu
-    </div>
-
     <div class="menu">
         <div class="menu__filter js_menu_close"></div>
         <div class="menu__modal">
