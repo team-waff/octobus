@@ -22,7 +22,7 @@ class RideDAO {
     public function get($id) {
         $name = 'Octobus - Ride';
         $start_time = date("H:i:s");
-        $start_date = date();
+        $start_date = date('Y.m.d');
         return new Ride($id, $name, $start_time, $start_date);
     }
 }
