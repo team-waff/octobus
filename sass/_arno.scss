@@ -1,4 +1,81 @@
 /*  ==========================================================================
+    Popup
+    ==========================================================================  */
+
+    .popup {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 5px 5px;
+        z-index: 1000000;
+        overflow-y: auto;
+        pointer-events: none;
+        opacity: 0;
+
+        -webkit-transition: all .2s;
+                transition: all .2s;
+    }
+
+    .popup--visible {
+        pointer-events: auto;
+        opacity: 1;
+    }
+
+    .popup__container {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 30px 20px;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 16px 26px 0 rgba(0,0,0,.05);
+        opacity: 0;
+        z-index: 1000002;
+
+        -webkit-transition: all .5s;
+                transition: all .5s;
+
+        -webkit-transform: scale(.8);
+            -ms-transform: scale(.8);
+                transform: scale(.8);
+    }
+
+    .popup--visible .popup__container {
+        opacity: 1;
+        -webkit-transform: scale(1);
+            -ms-transform: scale(1);
+                transform: sscale(1);
+    }
+
+    .popup__bg {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(52,52,51,.9);
+        z-index: 1000001;
+        cursor: pointer;
+    }
+
+    .popup__close {
+        display: block;
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        width: 30px;
+        height: 30px;
+        background: red;
+        background-size: 20px 20px;
+        cursor: pointer;
+
+        -webkit-transition: all .2s;
+                transition: all .2s;
+    }
+
+/*  ==========================================================================
     Menu
     ==========================================================================  */
 
