@@ -107,8 +107,15 @@ $(document).ready(function() {
 	    $(".btn_bloc_valid").show();
 	});
 
- 	 // SLICK 
- 	 // 
+ 	// SLICK 
+ 	// 
+ 	$('.slider_avatar').slick({
+		dots: false,
+		arrow: true,
+		infinite: false,
+		speed: 300,
+		centerMode: true
+	});
 
 });
 

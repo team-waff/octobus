@@ -14,7 +14,7 @@ class Child {
         $this->birthdate = $birthdate;
         $this->isvalide = $isvalide;
         $this->validedate = $validedate;
-        $this->avatar = rand(1,4);
+        $this->avatar = rand(1,3);
     }
 
     function __get($attr) {
