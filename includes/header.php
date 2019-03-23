@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport" />
 
-<title></title>
+<title>Octobus</title>
 <meta name="description" content="" />
 <meta name="author" content="WAFF" />
 <meta name="apple-mobile-web-app-capable" content="yes">

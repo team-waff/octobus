@@ -18,18 +18,25 @@ include('includes/header.php');
 	<div class="parent__view parent__view--active parent__view--listing">
 		<div class="container">
 			<div class="json_children_active">
-				<div class="json_children_active__item">
+
+				<div class="parent__view-child json_children_active__item">
 					<div class="js_redirect_child_trajet">
-						<img alt="" class="img_100 json_children_active-picture">
-						<span class="json_children_active-firstname"></span>
-						<span class="json_children_active-lastname"></span>
+						<img alt="" class="img_100 parent__view-child-picture json_children_active-picture">
+						<div class="parent__view-child-name">
+							<span class="json_children_active-firstname"></span>
+							<span class="json_children_active-lastname"></span>
+						</div>
+						<div class="clearfix"></div>
 					</div>	
-					<div class="json_trajets">
-						<div class="json_trajet_active">
-							<span class="json_trajet_active_id"></span>
+					<div class="parent__view-child-trajets json_trajets">
+						<div class="parent__view-child-trajets-item json_trajet_active">
+							<span class="json_trajet_active_place"></span>
+							<span class="json_trajet_active_start"></span>
+							<span class="json_trajet_active_status"></span>
 						</div>		
 					</div>		
 				</div>
+
 			</div>
 		</div>
 	</div>

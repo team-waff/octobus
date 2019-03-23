@@ -91,7 +91,6 @@ $(document).ready(function() {
 
 	    	// list children
 	    	for (var i = 0, len = response.childs.length; i < len; i++) {
-	    		console.info(response,1);
 	    		var cloned = $(".json_children_active__item").last().clone(true);
 	    		cloned.appendTo(".json_children_active")
 	    		.attr('data-id',response.childs[i].pk)
@@ -109,11 +108,17 @@ $(document).ready(function() {
     		$(".json_children_active__item").each(function(){
     			var child_id = $(this).data("id");
     			$.getJSON('app/child/'+child_id).done(function(response) {
+    				console.info(response,1);
     				for (var i = 0, len = response.rides.length; i < len; i++) {
+    					var n = new Date(response.rides[i].start_time);
 	    				var cloned_child = $(".json_children_active__item[data-id="+child_id+"]").find(".json_trajets .json_trajet_active").last().clone(true);
 			    		cloned_child.appendTo(".json_children_active__item[data-id="+child_id+"] .json_trajets")
-			    		.attr('data-id',response.rides[i].id)
-			    		.find(".json_trajet_active_id").text(response.rides[i].id);
+			    		.attr('data-id',response.rides[i].pk)
+			    		.find(".json_trajet_active_start").text(n.getDate() + "/" + n.getMonth() + " - " + n.getHours() + ":" + n.getMinutes())
+			    		.parents(".json_trajet_active")
+			    		.find(".json_trajet_active_place").text(response.rides[i].course.name)
+			    		.parents(".json_trajet_active")
+			    		.find(".json_trajet_active_status").attr('data-status',response.rides[i].status);
 		    		}
     			});
     		});
