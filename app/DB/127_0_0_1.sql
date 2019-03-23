@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 23 mars 2019 à 21:09
+-- Généré le :  sam. 23 mars 2019 à 21:44
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -239,8 +239,8 @@ DROP TABLE IF EXISTS `point`;
 CREATE TABLE IF NOT EXISTS `point` (
   `pk` int(11) NOT NULL AUTO_INCREMENT,
   `fk_course` int(11) NOT NULL DEFAULT '1',
-  `latitude` varchar(100) NOT NULL,
   `longitude` varchar(100) NOT NULL,
+  `latitude` varchar(100) NOT NULL,
   PRIMARY KEY (`pk`)
 ) ENGINE=MyISAM AUTO_INCREMENT=103 DEFAULT CHARSET=latin1;
 
@@ -248,7 +248,7 @@ CREATE TABLE IF NOT EXISTS `point` (
 -- Déchargement des données de la table `point`
 --
 
-INSERT INTO `point` (`pk`, `fk_course`, `latitude`, `longitude`) VALUES
+INSERT INTO `point` (`pk`, `fk_course`, `longitude`, `latitude`) VALUES
 (1, 1, '50.71450058690936', '4.601708203499331'),
 (2, 1, '50.71468496053445', '4.60189447876896'),
 (3, 1, '50.71479063707474', '4.601577910661952'),
