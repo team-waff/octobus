@@ -34,6 +34,12 @@ class RideDAO extends DAO{
         return $obj;
     }
 
+    public function add($params = false) {
+        $formatted = ['fk_child'=>$params['child'],'fk_ride'=>$params['ride']];
+
+        return $this->addRideChild($formatted);
+    }
+
     public function addRideChild($data){
         $query = "INSERT INTO ride_child (";
         foreach($data as $key => $value){
@@ -41,6 +47,7 @@ class RideDAO extends DAO{
                 $query .= $key.',';
             }
         }
+
         $query = rtrim($query,',');
         $query .= ") VALUES (";
         foreach($data as $key => $value){
@@ -50,8 +57,11 @@ class RideDAO extends DAO{
         }
         $query = rtrim($query,',');
         $query .= ")";
-        $q = $this->db->prepare($query);
+
+        $q = $this->pdo->getDb()->prepare($query);
         $q->execute();
+
+        return 'success';
     }
 
 
