@@ -84,7 +84,6 @@ class Router {
             }
         }
         if ($this->post) {
-            var_dump('in this post generating params');
             foreach($this->post as $key => $value) {
                 $params[$key] = $value;
             }

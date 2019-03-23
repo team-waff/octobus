@@ -8,6 +8,15 @@ class RideDAO extends DAO{
         $this->table = "ride";
     }
 
+    public function getAll() {
+        $data = parent::getAll();
+        $rides = array();
+        foreach($data as $d) {
+            array_push($rides,$this->createObject($d));
+        }
+        return $rides;
+    }
+
     public function getById($id, $params=false) {
         $data = $this->get($id);
         return $this->createObject($data);
@@ -21,9 +30,10 @@ class RideDAO extends DAO{
         return $rides;
     }
 
+
     public function createObject($data){
         $courseDAO = new CourseDAO(false);
-        $course = $courseDAO->getById($data['fk_course'], false);
+        $course = $courseDAO->getById($data['fk_course']);
         $obj = new Ride(
             $data['pk'],
             $course,
