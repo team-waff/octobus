@@ -1,6 +1,4 @@
 <?php
-include('DAO.php');
-include('../models/Child.php');
 
 class ChildDAO extends DAO{
 
@@ -12,7 +10,7 @@ class ChildDAO extends DAO{
     }
 
     public function getById($id) {
-        $data = $this->get($id);
+        $data = $this->get($id['fk_child']);
         return $this->createObject($data);
     }
 
@@ -25,15 +23,15 @@ class ChildDAO extends DAO{
         return $data;
     }
 
-    public function createObject($data){ 
-        $childs = array()
+    public function createObject($data){
+        $childs = array();
         $obj = new Child(
             $data['pk'],
             $data['name'],
             $data['firstname'],
             $data['birthdate'],
             $data['isvalide'],
-            $data['validedate'],
+            $data['validedate']
         );
         return $obj;
     }

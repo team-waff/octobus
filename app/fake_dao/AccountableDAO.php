@@ -31,6 +31,5 @@ class AccountableDAO {
         $tel = $this->_tels[$id-1];
         $childs = new ChildDAO();
         return new Accountable($id, $name, $firstname, $email , $tel, $childs->getByIds([1, 2]));
-
     }
 }
