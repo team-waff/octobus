@@ -10,22 +10,24 @@ include('includes/header.php');
 
 <section class="global global--enfant">
 
-	<div class="footer_child">
-		<a href="#" class="footer_child_item btn btn_slide" data-direction="travel">
-			<img src="graphics/footer_child_icon_1.png" alt=""><br/>
-			<span>Mes trajets</span>
-		</a>
-		<a href="#" class="footer_child_item btn btn_slide" data-direction="trophy">
-			<img src="graphics/footer_child_icon_2.png" alt=""><br/>
-			<span>Mes trophées</span>
-		</a>
-		<a href="#" class="footer_child_item btn btn_slide" data-direction="trophy--eco">
-			<img src="graphics/footer_child_icon_3.png" alt=""><br/>
-			<span>Mon arbre</span>
-		</a>
-	</div>
+	
 
 	<div class="slide slide--home active" data-slide="home">
+		<div class="footer_child">
+			<a href="#" class="footer_child_item btn btn_slide" data-direction="travel">
+				<img src="graphics/footer_child_icon_1.png" alt=""><br/>
+				<span>Mes trajets</span>
+			</a>
+			<a href="#" class="footer_child_item btn btn_slide" data-direction="trophy">
+				<img src="graphics/footer_child_icon_2.png" alt=""><br/>
+				<span>Mes trophées</span>
+			</a>
+			<a href="#" class="footer_child_item btn btn_slide" data-direction="trophy--eco">
+				<img src="graphics/footer_child_icon_3.png" alt=""><br/>
+				<span>Mon arbre</span>
+			</a>
+		</div>
+
 		<div class="floating_avatar">
 			<div class="avatar">
 				<div class="avatar_inner">
@@ -79,9 +81,9 @@ include('includes/header.php');
 	<div class="slide slide--travel slide-away" data-slide="travel">
 		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
 		<div class="inner">
-			<p>Travel 1</p>
-			<p>Travel 2</p>
-			<p>Travel 3</p>
+			<p class="enter-anim">Travel 1</p>
+			<p class="enter-anim">Travel 2</p>
+			<p class="enter-anim">Travel 3</p>
 		</div>
 	</div>
 

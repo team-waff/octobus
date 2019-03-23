@@ -108,7 +108,6 @@ $(document).ready(function() {
 	});
 
  	// SLICK 
- 	// 
  	$('.slider_avatar').slick({
 		dots: false,
 		arrow: true,
@@ -116,6 +115,24 @@ $(document).ready(function() {
 		speed: 300,
 		centerMode: true
 	});
+
+
+ 	// SLICK 
+ 	$(".btn--validation_avatar").click(function(e){
+ 		e.preventDefault();
+ 		if (!$(this).parents(".slider_avatar_item.locked").length) {
+			var src = $(this).parents(".slider_avatar_item").find('img').attr('src');
+ 			$(".avatar_inner img").attr('src', src);
+ 		}
+ 	});
+
+ 	$(".btn--return").click(function(e){
+		e.preventDefault();
+		var away = $(this).parents(".slide");
+		var direction = $(this).data("direction");
+		closeslide(direction, away);
+	})
+
 
 });
 
