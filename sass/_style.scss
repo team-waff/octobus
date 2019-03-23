@@ -128,9 +128,9 @@ button, input, optgroup, select, textarea {
     ==========================================================================  */
 
 .button {
-	padding: 20px 60px;
+	padding: 20px 45px;
 	font-weight: 900;
-	font-size: 21px;
+	font-size: 18px;
 	display: inline-block;
 	line-height: 1;
 	text-align: center;
@@ -144,6 +144,18 @@ button, input, optgroup, select, textarea {
 	&:hover {
 		background: #77e09f;
 	}
+}
+
+/*  ==========================================================================
+	Parent
+    ==========================================================================  */
+
+.parent__view {
+	display: none;
+}
+
+.parent__view--active {
+	display: block;
 }
 
 /*  ==========================================================================

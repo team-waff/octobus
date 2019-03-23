@@ -260,30 +260,28 @@ $selectric-font-size:       12px !default;                                      
 	overflow: auto;
 	left: 0;
 	top: 0;
-	background: lightgreen;
+	z-index: 10;
 	&.slide-away{
 		left: 100%;
+		&:before {
+		    content: '';
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    height: 100%;
+		    z-index: -2;
+		    background: #26a6dc;
+		    background: -webkit-gradient(linear, left top, left bottom, from(#26a6dc), to(#41bcca));
+		    background: linear-gradient(to bottom, #26a6dc 0%, #41bcca 100%);
+		}
 	}
-	&.slide--avatar{
-		background: pink;
-	}
-	&.slide--travel{
-		background: lightblue;
-	}
-	&.slide--trophy{
-		background: red;
-	}
-	&.slide--trophy-eco{
-		background: blue;
-	}
-	&.slide--select{
-		background: brown;
-	}
-	.inner{
-		position: relative;
-		top: 0;
-		left: 0;
-	}
+}
+
+.inner{
+	position: relative;
+	top: 0;
+	left: 0;
 }
 
 .enter-anim{
@@ -400,13 +398,29 @@ $selectric-font-size:       12px !default;                                      
 
 
 /* Slick */
+.slider_avatar{
+	text-align: center;
+	margin-top: 50px;
+	color: #fff;
+}
 .slider_avatar_item{
 	display: block;
 	width: 100%;
 	img{
-		max-width: calc(100% - 120px);
+		max-width: calc(76% - 120px);
     	margin: 0 auto;
 	}
+	&.locked{
+		opacity: .4;
+	}
+}
+
+.slick-slide, .slick-track, .slick-list{
+	outline: none !important;
+}
+
+.button--blue{
+	background-color: #97d6eb;
 }
 
 .slick-list{
@@ -418,20 +432,159 @@ $selectric-font-size:       12px !default;                                      
 	display: block;
 	width: 40px;
 	height: 40px;
-	background: blue;
+	border: 0;
 	text-indent: -999999px;
 	position: absolute;
 	top: 60%;
 	z-index: 9;
+	border-radius: 20px;
 	transform: translateY(-50%);
 	outline: none;
+	&:hover, &.active{
+		background-color: #1b87b5;
+	}
 	&.slick-prev{
 		left: 20px;
+		background: #2297c9 url(../../graphics/arrow_prev.png) no-repeat center;
+		background-size: 10px;
 	}
 	&.slick-next{
 		right: 20px;
+		background: #2297c9 url(../../graphics/arrow_next.png) no-repeat center;
+		background-size: 10px;
 	}
 }
+
+
+/* FOOTER */
+.footer_child{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+	background: white;
+	color: #26a6dc;
+	font-size: 1px;
+	z-index: 12;
+	.footer_child_item{
+		display: inline-block;
+		width: 100%;
+		max-width: 33%;
+		padding: 14px 4px;
+		font-size: 14px;
+		img{
+			width: 50px;
+		}
+	}
+}
+
+.green{
+	color: #7beaa5;
+}
+
+.ttu{
+	text-transform: uppercase;
+}
+
+.floating_avatar{
+	position: relative;
+	top: 20%;
+	text-align: center;
+	color: #fff;
+	.cla{
+		font-size: 14px;
+    	padding: 10px 40px;	
+	}
+}
+
+.h1{
+	font-weight: 800;
+	font-size: 30px;
+	margin-top: 16px;
+}
+.p_ttu{
+	font-weight: 800;
+	font-size: 12px;
+}.p_ttu_2{
+	font-size: 12px;
+	margin-bottom: 30px;
+}
+
+.avatar{
+	position: relative;
+	display: block;
+	width: 160px;
+	height: 160px;
+	margin: 0 auto;
+}
+
+.avatar_inner{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	border-radius: 10px;
+	background: #2297c9;
+	position: relative;
+	img{
+		position: absolute;
+		display: block;
+		top: 38%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		max-width: calc(100% - 60px);
+	}
+}
+
+.procent{
+	display: block;
+	margin: 0 auto;
+	width: 50%;
+	max-width: 290px;
+	height: 8px;
+	position: relative;
+	overflow: hidden;
+	border-radius: 20px;
+	background: #2297c9;
+	.procent_inner{
+		position: absolute;
+		top: 0;
+		left: 0;
+		border-radius: 20px;
+		width: 80%;
+		background: #7beaa5;
+		height: 100%;
+		z-index: 1;
+	}
+}
+
+.btn_slide--avatar{
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: -18px;
+    border-radius: 20px;
+    right: -15px;
+    background: #7beaa5 url(../../graphics/rouage.png) no-repeat center;
+    background-size: 18px;
+    .notif_avatar{
+    	display: inline-block;
+    	position: absolute;
+    	top: -10px;
+    	right: -10px;
+    	width: 25px;
+    	height: 25px;
+    	border-radius: 20px;
+    	font-size: 14px;
+    	padding: 3px;
+    	color: #488760;
+    	background: #fff;
+    }
+}
+
 
 
 

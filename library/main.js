@@ -39,7 +39,7 @@ $(document).ready(function() {
 	    $.getJSON('app/accountable/4').done(function(response) {
 	    	console.info(response,1);
 	    	// info parent
-	    	$(".json_listing_parent__item").attr('data-id',response.pk);
+	    	$(".js_redirect_parent").attr('data-id',response.pk);
 	    	$(".json_listing_parent__item-firstname").text(response.firstname);
 	    	$(".json_listing_parent__item-lastname").text(response.name);
 	    	// list children
@@ -78,15 +78,30 @@ $(document).ready(function() {
 
     $('body').on('click', '.js_redirect_parent', function (e){
     	e.preventDefault();
-    	var id = $(this).parents(".json_listing_parent__item").data("id");
-    	window.location.href = "enfant.php?id="+id;
+    	var id = $(this).data("id");
+    	window.location.href = "parent.php?id="+id;
     });
 
 /*  ==========================================================================
     Parent view : map
     ==========================================================================  */
 
-	function initMapParent(){
+	function initMapParent(id,kill){
+
+		$(".parent__view--listing").removeClass("parent__view--active");
+		$(".parent__view--map").addClass("parent__view--active");
+
+		// init
+
+		var mymap_parent = L.map('map_parent');
+
+		// kill
+
+		if(kill){
+			mymap_parent.off();
+			mymap_parent.remove();
+			return false;
+		}
 
     	$.getJSON('data/trajet.php').done(function(response) {
 
@@ -102,7 +117,7 @@ $(document).ready(function() {
 
     		// init
 
-			var mymap_parent = L.map('map_parent').setView([start_lat,start_lng], 18);
+    		mymap_parent.setView([start_lat,start_lng], 18);
 
 			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 			    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -147,11 +162,11 @@ $(document).ready(function() {
 			    popupAnchor:  [-3, -76]
 			});	
 
-			var marker_bus = L.marker([start_lat,start_lng], {icon: moving_icon}).addTo(mymap_parent);
 
-			// create end marker
+			// create end marker & bus marker
 
 			L.marker([response.end_lat,response.end_lng], {icon: end_icon}).addTo(mymap_parent);
+			var marker_bus = L.marker([start_lat,start_lng], {icon: moving_icon}).addTo(mymap_parent);
 
 			// refresh
 
@@ -174,11 +189,11 @@ $(document).ready(function() {
 
 						// remove last marker then recreate & update pos
 						mymap_parent.removeLayer(marker_bus);
-						marker_bus = L.marker([response.now_lat,response.now_lng], {icon: start_icon}).addTo(mymap_parent);
+						marker_bus = L.marker([response.now_lat,response.now_lng], {icon: moving_icon}).addTo(mymap_parent);
 
 						L.circle([response.now_lat,response.now_lng], {
-						    color: 'red',
-						    fillColor: '#f03',
+						    color: '#2297c9',
+						    fillColor: '#fff',
 						    fillOpacity: 1,
 						    radius: 2
 						}).addTo(mymap_parent);
@@ -195,7 +210,8 @@ $(document).ready(function() {
 	}
 
 	if($("body").hasClass("page_parent")){
-		initMapParent();
+		// initMapParent(5,true);
+		// initMapParent(5,false);
 	}
 
 });
