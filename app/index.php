@@ -1,6 +1,6 @@
 <?php
 include('fake_dao/RideDAO.php');
-
+include('fake_dao/TrackDAO.php');
 include('dao/Connect.php');
 include('dao/DAO.php');
 include('dao/ChildDAO.php');

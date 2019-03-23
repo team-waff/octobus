@@ -1,9 +1,8 @@
 <?php
 
 class Router {
-
     public function __construct($req_uri, $get = null, $post = null) {
-        $this->models = ['accountable', 'child', 'ride'];
+        $this->models = ['accountable', 'child', 'ride', 'track'];
         $this->bypass = ['octobus', 'app', '', 'www', 'test'];
         $this->get = $get;
         $this->post = $post;
@@ -38,33 +37,29 @@ class Router {
     private function initDao() {
         $dao = $this->model.'DAO';
         $this->dao = new $dao();
-
     }
 
+
     public function get($model, $data) {
+
         $this->model = ucfirst($model);
         $this->initDao();
-
         $request = $this->generate_request($data);
-
         $params = $this->generate_params($data);
-
         if(!$params) {
             return $this->dao->$request();
         }
-        return $this->dao->$request($params['id']);
+        return $this->dao->$request($params['id'], $params);
     }
 
     private function generate_request($data) {
         if($this->post) {
             return 'add';
         }
-        
+
         if($data) {
             if((int)$data[0]) {
                 return 'getById';
-            } else {
-                return 'getWhere';
             }
         }
         return 'getAll';
