@@ -17,6 +17,8 @@
 <meta property="og:description" content="" />
 <meta property="og:url" content="fr/" />
 
+<link href="https://fonts.googleapis.com/css?family=Muli:400,700,900" rel="stylesheet">
+
 <link href="dist/css/style.min.css?v=1" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
