@@ -28,16 +28,6 @@ include('includes/header.php');
 					</div>
 				<div class="arrow_changer arrow_changer_right"></div>
 			</div>
-			<div class="arrow_change arrow_change--middle">
-				<div class="arrow_changer arrow_changer_left"></div>
-					<div class="avatar_element avatar_element--face"></div>
-				<div class="arrow_changer arrow_changer_right"></div>
-			</div>
-			<div class="arrow_change arrow_change--bottom">
-				<div class="arrow_changer arrow_changer_left"></div>
-					<div class="avatar_element avatar_element--color"></div>
-				<div class="arrow_changer arrow_changer_right"></div>
-			</div>
 		</div>
 	</div>
 

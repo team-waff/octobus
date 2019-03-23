@@ -7,7 +7,7 @@ include('models/Accountable.php');
 
 $split_uri = explode("/", $_SERVER['REQUEST_URI']);
 $_bypass = ['octobus', 'app', ''];
-$_models = ['accountable'];
+$_models = ['accountable', 'child'];
 $parsed_uri = array();
 $controller = new QueryController();
 
