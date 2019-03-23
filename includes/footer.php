@@ -1,13 +1,12 @@
-<!-- <a href="#" class="js_open_popup" data-popup="popup_1">Open popup</a> -->
-
-<div class="popup" data-popup="popup_1">
+<div class="popup" data-popup="gift_1">
     <div class="popup__container">
-
-        popup
-
-        <span class="popup__close js_close_popup" data-popup="popup_1"></span>
+		<a href="#" class="btn btn--return js_close_popup" data-direction="home" data-popup="gift_1">Retour</a>
+    	<img src="graphics/avatar_3.png" alt="">
+		<h1 class="h1">Ninja</h1>
+		<p class="p_ttu_2">Plus rapide que la lumière !</p>
+		<a href="#" class="btn button button--green">Accepter</a>
     </div>
-    <span class="popup__bg js_close_popup" data-popup="popup_1"></span>
+    <span class="popup__bg js_close_popup" data-popup="gift_1"></span>
 </div>
 
 <!-- Scripts & Plugins -->
