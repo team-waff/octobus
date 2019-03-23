@@ -1,7 +1,7 @@
 <?php
 class Ride {
     var $pk;
-    var $fk_course;
+    var $course;
     var $start_time;
     var $status;
     var $moment;

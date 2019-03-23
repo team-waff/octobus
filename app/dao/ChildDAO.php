@@ -30,8 +30,8 @@ class ChildDAO extends DAO{
     public function createObject($data,$flag=true){
         $rides=null;
         if($flag){
-            //TODO : Get les courses depuis les fk courses lié à l'enfant
-            $rides = new RideDAO()->getByIds();
+            $rideDAO = new RideDAO();
+            $rides = $rideDAO->getByIds([1, 2]);
         }
         $obj = new Child(
             $data['pk'],
