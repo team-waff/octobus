@@ -1,14 +1,16 @@
 <?php
   class PDOConnect {
-    private $login;
-    private $pass;
-    private $connec;
+    protected $db;
 
-    public function __construct($db, $login ='root', $pass=''){
-      $this->login = $login;
-      $this->pass = $pass;
-      $this->db = $db;
-      $this->connection();
+    public function __construct(){
+        $dsn = 'mysql:host=localhost;dbname=octobus';
+        $usernameDB = 'root';
+        $passwordDB = '';
+        $options = array(
+            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+        );
+        $db = new PDO($dsn, $usernameDB, $passwordDB, $options);
+        $this->db = $db;
     }
 
     private function connection(){
@@ -25,9 +27,13 @@
         die($msg);
       }
     }
+
+    public function getDb(){
+      return $this->db;
+    }
+
   }
 
-  $r = new PDOConnect('octobus');
-
-  var_dump($r);
+  //$r = new PDOConnect();
+  //var_dump($r->db);
 ?>
