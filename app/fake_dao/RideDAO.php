@@ -22,27 +22,14 @@ class RideDAO {
         return $this->getByIds([1,2,3,4]);
     }
 
-    public function getById($id, $params=false) {
-        return $this->get($id);
+    public function getById($pk, $params=false) {
+        return $this->get($pk);
     }
 
-    public function get($id) {
+    public function get($pk) {
         $name = 'Octobus - Ride';
         $start_time = date("H:i:s");
         $start_date = date('Y.m.d');
-        return new Ride($id, $name, $start_time, $start_date);
+        return new Ride($pk, 0, 'start', $start_time, $start_time);
     }
-    /*
-    public subscribe($parent_id, $ride_id) {
-
-    }
-
-    public unsub($parent_id, $ride_id) {
-
-    }
-
-    public notify($ride_id) {
-
-    }
-    */
 }
