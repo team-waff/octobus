@@ -7,38 +7,41 @@
 	include('includes/header.php');
 ?>
 
+<div class="header_menu">
+	<a href="#" class="header_menu__logo"><img src="graphics/logo.png" alt="" class="img_100"></a>
+	<div class="burger js_menu_open"></div>
+</div>
+
 <div class="parent_choice">
-    <div class="login__header">
-        <a href="#" class="login__logo"><img src="graphics/logo.png" alt="" class="img_100"></a>
-    </div>
-    <div class="choice_bloc">
-        <a href="#" class="choice choice--parent">
-            <div class="centering">
-                <img src="graphics/logo.png" alt="">
-                <p>Papa</p>
-            </div>
-        </a>
-        <a href="#" class="choice choice--parent">
-            <div class="bg_inner"></div>
-            <div class="centering">
-                <img src="graphics/logo.png" alt="">
-                <p>Papa</p>
-            </div>
-        </a>
-        <a href="#" class="choice choice--parent">
-            <div class="bg_inner"></div>
-            <div class="centering">
-                <img src="graphics/logo.png" alt="">
-                <p>Papa</p>
-            </div>
-        </a>
-        <a href="#" class="choice choice--parent">
-            <div class="centering">
-                <img src="graphics/logo.png" alt="">
-                <p>Papa</p>
-            </div>
-        </a>
-    </div>
+	<div class="container container--no_padding">
+		<div class="parent_choice__list">
+
+			<div class="json_listing_children">
+
+				<div class="parent_choice__item">
+					<a href="#" class="parent_choice__link parent_choice__link--parent">
+						<div class="parent_choice__center">
+							<p class="parent_choice__icon"><img src="graphics/avatar_0.png" alt="" class="img_100"></p>
+							<p class="parent_choice__name">Parent</p>
+						</div>
+					</a>
+				</div>
+			
+			 	<div class="json_listing_children__item parent_choice__item">
+					<a href="#" class="parent_choice__link parent_choice__link--child js_redirect_child">
+						<div class="parent_choice__center">
+							<p class="parent_choice__icon"><img src="graphics/avatar_1.png" alt="" class="img_100"></p>
+							<p class="parent_choice__name"><span class="json_listing_children__item-firstname"></span> <span class="json_listing_children__item-lastname"></span></p>
+						</div>
+					</a>
+				</div>
+
+				<div class="clearfix"></div>
+
+			</div>
+
+		</div>
+	</div>
 </div>
 
 <?php
