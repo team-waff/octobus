@@ -18,7 +18,9 @@ class TrackDAO {
     }
 
     private function getLastPos($point_id) {
-
+        if($point_id >= count($this->POINTS)) {
+            return [status=>'finished'];
+        }
         return $this->POINTS[$point_id];
     }
 
