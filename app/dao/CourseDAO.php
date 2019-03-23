@@ -10,10 +10,15 @@ class CourseDAO extends DAO{
         $this->table = "course";
     }
 
+<<<<<<< HEAD
     public function getById($id, $params=false) {
         var_dump('hey',$id);
         $data = $this->get($id);
         var_dump('ho', $data);
+=======
+    public function getById($id) {
+        $data = $this->get($id);
+>>>>>>> 7f531b3f3a6195265d3f954184597eace8018b53
         return $this->createObject($data);
     }
 

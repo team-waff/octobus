@@ -29,7 +29,6 @@ class RideDAO extends DAO{
     public function createObject($data){
         $coursedDAO = new CourseDAO();
         $course = $coursedDAO->getById($data['fk_course']);
-        var_dump($course);
 
         $obj = new Ride(
             $data['pk'],
@@ -37,15 +36,10 @@ class RideDAO extends DAO{
             $data['start_time'],
             $data['moment'],
             $data['status'],
-            false
+            $course
         );
         return $obj;
     }
 
 }
 
-$test = new RideDAO();
-
-$result = $test->getById(2);
-
-var_dump($result);
