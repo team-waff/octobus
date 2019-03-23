@@ -113,7 +113,9 @@ $(document).ready(function() {
     					var n = new Date(response.rides[i].start_time);
 	    				var cloned_child = $(".json_children_active__item[data-id="+child_id+"]").find(".json_trajets .json_trajet_active").last().clone(true);
 			    		cloned_child.appendTo(".json_children_active__item[data-id="+child_id+"] .json_trajets")
-			    		.attr('data-id',response.rides[i].pk)
+			    		.attr('data-id',response.rides[i].course.pk)
+			    		.attr('data-status',response.rides[i].status)
+			    		.attr('data-name',response.firstname)
 			    		.find(".json_trajet_active_start").text(n.getDate() + "/" + n.getMonth() + " - " + n.getHours() + ":" + n.getMinutes())
 			    		.parents(".json_trajet_active")
 			    		.find(".json_trajet_active_place").text(response.rides[i].course.name)
@@ -129,6 +131,18 @@ $(document).ready(function() {
 	if($(".json_children_active").is(":visible")){
 		displayActiveChildren();
 	}
+
+    $('body').on('click', '.json_trajet_active', function (e){
+    	e.preventDefault();
+    	var status = $(this).data("status");
+    	var id = $(this).data("id");
+    	var name = $(this).data("name");
+    	$(".json_map_name").text(name);
+    	if(status=="running" || status=="start"){
+			initMapParent(id,true);
+			initMapParent(id,false);
+    	}
+    });
 
 /*  ==========================================================================
     Parent view : map

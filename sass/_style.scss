@@ -232,18 +232,23 @@ button, input, optgroup, select, textarea {
 }
 
 .json_trajet_active_status[data-status="stop"]{
-	background: #7beaa5 url(../../graphics/status_stop.png) center center;
-	background-size: 40px 40px;
+	background: #7beaa5 url(../../graphics/status_stop.png) center center no-repeat;
+	background-size: 30px 30px;
 }
 
 .json_trajet_active_status[data-status="running"]{
-	background: #fff url(../../graphics/status_running.png) center center;
-	background-size: 40px 40px;
+	background: #fff url(../../graphics/status_running.png) center center no-repeat;
+	background-size: 30px 30px;
 }
 
 .json_trajet_active_status[data-status="start"]{
-	background: url(../../graphics/status_start.png) center center;
-	background-size: 40px 40px;
+	background: url(../../graphics/status_start.png) center center no-repeat;
+	background-size: 30px 30px;
+}
+
+.parent__view-child-trajets-item[data-status="start"],
+.parent__view-child-trajets-item[data-status="running"] {
+	cursor: pointer;
 }
 
 /*  ==========================================================================
@@ -255,7 +260,12 @@ button, input, optgroup, select, textarea {
 }
 
 .map--parent {
-	height: 100vh;
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
 }
 
 .map_header {
