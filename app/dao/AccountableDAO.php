@@ -16,8 +16,6 @@ class AccountableDAO {
         $firstname = $this->_firstnames[$id-1];
         $email = $this->_emails[$id-1];
         $tel = $this->_tels[$id-1];
-        $child_1 = new Child(1, 'Dylan', 'Rabou');
-        $child_2 = new Child(2, 'Rabi', 'Rabou');
         $childs = new ChildDAO();
 
         return new Accountable($id, $name, $firstname, $email , $tel, $childs->getByIds([1, 2]));
