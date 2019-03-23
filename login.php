@@ -27,6 +27,7 @@
                     </div>
                     <div class="form__item form__item--centered">
                         <a href="parent.php" class="form__submit button button--green js_login">Se connecter</a>
+                        <div class="clearfix"></div>
                         <a class="form__mdp" href="#">Mot de passe oublié ?</a>
                     </div>
                 </div>
