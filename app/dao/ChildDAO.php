@@ -25,15 +25,31 @@ class ChildDAO extends DAO{
 
     public function createObject($data){
         $childs = array();
+        $rides = $this->fakeRideGen();
+
         $obj = new Child(
             $data['pk'],
             $data['name'],
             $data['firstname'],
             $data['birthdate'],
             $data['isvalide'],
-            $data['validedate']
+            $data['validedate'],
+            $rides
         );
         return $obj;
+    }
+
+    private function fakeRideGen() {
+        $obj = new StdClass();
+        $obj->id = 1;
+        $obj->start_coords =['lat' => 50.4, 'lng' => 50.4];
+        $obj->end_coords =['lat' => 51.4, 'lng' => 51.4];
+
+        $obj2->id = 2;
+        $obj2 = new StdClass();
+        $obj2->start_coords =['lat' => 50.4, 'lng' => 50.4];
+        $obj2->end_coords =['lat' => 51.4, 'lng' => 51.4];
+        return [$obj, $obj2];
     }
 
 }
