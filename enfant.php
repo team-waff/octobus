@@ -54,19 +54,19 @@ include('includes/header.php');
 					<img src="graphics/avatar_1.png" alt="">
 					<h1 class="h1">Indien</h1>
 					<p class="p_ttu_2">Ugh'</p>
-					<a href="#" class="btn btn--validation_avatar button button--green">Sélectionner</a>
+					<a href="#" class="btn btn--validation_avatar button button--green" data-direction="home">Sélectionner</a>
 				</div>
 				<div class="slider_avatar_item">
 					<img src="graphics/avatar_2.png" alt="">
 					<h1 class="h1">Pirate</h1>
 					<p class="p_ttu_2">Hissez-haut matelot !</p>
-					<a href="#" class="btn btn--validation_avatar button button--green">Sélectionner</a>
+					<a href="#" class="btn btn--validation_avatar button button--green" data-direction="home">Sélectionner</a>
 				</div>
 				<div class="slider_avatar_item">
 					<img src="graphics/avatar_3.png" alt="">
 					<h1 class="h1">Ninja</h1>
 					<p class="p_ttu_2">Plus rapide que la lumière !</p>
-					<a href="#" class="btn btn--validation_avatar button button--green">Sélectionner</a>
+					<a href="#" class="btn btn--validation_avatar button button--green" data-direction="home">Sélectionner</a>
 				</div>
 				<div class="slider_avatar_item locked">
 					<img src="graphics/avatar_4.png" alt="">
@@ -78,16 +78,44 @@ include('includes/header.php');
 		</div>
 	</div>
 
-	<div class="slide slide--travel slide-away" data-slide="travel">
+	<div class="slide slide--travel slide-away white" data-slide="travel">
 		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
 		<div class="inner">
+			<h1 class="h1">Mes trajets</h1>
+			<p class="enter-anim">Travel 1</p>
+			<p class="enter-anim">Travel 2</p>
+			<p class="enter-anim">Travel 3</p>
+			<p class="enter-anim">Travel 1</p>
+			<p class="enter-anim">Travel 2</p>
+			<p class="enter-anim">Travel 3</p>
+			<p class="enter-anim">Travel 1</p>
+			<p class="enter-anim">Travel 2</p>
+			<p class="enter-anim">Travel 3</p>
+			<p class="enter-anim">Travel 1</p>
+			<p class="enter-anim">Travel 2</p>
+			<p class="enter-anim">Travel 3</p>
+			<p class="enter-anim">Travel 1</p>
+			<p class="enter-anim">Travel 2</p>
+			<p class="enter-anim">Travel 3</p>
+			<p class="enter-anim">Travel 1</p>
+			<p class="enter-anim">Travel 2</p>
+			<p class="enter-anim">Travel 3</p>
+			<p class="enter-anim">Travel 1</p>
+			<p class="enter-anim">Travel 2</p>
+			<p class="enter-anim">Travel 3</p>
+			<p class="enter-anim">Travel 1</p>
+			<p class="enter-anim">Travel 2</p>
+			<p class="enter-anim">Travel 3</p>
+			<p class="enter-anim">Travel 1</p>
+			<p class="enter-anim">Travel 2</p>
+			<p class="enter-anim">Travel 3</p>
 			<p class="enter-anim">Travel 1</p>
 			<p class="enter-anim">Travel 2</p>
 			<p class="enter-anim">Travel 3</p>
 		</div>
 	</div>
 
-	<div class="slide slide--trophy slide-away" data-slide="trophy">
+	<div class="slide slide--trophy slide-away white" data-slide="trophy">
 		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
 		<div class="inner">
 			<p>Trophy 1</p>
@@ -96,7 +124,7 @@ include('includes/header.php');
 		</div>
 	</div>
 
-	<div class="slide slide--trophy--eco slide-away" data-slide="trophy--eco">
+	<div class="slide slide--trophy--eco slide-away white" data-slide="trophy--eco">
 		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
 		<div class="inner">
 			<p>ECO - Trophy 1</p>

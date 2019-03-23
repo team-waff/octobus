@@ -123,6 +123,9 @@ $(document).ready(function() {
  		if (!$(this).parents(".slider_avatar_item.locked").length) {
 			var src = $(this).parents(".slider_avatar_item").find('img').attr('src');
  			$(".avatar_inner img").attr('src', src);
+ 		// 	var direction = $(this).data("direction");
+			// closeslide(direction);
+			$(".slide--avatar .btn--return").trigger("click");
  		}
  	});
 

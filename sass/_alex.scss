@@ -262,19 +262,19 @@ $selectric-font-size:       12px !default;                                      
 	top: 0;
 	z-index: 10;
 	&.slide-away{
-		left: 100%;
-		&:before {
-		    content: '';
-		    position: absolute;
-		    top: 0;
-		    left: 0;
-		    width: 100%;
-		    height: 100%;
-		    z-index: -2;
-		    background: #26a6dc;
-		    background: -webkit-gradient(linear, left top, left bottom, from(#26a6dc), to(#41bcca));
-		    background: linear-gradient(to bottom, #26a6dc 0%, #41bcca 100%);
-		}
+		left: 100%;		
+	}
+	&:before {
+	    content: '';
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    z-index: -2;
+	    background: #26a6dc;
+	    background: -webkit-gradient(linear, left top, left bottom, from(#26a6dc), to(#41bcca));
+	    background: linear-gradient(to bottom, #26a6dc 0%, #41bcca 100%);
 	}
 }
 
@@ -599,13 +599,30 @@ $selectric-font-size:       12px !default;                                      
     font-weight: 800;
 }
 
+.gift_img{
+	width: 100%;
+	margin: 30px 0;
+}
+
 .popup__container{
 	.btn--return{
 	    position: absolute;
 	    top: 0;
 	    left: 0;
 	}
+	.h1{
+		font-size: 40px;
+		margin-top: 66px;
+	}
 }
+
+.white{
+	color: #fff;
+}
+
+
+
+
 
 
 

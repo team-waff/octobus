@@ -1,10 +1,10 @@
 <div class="popup" data-popup="gift_1">
     <div class="popup__container">
 		<a href="#" class="btn btn--return js_close_popup" data-direction="home" data-popup="gift_1">Retour</a>
-    	<img src="graphics/avatar_3.png" alt="">
 		<h1 class="h1">Ninja</h1>
-		<p class="p_ttu_2">Plus rapide que la lumière !</p>
-		<a href="#" class="btn button button--green">Accepter</a>
+    	<img src="graphics/gift.png" alt="" class="gift_img">
+		<p class="p_ttu_2">Tu as remporté le bonus de fidélité pour t’être connecté tous les jours de la semaine passée !</p>
+		<a href="#" class="btn button button--green js_close_popup" data-popup="gift_1">Accepter</a>
     </div>
     <span class="popup__bg js_close_popup" data-popup="gift_1"></span>
 </div>

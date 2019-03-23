@@ -48,7 +48,7 @@ $(document).ready(function() {
         closePopup(popup);
     });
 
-    openPopup('gift_1');
+    // openPopup('gift_1');
     
 
 });
