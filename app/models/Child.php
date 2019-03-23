@@ -7,14 +7,15 @@ class Child {
     var $isvalide;
     var $validedate;
     var $avatar;
-    public function __construct($pk, $name, $firstname,$birthdate, $isvalide, $validedate, $rides) {
+    var $rides;
+    public function __construct($pk, $name, $firstname,$birthdate, $isvalide, $validedate, $avatar, $rides) {
         $this->pk = $pk;
         $this->name = $name;
         $this->firstname = $firstname;
         $this->birthdate = $birthdate;
         $this->isvalide = $isvalide;
         $this->validedate = $validedate;
-        $this->avatar = rand(1,3);
+        $this->avatar = $avatar;
         $this->rides = $rides;
     }
 

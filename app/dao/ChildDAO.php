@@ -33,6 +33,7 @@ class ChildDAO extends DAO{
             $data['birthdate'],
             $data['isvalide'],
             $data['validedate'],
+            $data['avatar'],
             $rides
         );
         return $obj;
