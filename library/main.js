@@ -40,20 +40,31 @@ $(document).ready(function() {
 	    	console.info(response,1);
 	    	// list children
 	    	for (var i = 0, len = response.childs.length; i < len; i++) {
-	    		var cloned = $(".json_listing_children__item").clone(true);
+	    		var cloned = $(".json_listing_children__item").last().clone(true);
 	    		cloned.appendTo(".json_listing_children")
-	    		.attr('data-id',response.childs[i].id)
+	    		.attr('data-id',response.childs[i].pk)
 	    		.find(".json_listing_children__item-firstname").text(response.childs[i].firstname)
 	    		.parents(".json_listing_children__item")
 	    		.find(".json_listing_children__item-lastname").text(response.childs[i].name);
 	    	}
-	    	$(".json_listing_children").find(".json_listing_children__item").last().remove();
+	    	// remove last clone
+	    	$(".json_listing_children").find(".json_listing_children__item").first().remove();
 	    });
 	}
 
 	if($(".json_listing_children").is(":visible")){
 		displayChildren();
 	}
+
+/*  ==========================================================================
+    Parent view : child detail
+    ==========================================================================  */
+
+    $('body').on('click', '.js_redirect_child', function (e){
+    	e.preventDefault();
+    	var id = $(this).parents(".json_listing_children__item").data("id");
+    	window.location.href = "parent_child.php?id="+id;
+    })
 
 /*  ==========================================================================
     Parent view : map

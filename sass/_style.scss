@@ -88,6 +88,13 @@ button, input, optgroup, select, textarea {
 	}
 }
 
+.container--no_padding {
+	@include mq("mobile"){
+		padding-left: 0;
+		padding-right: 0;		
+	}
+}
+
 .disabled {
 	pointer-events: none;
 }
