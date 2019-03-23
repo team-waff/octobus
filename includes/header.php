@@ -6,7 +6,7 @@
 
 <title></title>
 <meta name="description" content="" />
-<meta name="author" content="strategie.agency" />
+<meta name="author" content="WAFF" />
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="keywords" content="">
@@ -23,7 +23,7 @@
    crossorigin=""/>
 <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-   crossorigin=""></script> 
+   crossorigin=""></script>
 
 <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
 
@@ -37,3 +37,19 @@
 </head>
 
 <body class="page_<?= $page; ?>">
+
+    <div class="menu">
+        <div class="menu__filter js_menu_close"></div>
+        <div class="menu__modal">
+            <div class="menu__header">
+                <a href="#" class="menu__logo"><img src="graphics/logo.png" alt="" class="img_100"></a>
+            </div>
+            <ul class="menu__list">
+                <li class="menu__item"><a href="#">item</a></li>
+                <li class="menu__item"><a href="#">item</a></li>
+                <li class="menu__item"><a href="#">item</a></li>
+                <li class="menu__item"><a href="#">item</a></li>
+            </ul>
+            <div class="menu__close js_menu_close">close</div>
+        </div>
+    </div>
