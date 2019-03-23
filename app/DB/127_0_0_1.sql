@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 23 mars 2019 à 14:24
+-- Généré le :  sam. 23 mars 2019 à 18:07
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -211,6 +211,67 @@ INSERT INTO `classroom` (`pk`, `name`, `fk_school`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `course`
+--
+
+DROP TABLE IF EXISTS `course`;
+CREATE TABLE IF NOT EXISTS `course` (
+  `pk` int(11) NOT NULL AUTO_INCREMENT,
+  `start_pos_lat` text NOT NULL,
+  `start_pos_long` text NOT NULL,
+  `end_pos_lat` text NOT NULL,
+  `end_pos_long` text NOT NULL,
+  `name` varchar(200) NOT NULL,
+  PRIMARY KEY (`pk`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `course`
+--
+
+INSERT INTO `course` (`pk`, `start_pos_lat`, `start_pos_long`, `end_pos_lat`, `end_pos_long`, `name`) VALUES
+(1, '50.718123', '4.611852', '50.718380', '4.612356', 'sucrerie'),
+(2, '45.236595', '2.326598', '47.236548', '1.142536', 'orangerie');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `ride`
+--
+
+DROP TABLE IF EXISTS `ride`;
+CREATE TABLE IF NOT EXISTS `ride` (
+  `pk` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_course` int(11) NOT NULL,
+  `start_time` datetime NOT NULL,
+  `moment` date NOT NULL,
+  `status` int(11) NOT NULL COMMENT '1 = en attente 2 = demarrer 3 = arreter',
+  PRIMARY KEY (`pk`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `ride`
+--
+
+INSERT INTO `ride` (`pk`, `fk_course`, `start_time`, `moment`, `status`) VALUES
+(1, 1, '2019-03-23 06:23:42', '2019-03-23', 2),
+(2, 2, '2019-03-23 06:35:48', '2019-03-23', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `ride_child`
+--
+
+DROP TABLE IF EXISTS `ride_child`;
+CREATE TABLE IF NOT EXISTS `ride_child` (
+  `fk_ride` int(11) NOT NULL,
+  `fk_child` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `role`
 --
 
@@ -253,6 +314,36 @@ INSERT INTO `school` (`pk`, `name`) VALUES
 (2, 'ecole vie'),
 (3, 'ecole de l amitiee'),
 (4, 'ecole de musique');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `subscribers`
+--
+
+DROP TABLE IF EXISTS `subscribers`;
+CREATE TABLE IF NOT EXISTS `subscribers` (
+  `pk` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_ride` int(11) NOT NULL,
+  `fk_parent` int(11) NOT NULL,
+  PRIMARY KEY (`pk`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `track`
+--
+
+DROP TABLE IF EXISTS `track`;
+CREATE TABLE IF NOT EXISTS `track` (
+  `pk` int(11) NOT NULL AUTO_INCREMENT,
+  `latitude` text NOT NULL,
+  `longitude` text NOT NULL,
+  `ts` timestamp NOT NULL COMMENT 'timestamp',
+  `fk_ride` int(11) NOT NULL,
+  PRIMARY KEY (`pk`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

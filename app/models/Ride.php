@@ -1,15 +1,17 @@
 <?php
 class Ride {
-    var $id;
-    var $name;
+    var $pk;
+    var $course;
     var $start_time;
-    var $start_date;
+    var $status;
+    var $moment;
 
-    public function __construct($id, $name, $start_time, $start_date) {
-        $this->id = $id;
-        $this->name = $name;
+    public function __construct($pk, $course, $status, $start_time, $moment) {
+        $this->pk = $pk;
+        $this->course = $course;
+        $this->status = $status;
         $this->start_time = $start_time;
-        $this->start_date = $start_date;
+        $this->moment = $moment;
     }
 
     function __get($attr) {
