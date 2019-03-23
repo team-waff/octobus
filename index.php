@@ -1,4 +1,4 @@
-<?php 
+<?php
 // HEADER
 include('includes/header.php');
 ?>
@@ -7,9 +7,7 @@ include('includes/header.php');
 	Prénom : <span class="child__name"></span>
 </div>
 
-<?php 
+<?php
 // FOOTER
 include('includes/footer.php');
 ?>
-
-
