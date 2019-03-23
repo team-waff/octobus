@@ -8,10 +8,28 @@ var baseroot = $("body").data("baseroot");
 $(document).ready(function() {
 
 /*  ==========================================================================
-    Markers
+    Login
     ==========================================================================  */
 
-
+    $(".js_login").click(function(e){
+    	e.preventDefault();
+    	var error = 0;
+    	$(".login__form").find(".form__input").each(function(){
+    		if($(this).val()==""){
+    			error++;
+    			$(this).parents(".form__line").addClass("form__line--error");
+    		} else {
+    			$(this).parents(".form__line").removeClass("form__line--error");
+    		}
+    	});
+   		if(error==0){
+    		if($("input[name=username]").val()=="enfant"){
+    			window.location.href = "enfant.php";
+    		} else {
+    			window.location.href = "parent.php";
+    		}
+		} 	
+    });
 
 /*  ==========================================================================
     Parent view : map

@@ -1,4 +1,4 @@
-<a href="#" class="js_open_popup" data-popup="popup_1">Open popup</a>
+<!-- <a href="#" class="js_open_popup" data-popup="popup_1">Open popup</a> -->
 
 <div class="popup" data-popup="popup_1">
     <div class="popup__container">

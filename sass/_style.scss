@@ -104,12 +104,12 @@ button, input, optgroup, select, textarea {
 .view_mobile { }
 
 ::placeholder {
-    color: #666;
+    color: #999;
     opacity: 1;
 }:-ms-input-placeholder {
-    color: #666;
+    color: #999;
 }::-ms-input-placeholder {
-    color: #666;
+    color: #999;
 }
 
 /*  ==========================================================================
@@ -117,8 +117,27 @@ button, input, optgroup, select, textarea {
     ==========================================================================  */
 
 /*  ==========================================================================
-	Fonts
+	Buttons
     ==========================================================================  */
+
+.button {
+	padding: 25px 60px;
+	font-weight: 900;
+	font-size: 21px;
+	display: inline-block;
+	line-height: 1;
+	text-align: center;
+	border-radius: 50px;
+	@include transition;
+}
+
+.button--green {
+	color: #fff;
+	background: #7beaa5;
+	&:hover {
+		background: #77e09f;
+	}
+}
 
 /*  ==========================================================================
 	Map
@@ -150,27 +169,100 @@ button, input, optgroup, select, textarea {
 	Login
     ==========================================================================  */
 
+.page_login {
+	.burger {
+		display: none;
+	}
+}
+
 .login {
 	position: absolute;
 	top: 0;
 	left: 0;
 	height: 100%;
 	width: 100%;
+	overflow-y: auto;
 }
 
 .login__content {
 	top: 50%;
 	position: relative;
 	transform: translateY(-50%);
+	padding: 50px 0;
 }
 
 .login__logo {
 	display: block;
 	margin: 0 auto 30px auto;
-	max-width: 300px;
+	max-width: 200px;
 	img {
 		display: block;
 		width: 100%;
+	}
+}
+
+.login__form {
+	width: 100%;
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+/*  ==========================================================================
+	Form
+    ==========================================================================  */
+
+.form__submit {
+	margin-top: 20px;
+}
+
+.form__input {
+	padding: 20px;
+	border-radius: 10px;
+	background: #fff;
+	border: 0;
+	width: 100%;
+	font-size: 18px;
+	@include transition;
+}
+
+.form__line--error {
+	&:before {
+		content: '';
+		position: absolute;
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		top: 50%;
+		left: 17px;
+		margin-top: -3px;
+		background: #cc6e67;
+		z-index: 3;
+	}
+	.form__input {
+		padding-left: 40px;
+	}
+}
+
+.form__item--centered {
+	text-align: center;
+}
+
+.form__line {
+	position: relative;
+	margin-bottom: 10px;
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.form__mdp {
+	color: #fff;
+	font-size: 16px;
+	text-decoration: underline;
+	display: inline-block;
+	margin-top: 10px;
+	&:hover {
+		text-decoration: none;
 	}
 }
 
