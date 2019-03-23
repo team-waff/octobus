@@ -3,9 +3,9 @@
 class QueryController {
     public function __construct() {}
 
-    public function get($model, $data) {
-        $model .= 'DAO';
-        $model = ucfirst($model);
+    public function get($model, $data, $get = null, $post = null) {
+        $this->model = $model;
+        $this->dao = ucfirst($model.'DAO');
         $request = $this->generate_request($data);
         $params = $this->generate_params($data);
         $obj = new $model();

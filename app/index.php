@@ -24,6 +24,6 @@ if(in_array($parsed_uri[0], $_models)) {
     unset($parsed_uri[0]);
     echo json_encode($controller->get($model, $parsed_uri));
 } else {
-    //print doc
+    echo json_encode(false);
     include('doc.html');
 }
