@@ -9,7 +9,6 @@ include('dao/DAO.php');
 
 include('dao/ChildDAO.php');
 include('dao/AccountableDAO.php');
-var_dump('test');
 include('dao/CourseDAO.php');
 
 include('models/Course.php');

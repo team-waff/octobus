@@ -11,7 +11,7 @@ class Course {
         $this->start_pos_lat = $start_pos_lat;
         $this->start_pos_long = $start_pos_long;
         $this->end_pos_lat = $end_pos_lat;
-        $this->end_pos_long = $tend_pos_longel;
+        $this->end_pos_long = $end_pos_long;
         $this->name = $name;
     }
 

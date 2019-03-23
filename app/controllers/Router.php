@@ -46,7 +46,6 @@ class Router {
         $this->initDao();
         $request = $this->generate_request($data);
         $params = $this->generate_params($data);
-        var_dump($params, $request,$this->model);
         if(!$params) {
             return $this->dao->$request();
         }
