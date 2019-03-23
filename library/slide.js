@@ -70,15 +70,15 @@ $(document).ready(function() {
 		closeslide(direction, away);
 	})
 
+	openslide('select');
+
 
 	// SELECT
 	// Call when needed !
 	// show_select_child('John', 'terry');
 	function show_select_child(value, value_2){
 		var value = value;
-		var value_2 = value_2;
 		$('#select_child').append('<option>' + (value ? value : 'Empty') + '</option>');
-		$('#select_child').append('<option>' + (value_2 ? value_2 : 'Empty') + '</option>');
 		$('#select_child').selectric('refresh');
 	}
 
@@ -99,13 +99,9 @@ $(document).ready(function() {
 
 	$('#select_day').on('change', function() {
 	    var value = $(this).val();
-	    show_select_hour(value);
-	});
-
-	$('#select_hour').on('change', function() {
-	    var value = $(this).val();
 	    $(".btn_bloc_valid").show();
 	});
+
 
  	// SLICK 
  	$('.slider_avatar').slick({
