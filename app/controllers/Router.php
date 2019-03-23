@@ -2,7 +2,7 @@
 
 class Router {
     public function __construct($req_uri, $get = null, $post = null) {
-        $this->models = ['accountable', 'child', 'ride', 'track', 'course'];
+        $this->models = ['accountable', 'child', 'ride', 'track', 'course', 'point'];
         $this->bypass = ['octobus', 'app', '', 'www', 'test', 'hackaton'];
         $this->get = $get;
         $this->post = $post;
@@ -27,7 +27,7 @@ class Router {
 
         } else if ($parsed_uri[0] == 'doc'){
 
-            echo 'doc.html';
+            include('doc.html');
             return 0;
         } else {
             echo json_encode(false);

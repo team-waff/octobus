@@ -9,7 +9,9 @@ include('dao/RideDAO.php');
 include('dao/ChildDAO.php');
 include('dao/AccountableDAO.php');
 include('dao/CourseDAO.php');
+include('dao/PointDAO.php');
 
+include('models/Point.php');
 include('models/Course.php');
 include('models/Child.php');
 include('models/Accountable.php');

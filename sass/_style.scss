@@ -158,6 +158,99 @@ button, input, optgroup, select, textarea {
 	display: block;
 }
 
+.parent__view--listing {
+	padding-bottom: 60px;
+}
+
+.parent__view-child {
+	padding-bottom: 30px;
+	margin-bottom: 30px;
+	border-bottom: 1px solid rgba(255,255,255,0.2);
+	&:last-child {
+		margin-bottom: 0;
+		border-bottom: 0;
+		padding-bottom: 0;
+	}
+}
+
+.parent__view-child-picture {
+	width: 60px;
+	display: block;
+	float: left;
+}
+
+.parent__view-child-name {
+	float: left;
+	width: calc(100% - 80px);
+	margin-left: 20px;
+	font-weight: 900;
+	color: #fff;
+	padding: 35px 0;
+	font-size: 24px;
+}
+
+.parent__view-child-trajets {
+	margin-top: 10px;
+}
+
+.parent__view-child-trajets-item {
+	background: #2297c9;
+	margin-bottom: 10px;
+	padding: 20px;
+	border-radius: 10px;
+	color: #fff;
+	font-size: 24px;
+	padding-right: 90px;
+	position: relative;
+	overflow: hidden;
+	&:last-child {
+		margin-bottom: 0;
+	}
+	&:first-child {
+		display: none;
+	}
+}
+
+.json_trajet_active_place {
+	text-transform: uppercase;
+	font-size: 18px;
+	display: inline-block;
+	margin-right: 10px;
+	color: rgba(255,255,255,0.5);
+}
+
+.json_trajet_active_start {
+	font-weight: 900;
+}
+
+.json_trajet_active_status {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 60px;	
+}
+
+.json_trajet_active_status[data-status="stop"]{
+	background: #7beaa5 url(../../graphics/status_stop.png) center center no-repeat;
+	background-size: 30px 30px;
+}
+
+.json_trajet_active_status[data-status="running"]{
+	background: #fff url(../../graphics/status_running.png) center center no-repeat;
+	background-size: 30px 30px;
+}
+
+.json_trajet_active_status[data-status="start"]{
+	background: url(../../graphics/status_start.png) center center no-repeat;
+	background-size: 30px 30px;
+}
+
+.parent__view-child-trajets-item[data-status="start"],
+.parent__view-child-trajets-item[data-status="running"] {
+	cursor: pointer;
+}
+
 /*  ==========================================================================
 	Map
     ==========================================================================  */
@@ -167,7 +260,12 @@ button, input, optgroup, select, textarea {
 }
 
 .map--parent {
-	height: 100vh;
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
 }
 
 .map_header {
