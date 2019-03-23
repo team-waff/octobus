@@ -57,7 +57,7 @@ $(document).ready(function() {
 		}
 	}
 
-	$(".btn--slide").click(function(e){
+	$(".btn_slide").click(function(e){
 		e.preventDefault();
 		var direction = $(this).data("direction");
 		openslide(direction);
@@ -112,7 +112,7 @@ $(document).ready(function() {
  	$('.slider_avatar').slick({
 		dots: false,
 		arrow: true,
-		infinite: false,
+		infinite: true,
 		speed: 300,
 		centerMode: true
 	});
