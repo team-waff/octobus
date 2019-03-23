@@ -108,4 +108,32 @@
 	}
 }
 
+/* Choice_bloc */
+.choice_bloc{
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	overflow: hidden;
+	font-size: 0px;
+}
+.choice{
+	display: inline-block;
+	width: 50%;
+	padding-top: 50%;
+	position: relative;
+	font-size: 16px;
+	border-bottom: 1px solid #e8e8e8;
+}.choice:nth-child(even){
+	background: #f6f6f6;
+}
+.centering{
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	img{
+		max-width: 90%;
+	}
+}
 
