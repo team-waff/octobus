@@ -12,14 +12,30 @@ include('includes/header.php');
 
 	<div class="slide slide--home active" data-slide="home">
 		<a href="#" class="btn btn--slide" data-direction="avatar">Avatar</a>
-		<a href="#" class="btn btn--slide" data-direction="travel">Travel</a>
+		<!-- <a href="#" class="btn btn--slide" data-direction="travel">Travel</a>
 		<a href="#" class="btn btn--slide" data-direction="trophy">Trophy</a>
 		<a href="#" class="btn btn--slide" data-direction="trophy-eco">Ecolo</a>
-		<a href="#" class="btn btn--slide" data-direction="select">Select</a>
+		<a href="#" class="btn btn--slide" data-direction="select">Select</a> -->
 		<div class="inner">
-			
+			<div class="slider_avatar">
+				<div class="slider_avatar_item">
+					<img src="graphics/avatar_1.png" alt="">
+				</div>
+				<div class="slider_avatar_item">
+					<img src="graphics/avatar_2.png" alt="">
+				</div>
+				<div class="slider_avatar_item">
+					<img src="graphics/avatar_3.png" alt="">
+				</div>
+				<div class="slider_avatar_item">
+					<img src="graphics/avatar_4.png" alt="">
+				</div>
+			</div>
+			<a href="#" class="btn btn--validation_avatar">OK</a>
 		</div>
 	</div>
+	
+<!-- 
 
 	<div class="slide slide--avatar slide-away" data-slide="avatar">
 		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
@@ -57,7 +73,6 @@ include('includes/header.php');
 	<div class="slide slide--select slide-away" data-slide="select">
 		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
 		<div class="inner">
-			<div class="inner">
 			<div class="select_child_bloc">
 				<label for="select--child">Sélectionnez l'enfant que vous voulez suivre</label>
 				<select id="select_child" class="select"></select>
@@ -85,9 +100,9 @@ include('includes/header.php');
 				<a href="#" class="btn btn--validation_select">J'inscris mon enfant</a>
 			</div>
 		</div>
-		</div>
 	</div>
 
+ -->
 </section>
 
 <?php 
