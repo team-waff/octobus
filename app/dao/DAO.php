@@ -6,7 +6,6 @@
         $this->pdo = new PDOConnect();
     }
 
-
     public function get($pk){
         $pk = (int)$pk;
         $q = $this->pdo->getDb()->query('SELECT * FROM '.$this->table.' as b WHERE b.pk ='.$pk);

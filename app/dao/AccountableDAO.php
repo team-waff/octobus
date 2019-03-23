@@ -8,7 +8,7 @@ class AccountableDAO extends DAO{
         $this->table = "accountable";
     }
 
-    public function getById($id) {
+    public function getById($id, $params=false) {
         $data = $this->get($id);
         return $this->createObject($data);
     }
