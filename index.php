@@ -1,14 +1,10 @@
 <?php
-<<<<<<< HEAD
-=======
-// PAGENAME
-$page = "home";
+	$page = "home";
 ?>
 
-<?php 
->>>>>>> f847abe770c8f5f2f26ca7973db36bac1dac0158
-// HEADER
-include('includes/header.php');
+<?php
+	// HEADER
+	include('includes/header.php');
 ?>
 
 <div class="child">
@@ -16,6 +12,6 @@ include('includes/header.php');
 </div>
 
 <?php
-// FOOTER
-include('includes/footer.php');
+	// FOOTER
+	include('includes/footer.php');
 ?>
