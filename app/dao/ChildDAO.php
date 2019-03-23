@@ -31,7 +31,7 @@ class ChildDAO extends DAO{
         $rides=null;
         if($flag){
             $rideDAO = new RideDAO();
-            $rides = $rideDAO->getByIds([1, 2]);
+            $rides = $rideDAO->getByIds(getChildsRide($data['pk']));
         }
         $obj = new Child(
             $data['pk'],
@@ -44,5 +44,12 @@ class ChildDAO extends DAO{
             $rides
         );
         return $obj;
+    }
+
+    private function getChildsRide($pk){
+        $pk = (int)$pk;
+        $q = $this->pdo->getDb()->query('SELECT fk_ride FROM ride_child as b WHERE b.fk_child ='.$pk);
+        $data = $q->fetchAll(PDO::FETCH_ASSOC);
+        return $data;
     }
 }
