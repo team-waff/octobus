@@ -48,7 +48,7 @@ include('includes/header.php');
 		<div class="map_header">
 			<div class="map_header__perso">
 				<p class="map_header__name"><span class="json_map_name">Name</span></p>
-				<p class="map_header__icon"><img src="graphics/avatar_1.png" alt="" class="img_100"></p>
+				<p class="map_header__icon"><img src="graphics/avatar_1.png" alt="" class="json_map_avatar img_100"></p>
 			</div>
 		</div>
 
