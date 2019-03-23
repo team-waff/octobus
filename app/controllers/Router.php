@@ -59,7 +59,6 @@ class Router {
 
         if($data) {
             if((int)$data[0]) {
-
                 return 'getById';
             } else {
                 return 'getWhere';
