@@ -24,7 +24,7 @@ class AccountableDAO extends DAO{
 
     public function createObject($data){
         $childDAO = new ChildDAO();
-        $childs = $childDAO->getByIds($this->getChildsParent($data['pk']));
+        $childs = $childDAO->getByIds($this->getChildsParent($data['pk']),false);
 
 
         $obj = new Accountable(

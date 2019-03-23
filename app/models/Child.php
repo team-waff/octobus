@@ -8,7 +8,7 @@ class Child {
     var $validedate;
     var $avatar;
     var $rides;
-    public function __construct($pk, $name, $firstname,$birthdate, $isvalide, $validedate, $avatar, $rides) {
+    public function __construct($pk, $name, $firstname,$birthdate, $isvalide, $validedate, $avatar, $rides=null) {
         $this->pk = $pk;
         $this->name = $name;
         $this->firstname = $firstname;
