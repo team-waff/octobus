@@ -3,11 +3,14 @@ class Course {
     var $pk;
     var $start_pos;
     var $end_pos;
+    var $points;
     var $name;
-    function __construct($pk, $start_pos_lat, $start_pos_long, $end_pos_lat, $end_pos_long, $name) {
+
+    function __construct($pk, $points, $name) {
         $this->pk = $pk;
-        $this->start_pos = ['lat'=>$start_pos_lat, 'lng'=>$start_pos_long];
-        $this->end_pos = ['lat'=>$end_pos_lat, 'lng'=>$end_pos_long];
+        $this->start_pos = ['lat'=>$points[0]->latitude, 'lng'=>$points[0]->longitude];
+        $this->end_pos = ['lat'=>$points[count($points)-1]->latitude, 'lng'=>$points[count($points)-1]->longitude];
+        $this->points = $points;
         $this->name = $name;
     }
 

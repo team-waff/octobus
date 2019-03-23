@@ -2,7 +2,7 @@
 
 class Router {
     public function __construct($req_uri, $get = null, $post = null) {
-        $this->models = ['accountable', 'child', 'ride', 'track', 'course'];
+        $this->models = ['accountable', 'child', 'ride', 'track', 'course', 'point'];
         $this->bypass = ['octobus', 'app', '', 'www', 'test', 'hackaton'];
         $this->get = $get;
         $this->post = $post;

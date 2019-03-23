@@ -22,8 +22,8 @@ class RideDAO extends DAO{
     }
 
     public function createObject($data){
-        $coursedDAO = new CourseDAO();
-        $course = $coursedDAO->getById($data['fk_course']);
+        $courseDAO = new CourseDAO(false);
+        $course = $courseDAO->getById($data['fk_course'], false);
         $obj = new Ride(
             $data['pk'],
             $course,

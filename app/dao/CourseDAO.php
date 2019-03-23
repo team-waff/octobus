@@ -5,8 +5,9 @@ class CourseDAO extends DAO{
 
     protected $table;
 
-    public function __construct() {
+    public function __construct($flag=true) {
         parent::__construct();
+        $this->flag = $flag;
         $this->table = "course";
     }
 
@@ -26,12 +27,14 @@ class CourseDAO extends DAO{
     }
 
     public function createObject($data){
+        $points = null;
+        if ($this->flag == true) {
+            $pointDAO = new PointDAO();
+            $points = $pointDAO->getAllByFkCourse($data['pk']);
+        }
         $obj = new Course(
             $data['pk'],
-            $data['start_pos_lat'],
-            $data['start_pos_long'],
-            $data['end_pos_lat'],
-            $data['end_pos_long'],
+            $points,
             $data['name']
         );
         return $obj;
