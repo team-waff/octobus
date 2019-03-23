@@ -1,8 +1,4 @@
 <?php
-include('DAO.php');
-include('../models/Accountable.php');
-include('ChildDAO.php');
-
 class AccountableDAO extends DAO{
 
     protected $table;
@@ -26,13 +22,10 @@ class AccountableDAO extends DAO{
         return $accountables;
     }
 
-    public function createObject($data){ 
+    public function createObject($data){
         $childDAO = new ChildDAO();
         $childs = $childDAO->getByIds($this->getChildsParent($data['pk']));
-/*
-Fonction qui recup la liste des fk child en fonction du fk du parent
 
-*/
 
         $obj = new Accountable(
             $data['pk'],
@@ -53,11 +46,3 @@ Fonction qui recup la liste des fk child en fonction du fk du parent
     }
 
 }
-
-$test = new AccountableDAO();
-
-$result = $test->getById(4);
-
-var_dump($result);
-
-?>

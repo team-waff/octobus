@@ -1,5 +1,4 @@
 <?php
-include('../models/Child.php');
 
 class ChildDAO extends DAO{
 
@@ -24,7 +23,7 @@ class ChildDAO extends DAO{
         return $data;
     }
 
-    public function createObject($data){ 
+    public function createObject($data){
         $childs = array();
         $obj = new Child(
             $data['pk'],
