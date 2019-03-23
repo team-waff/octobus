@@ -30,7 +30,7 @@ body {
 		height: 100%;
 		z-index: -2;
 		background: rgb(38,166,220);
-		background: linear-gradient(to bottom, rgba(38,166,220,1) 0%,rgba(65,188,202,1) 100%);	
+		background: linear-gradient(to bottom, rgba(38,166,220,1) 0%,rgba(65,188,202,1) 100%);
 	}
 }
 
@@ -148,8 +148,79 @@ button, input, optgroup, select, textarea {
 }
 
 .map--parent {
-	height: 400px;
+	height: 100vh;
 }
+
+.map_header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: block;
+	width: 100%;
+	z-index: 1000;
+}
+
+.map_header__perso {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	padding: 20px 30px;
+	padding-right: 85px;
+	background: #2297c9;
+	border-radius: 10px;
+}
+
+.map_header__name {
+	padding: 15px 0;
+	font-size: 18px;
+	font-weight: 600;
+	color: #fff;
+}
+
+.map_header__icon {
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	width: 50px;
+
+	-webkit-transform: translateY(-55%);
+		-ms-transform: translateY(-55%);
+			transform: translateY(-55%);
+}
+
+/*  ==========================================================================
+	Notification
+	==========================================================================  */
+
+	.notif {
+		position: fixed;
+		padding: 20px 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		text-align: center;
+		z-index: 1000;
+
+		-webkit-transition: all .2s;
+				transition: all .2s;
+
+		-webkit-transform: translateY(100%);
+			-ms-transform: translateY(100%);
+				transform: translateY(100%);
+	}
+
+	.notif--visible {
+		-webkit-transform: translateY(0%);
+			-ms-transform: translateY(0%);
+				transform: translateY(0%);
+	}
+
+	.notif__popup {
+		display: inline-block;
+		padding: 20px 30px;
+		background: #fff;
+		border-radius: 10px;
+	}
 
 /*  ==========================================================================
 	Header
