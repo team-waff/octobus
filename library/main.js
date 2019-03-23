@@ -47,6 +47,7 @@ $(document).ready(function() {
 	    		.parents(".json_listing_children__item")
 	    		.find(".json_listing_children__item-lastname").text(response.childs[i].name);
 	    	}
+	    	// remove last clone
 	    	$(".json_listing_children").find(".json_listing_children__item").last().remove();
 	    });
 	}
