@@ -18,22 +18,24 @@
                 <p>Papa</p>
             </div>
         </a>
-        <a href="#" class="choice choice--enfant">
+        <a href="#" class="choice choice--parent">
+            <div class="bg_inner"></div>
             <div class="centering">
                 <img src="graphics/logo.png" alt="">
-                <p>Fiston</p>
+                <p>Papa</p>
             </div>
         </a>
-        <a href="#" class="choice choice--enfant">
+        <a href="#" class="choice choice--parent">
+            <div class="bg_inner"></div>
             <div class="centering">
                 <img src="graphics/logo.png" alt="">
-                <p>Fiston</p>
+                <p>Papa</p>
             </div>
         </a>
-        <a href="#" class="choice choice--enfant">
+        <a href="#" class="choice choice--parent">
             <div class="centering">
                 <img src="graphics/logo.png" alt="">
-                <p>Fiston</p>
+                <p>Papa</p>
             </div>
         </a>
     </div>
