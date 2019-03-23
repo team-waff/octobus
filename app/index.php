@@ -1,4 +1,5 @@
 <?php
+include('dao/ChildDAO.php');
 include('dao/AccountableDAO.php');
 include('controllers/QueryController.php');
 include('models/Child.php');

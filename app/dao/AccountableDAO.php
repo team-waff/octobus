@@ -1,7 +1,7 @@
 <?php
 class AccountableDAO {
     public function __construct() {
-        $this->_names = ['Jambon', 'Monster', 'Knacki'];
+        $this->_names = ['Dupont', 'Smith', 'Tielemans'];
         $this->_firstnames = ['Albert', 'Jean-Mi', 'Richard'];
         $this->_emails = ['Albert@google.com', 'Jean-Mi@google.com', 'Richard'];
         $this->_tels = ['+321010101', '+321010101', '+321010101'];
@@ -18,8 +18,9 @@ class AccountableDAO {
         $tel = $this->_tels[$id-1];
         $child_1 = new Child(1, 'Dylan', 'Rabou');
         $child_2 = new Child(2, 'Rabi', 'Rabou');
-        $childs = [$child_1, $child_2];
-        return new Accountable($id, $name, $firstname, $email , $tel, $childs);
+        $childs = new ChildDAO();
+
+        return new Accountable($id, $name, $firstname, $email , $tel, $childs->getByIds([1, 2]));
 
     }
 }
