@@ -1,8 +1,4 @@
 <?php
-include("DAO.php");
-include("Connect.php");
-include("CourseDAO.php");
-
 class RideDAO extends DAO{
 
     protected $table;
@@ -12,14 +8,13 @@ class RideDAO extends DAO{
         $this->table = "ride";
     }
 
-    public function getById($id) {
+    public function getById($id, $params=false) {
         $data = $this->get($id);
         return $this->createObject($data);
     }
 
     public function getByIds($ids) {
         $rides = array();
-
         foreach($ids as $id) {
             array_push($rides, $this->getById($id));
         }
@@ -29,7 +24,7 @@ class RideDAO extends DAO{
     public function createObject($data){
         $coursedDAO = new CourseDAO();
         $course = $coursedDAO->getById($data['fk_course']);
-        var_dump($course);
+        var_dump('COUUUURSE', $course);
         $obj = new Ride(
             $data['pk'],
             $data['fk_course'],
@@ -42,4 +37,3 @@ class RideDAO extends DAO{
     }
 
 }
-
