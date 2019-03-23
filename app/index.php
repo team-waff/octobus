@@ -6,4 +6,5 @@ include('models/Child.php');
 include('models/Accountable.php');
 include('models/Ride.php');
 include('controllers/Router.php');
+
 $router = new Router($_SERVER['REQUEST_URI'], $_GET, $_POST);
