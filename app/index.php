@@ -8,7 +8,7 @@ include('models/Accountable.php');
 include('models/Ride.php');
 
 $split_uri = explode("/", $_SERVER['REQUEST_URI']);
-$_bypass = ['octobus', 'app', ''];
+$_bypass = ['octobus', 'app', '', 'test', 'www'];
 $_models = ['accountable', 'child', 'ride'];
 $parsed_uri = array();
 $controller = new QueryController();

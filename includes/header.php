@@ -40,6 +40,8 @@
 
 <body class="page_<?= $page; ?>">
 
+    <img src="graphics/deco_top.png" class="deco_top" />
+
     <div class="burger js_menu_open">
         Menu
     </div>
