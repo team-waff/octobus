@@ -30,18 +30,22 @@ class Router {
         }
     }
 
+    private function initDao() {
+        $dao = $this->model.'DAO';
+        $this->dao = new $dao();
+    }
+
     public function get($model, $data) {
         $this->model = ucfirst($model);
-        $dao = $model.'DAO';
+        $this->initDao();
+
         $request = $this->generate_request($data);
-        $params = $this->generate_params($data, $get, $post);
-        $this->dao = new $dao();
+        $params = $this->generate_params($data);
 
         if(!$params) {
             return $this->dao->$request();
         }
-
-        return $this->dao->$request($params);
+        return $this->dao->$request($params['id']);
     }
 
     private function generate_request($data) {
@@ -56,12 +60,19 @@ class Router {
     }
 
     private function generate_params($data) {
+        $params = array();
         if(count($data) > 0) {
             if((int)$data[0]) {
-                return $data[0];
+                $params['id'] = (int)$data[0];
             }
         }
-        return 0;
+
+        if ($this->get) {
+            foreach($this->get as $key => $value) {
+                $params[$key] = $value;
+            }
+        }
+        return $params;
     }
 
 
