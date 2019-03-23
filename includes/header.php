@@ -40,6 +40,10 @@
 
 <body class="page_<?= $page; ?>">
 
+    <div class="burger js_menu_open">
+        Menu
+    </div>
+
     <div class="menu">
         <div class="menu__filter js_menu_close"></div>
         <div class="menu__modal">
