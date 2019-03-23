@@ -5,7 +5,7 @@
     public function __construct(){
         $dsn = 'mysql:host=localhost;dbname=octobus';
         $usernameDB = 'root';
-        $passwordDB = '';
+        $passwordDB = 'root';
         $options = array(
             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
         );
