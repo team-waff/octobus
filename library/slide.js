@@ -40,6 +40,9 @@ $(document).ready(function() {
 			var element = $(".slide[data-slide="+direction+"]");
 			element.addClass('open');
 			enter_animate();
+			if (direction == 'select') {
+				show_select_child('John', 'terry');
+			}
 			tl.to(element, .5, { left: 0, ease: Power3.easeOut, onComplete: opencomplete });
 		}
 	}
@@ -67,4 +70,47 @@ $(document).ready(function() {
 		closeslide(direction, away);
 	})
 
+
+	// SELECT
+	// Call when needed !
+	// show_select_child('John', 'terry');
+	function show_select_child(value, value_2){
+		var value = value;
+		var value_2 = value_2;
+		$('#select_child').append('<option>' + (value ? value : 'Empty') + '</option>');
+		$('#select_child').append('<option>' + (value_2 ? value_2 : 'Empty') + '</option>');
+		$('#select_child').selectric('refresh');
+	}
+
+	function show_select_day(value){
+		$(".select_day_bloc").show();
+	}
+
+	function show_select_hour(value){
+		$(".select_hour_bloc").show();
+	}
+
+	$('.select').selectric();
+
+	$('#select_child').on('change', function() {
+	    var value = $(this).val();
+	    show_select_day(value);
+	});
+
+	$('#select_day').on('change', function() {
+	    var value = $(this).val();
+	    show_select_hour(value);
+	});
+
+	$('#select_hour').on('change', function() {
+	    var value = $(this).val();
+	    $(".btn_bloc_valid").show();
+	});
+
+ 	 // SLICK 
+ 	 // 
+
 });
+
+
+

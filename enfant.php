@@ -15,7 +15,10 @@ include('includes/header.php');
 		<a href="#" class="btn btn--slide" data-direction="travel">Travel</a>
 		<a href="#" class="btn btn--slide" data-direction="trophy">Trophy</a>
 		<a href="#" class="btn btn--slide" data-direction="trophy-eco">Ecolo</a>
-		<div class="inner">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!Lorem ipsum dolor sit amet, consectetur adipisicing elit</div>
+		<a href="#" class="btn btn--slide" data-direction="select">Select</a>
+		<div class="inner">
+			
+		</div>
 	</div>
 
 	<div class="slide slide--avatar slide-away" data-slide="avatar">
@@ -49,6 +52,40 @@ include('includes/header.php');
 	<div class="slide slide--trophy-eco slide-away" data-slide="trophy-eco">
 		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
 		<div class="inner">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!Lorem ipsum dolor sit amet, consectetur adipisicing elit</div>
+	</div>
+
+	<div class="slide slide--select slide-away" data-slide="select">
+		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
+		<div class="inner">
+			<div class="inner">
+			<div class="select_child_bloc">
+				<label for="select--child">Sélectionnez l'enfant que vous voulez suivre</label>
+				<select id="select_child" class="select"></select>
+			</div>
+			<div class="select_day_bloc">
+				<label for="select--day">Sélectionnez le jour de son trajet</label>
+				<select id="select_day" class="select">
+				    <option value="Lundi">Lundi</option>
+				    <option value="Mardi">Mardi</option>
+				    <option value="Jeudi">Jeudi</option>
+				    <option value="Vendredi">Vendredi</option>
+				</select>
+			</div>
+			<div class="select_hour_bloc">
+				<label for="select--hour">Sélectionnez l'heure de départ</label>
+				<select id="select_hour" class="select">
+				    <option value="08:00">08:00</option>
+				    <option value="08:30">08:30</option>
+				    <option value="09:00">09:00</option>
+				    <option value="09:30">09:30</option>
+				    <option value="10:00">10:00</option>
+				</select>
+			</div>
+			<div class="btn_bloc_valid">
+				<a href="#" class="btn btn--validation_select">J'inscris mon enfant</a>
+			</div>
+		</div>
+		</div>
 	</div>
 
 </section>
