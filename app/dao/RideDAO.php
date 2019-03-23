@@ -34,4 +34,25 @@ class RideDAO extends DAO{
         return $obj;
     }
 
+    public function addRideChild($data){
+        $query = "INSERT INTO ride_child (";
+        foreach($data as $key => $value){
+            if($value != " " && $key != "pk"){
+                $query .= $key.',';
+            }
+        }
+        $query = rtrim($query,',');
+        $query .= ") VALUES (";
+        foreach($data as $key => $value){
+            if($value != " " && $key != "pk"){
+                $query .= "'".$value."',";
+            }
+        }
+        $query = rtrim($query,',');
+        $query .= ")";
+        $q = $this->db->prepare($query);
+        $q->execute();
+    }
+
+
 }
