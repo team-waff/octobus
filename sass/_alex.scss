@@ -1,6 +1,123 @@
-.yaya{
+.global--enfant{
+	position: fixed;
+    top: 0;
+    overflow: hidden;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.slide{
 	display: block;
-	position: relative;
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	overflow: auto;
 	left: 0;
 	top: 0;
+	background: lightgreen;
+	&.slide-away{
+		left: 100%;
+	}
+	&.slide--avatar{
+		background: pink;
+		left: 0;
+	}
+	&.slide--travel{
+		background: lightblue;
+	}
+	&.slide--trophy{
+		background: red;
+	}
+	&.slide--trophy-eco{
+		background: blue;
+	}
+	.inner{
+		position: relative;
+		top: 0;
+		left: 0;
+	}
 }
+
+.enter-anim{
+	position: relative;
+	opacity: 0;
+}
+
+
+/* AVATAR CHANGE */
+.avatar--change{
+	display: block;
+    width: 220px;
+    height: 300px;
+    background: blue;
+    position: absolute;
+    top: 30%;
+	left: 50%;
+	margin-top: -110px;
+	margin-left: -110px;
+}
+
+.arrow_change{
+	position: absolute;
+	display: block;
+	width: calc(100% + 80px);
+	margin-left: -40px;
+	&.arrow_change--top{
+		background: rgba(255, 243, 222, 0.4);
+		top: 0;
+		height: 140px;
+		margin-top: 0;
+	}
+	&.arrow_change--middle{
+		background: rgba(191, 191, 92, 0.4);
+		top: 140px;
+		height: 120px;
+		margin-top: 0;
+	}
+	&.arrow_change--bottom{
+		background: rgba(255, 243, 222, 0.4);
+		bottom: 0;
+		height: 40px;
+		margin-top: 0;
+	}
+}
+
+.arrow_changer{
+	display: block;
+	position: absolute;
+	z-index: 2;
+	top: 50%;
+	width: 40px;
+	height: 40px;
+	margin-top: -20px;
+	background: green;
+	cursor: pointer;
+}.arrow_changer_left{
+	left: 0;
+}.arrow_changer_right{
+	right: 0;
+}
+
+.avatar_element{
+	display: block;
+	position: absolute;
+	z-index: 1;
+	width: 220px;
+	background: purple;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	overflow: hidden;
+	span{
+		display: block;
+		position: absolute;
+		top: 0%;
+		left: 0%;
+		width: 100%;
+		height: 100%;
+		background: blue;
+	}
+}
+
+
