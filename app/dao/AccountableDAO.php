@@ -11,6 +11,19 @@ class AccountableDAO {
         return $this->get($id);
     }
 
+    public function getByIds($ids) {
+        $accountables = array();
+
+        foreach($ids as $id) {
+            array_push($accountables, $this->get($id));
+        }
+        return $accountables;
+    }
+
+    public function getAll() {
+        return $this->getByIds([1,2,3]);
+    }
+
     public function get($id) {
         $name = $this->_names[$id-1];
         $firstname = $this->_firstnames[$id-1];

@@ -13,10 +13,16 @@ class QueryController {
     }
 
     private function generate_request($data) {
+        if(!$data) {
+            return 'getAll';
+        }
         return 'getById';
     }
 
     private function generate_params($data) {
-        return $data[1];
+        if($data[1]) {
+            return $data[1];
+        }
+        return 0;
     }
 }
