@@ -11,7 +11,7 @@ $(document).ready(function() {
     Slide
     ==========================================================================  */
 
-	alert('hello');
+	// alert('hello');
 
 var element = $(".yoyo");
 var tl = new TimelineMax();
