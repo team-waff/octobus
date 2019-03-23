@@ -9,23 +9,29 @@ class ChildDAO extends DAO{
         $this->table = "child";
     }
 
-    public function getById($id) {
-        $data = $this->get($id['fk_child']);
-        return $this->createObject($data);
+    public function getById($id,$flag=true) {
+        if(!$flag){
+            $data = $this->get($id['fk_child']);
+        }else{
+            $data = $this->get($id);
+        }
+        return $this->createObject($data, $flag);
     }
 
-    public function getByIds($ids) {
+    public function getByIds($ids,$flag=true) {
         $data = array();
 
         foreach($ids as $id) {
-            array_push($data, $this->getById($id));
+            array_push($data, $this->getById($id,$flag));
         }
         return $data;
     }
 
-    public function createObject($data){
-        $childs = array();
-        $rides = $this->fakeRideGen();
+    public function createObject($data,$flag=true){
+        $rides=null;
+        if($flag){
+            $rides = $this->fakeRideGen();
+        }
         $obj = new Child(
             $data['pk'],
             $data['name'],
