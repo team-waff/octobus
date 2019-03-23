@@ -24,13 +24,13 @@ $(document).ready(function() {
 	function enter_animate(){
 		var tl_enter = new TimelineMax();
 		var element_enter = $(".open .enter-anim");
-		tl_enter.staggerTo(element_enter, .3, { left: 20, autoAlpha:1}, 0.1);
+		tl_enter.staggerFrom(element_enter, .3, { left: -60, autoAlpha:0}, 0.1);
 	}
 
 	function leave_animate(){
 		var tl_enter = new TimelineMax();
 		var element_enter = $(".enter-anim");
-		tl_enter.set(element_enter, { left: 0, autoAlpha:0});
+		tl_enter.set(element_enter, { left: 0, autoAlpha:1});
 	}
 
 	function openslide(direction){
