@@ -39,6 +39,7 @@ $(document).ready(function() {
 	    $.getJSON('app/accountable/4').done(function(response) {
 	    	console.info(response,1);
 	    	// info parent
+	    	$(".json_listing_parent__item").attr('data-id',response.pk);
 	    	$(".json_listing_parent__item-firstname").text(response.firstname);
 	    	$(".json_listing_parent__item-lastname").text(response.name);
 	    	// list children
@@ -69,7 +70,17 @@ $(document).ready(function() {
     	e.preventDefault();
     	var id = $(this).parents(".json_listing_children__item").data("id");
     	window.location.href = "enfant.php?id="+id;
-    })
+    });
+
+/*  ==========================================================================
+    Parent view : parent detail
+    ==========================================================================  */
+
+    $('body').on('click', '.js_redirect_parent', function (e){
+    	e.preventDefault();
+    	var id = $(this).parents(".json_listing_parent__item").data("id");
+    	window.location.href = "enfant.php?id="+id;
+    });
 
 /*  ==========================================================================
     Parent view : map
@@ -83,6 +94,11 @@ $(document).ready(function() {
 
     		var start_lat = response.start_lat;
     		var start_lng = response.start_lng;
+
+    		// end coords
+
+    		var end_lat = response.end_lat;
+    		var end_lng = response.end_lng;
 
     		// init
 
@@ -107,6 +123,18 @@ $(document).ready(function() {
 			    popupAnchor:  [-3, -76]
 			});
 
+			// end icon
+
+			var end_icon = L.icon({
+			    iconUrl: 'graphics/marker_end.png',
+			    shadowUrl: 'graphics/shadow.png',
+			    iconSize:     [50, 50],
+			    shadowSize:   [50, 50],
+			    iconAnchor:   [25, 25],
+			    shadowAnchor: [25, 25],
+			    popupAnchor:  [-3, -76]
+			});
+
 			// moving icon
 
 			var moving_icon = L.icon({
@@ -119,9 +147,15 @@ $(document).ready(function() {
 			    popupAnchor:  [-3, -76]
 			});	
 
-			var marker_bus = L.marker([start_lat,start_lng], {icon: start_icon}).addTo(mymap_parent);
+			var marker_bus = L.marker([start_lat,start_lng], {icon: moving_icon}).addTo(mymap_parent);
+
+			// create end marker
+
+			L.marker([response.end_lat,response.end_lng], {icon: end_icon}).addTo(mymap_parent);
 
 			// refresh
+
+			var is_started = false;
 
 			setInterval(function(){
 
@@ -131,6 +165,12 @@ $(document).ready(function() {
 					console.log(status_bus);		
 
 					if(status_bus=="riding"){
+
+						if(!is_started){
+							L.marker([response.start_lat,response.start_lng], {icon: start_icon}).addTo(mymap_parent);
+						}
+
+						is_started = true;
 
 						// remove last marker then recreate & update pos
 						mymap_parent.removeLayer(marker_bus);
