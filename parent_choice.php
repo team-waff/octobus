@@ -16,13 +16,13 @@
 	<div class="container container--no_padding">
 		<div class="parent_choice__list">
 
-			<div class="json_listing_children">
+			<div class="clearfix json_listing_children">
 
 				<div class="parent_choice__item">
 					<a href="#" class="parent_choice__link parent_choice__link--parent">
 						<div class="parent_choice__center">
 							<p class="parent_choice__icon"><img src="graphics/avatar_0.png" alt="" class="img_100"></p>
-							<p class="parent_choice__name">Parent</p>
+							<p class="parent_choice__name"><span class="json_listing_parent__item-firstname"></span> <span class="json_listing_parent__item-lastname"></p>
 						</div>
 					</a>
 				</div>
@@ -30,13 +30,11 @@
 			 	<div class="json_listing_children__item parent_choice__item">
 					<a href="#" class="parent_choice__link parent_choice__link--child js_redirect_child">
 						<div class="parent_choice__center">
-							<p class="parent_choice__icon"><img src="graphics/avatar_1.png" alt="" class="img_100"></p>
+							<p class="parent_choice__icon"><img src="graphics/avatar_1.png" alt="" class="img_100 json_listing_children__item-picture"></p>
 							<p class="parent_choice__name"><span class="json_listing_children__item-firstname"></span> <span class="json_listing_children__item-lastname"></span></p>
 						</div>
 					</a>
 				</div>
-
-				<div class="clearfix"></div>
 
 			</div>
 
