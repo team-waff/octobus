@@ -321,6 +321,13 @@ button, input, optgroup, select, textarea {
 	cursor: pointer;
 }
 
+.parent__view-child-trajets-item[data-status="stop"] {
+	.json_trajet_active_place,
+	.json_trajet_active_start {
+		opacity: 0.3;
+	}
+}
+
 .parent__maxwidth {
 	max-width: 800px;
 	margin-left: auto;
@@ -361,6 +368,16 @@ button, input, optgroup, select, textarea {
 
 .paragraph {
 	margin-bottom: 30px;
+}
+
+.enfant_detail_picture {
+	animation: mouvement 2s infinite ease-in-out; 
+}
+
+@keyframes mouvement {
+    0% {transform: translate(-50%,-45%);}
+    50% {transform: translate(-50%,-55%);}
+    100% {transform: translate(-50%,-45%);}
 }
 
 /*  ==========================================================================

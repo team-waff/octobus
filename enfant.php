@@ -105,7 +105,7 @@ include('includes/header.php');
 		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
 		<div class="inner inner_away">
 			<h1 class="h1 mr">Mes trajets</h1>
-			<p class="paragraph">Les trajets de ma semaine</p>
+			<p class="container paragraph">Les trajets de ma semaine</p>
 			<p class="enter-anim travel_pad actual">Aujourd’hui<span class="travel_hour">07:30</span></p>
 			<p class="enter-anim travel_pad">Mardi<span class="travel_hour">08:00</span></p>
 			<p class="enter-anim travel_pad">Jeudi<span class="travel_hour">08:30</span></p>
@@ -117,7 +117,7 @@ include('includes/header.php');
 		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
 		<div class="inner inner_away">
 			<h1 class="h1 mr">Mes trophées</h1>
-			<p class="paragraph">Tu trouveras ici l'ensemble des récompenses récoltées au cours de ton épopée.</p>
+			<p class="container paragraph">Tu trouveras ici l'ensemble des récompenses récoltées au cours de ton épopée.</p>
 			<img src="graphics/gift.png" alt="" class="gift_img">
 			<p class="enter-anim trophy_pad actual">Première sortie<br/><span class="p_ttu_3">Bravo, tu as pris le bus pour la première fois !</span><b class="eco_patch eco_patch--2"></b></p>
 			<p class="enter-anim trophy_pad">Hiver rude</p>
@@ -137,7 +137,7 @@ include('includes/header.php');
 		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
 		<div class="inner inner_away">
 			<h1 class="h1 mr">Je fais pousser mon arbre</h1>
-			<p class="paragraph">Développe tes compétences d'apprenti écolo et fais pousser ton arbre. Ces récompenses peuvent également cacher d'autres surprises... à toi de jouer !</p>
+			<p class="container paragraph">Développe tes compétences d'apprenti écolo et fais pousser ton arbre. Ces récompenses peuvent également cacher d'autres surprises... à toi de jouer !</p>
 			<img src="graphics/trophy-eco.png" alt="" class="gift_img">
 			<p class="enter-anim trophy_pad actual">Apprenti écolo<br/><span class="p_ttu_3">Tu es sur la bonne voie, tu as collecté une carte écolo.</span><b class="eco_patch"></b></p>
 			<p class="enter-anim trophy_pad">Main verte</p>
