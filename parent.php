@@ -34,7 +34,11 @@ include('includes/header.php');
 						<div class="parent__view-child-name">
 							<span class="json_children_active-firstname"></span>
 							<span class="json_children_active-lastname"></span><br/>
+<<<<<<< HEAD
 							<!-- <span>Suivez un Octobus</span> -->
+=======
+							<span class="desk_travel">Suivez un Octobus</span>
+>>>>>>> 9cb4f88f0587b9f582de3f51be31cf599966fb20
 						</div>
 						<div class="clearfix"></div>
 					</div>	

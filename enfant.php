@@ -36,7 +36,7 @@ include('includes/header.php');
 					<span class="notif_avatar">2</span>
 				</a>
 			</div>
-			<h1 class="h1"><span class="enfant_detail_name"></span></h1>
+			<h1 class="h1">&nbsp;<span class="enfant_detail_name"></span>&nbsp;</h1>
 			<p class="p_ttu">Progression : <span class="green">74%</span></p>
 			<p class="cla">Plus que 3 cartes pour atteindre le niveau suivant !</p>
 			<div class="procent">
