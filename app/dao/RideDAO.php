@@ -18,7 +18,12 @@ class RideDAO extends DAO{
     }
 
     public function getById($id, $params=false) {
-        $data = $this->get($id);
+        if(isset($id['fk_ride'])) {
+            $data = $this->get($id['fk_ride']);
+        } else {
+            $data = $this->get($id);
+        }
+
         return $this->createObject($data);
     }
 
