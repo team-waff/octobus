@@ -8,13 +8,19 @@
 ?>
 
 <div class="header_menu">
-	<a href="#" class="header_menu__logo"><img src="graphics/logo.png" alt="" class="img_100"></a>
+	<a href="#" class="header_menu__logo">
+		<img src="graphics/logo.png" alt="" class="img_100">
+	</a>
 	<div class="burger js_menu_open"></div>
 </div>
 
 <div class="parent_choice">
 	<div class="container container--no_padding">
 		<div class="parent_choice__list">
+
+			<div class="container">
+				<p class="title_desk">Choisissez un profil <i>(<span class="green_t">Parent</span>&nbsp;ou&nbsp;<span class="blue_t">enfant</span>)</i></p>
+			</div>
 
 			<div class="clearfix json_listing_children">
 

@@ -19,7 +19,7 @@ include('includes/header.php');
 
 		<div class="parent__view-top">
 			<div class="container">
-				<h1 class="h1 h1--white">Les trajets de mes enfants</h1>
+				<h1 class="h1 h1--white">Les trajets de mes&nbsp;enfants</h1>
 				<div class="button button--green button--register js_open_register">J'inscris mon enfant</div>
 			</div>
 		</div>
@@ -33,7 +33,8 @@ include('includes/header.php');
 						<img alt="" class="img_100 parent__view-child-picture json_children_active-picture">
 						<div class="parent__view-child-name">
 							<span class="json_children_active-firstname"></span>
-							<span class="json_children_active-lastname"></span>
+							<span class="json_children_active-lastname"></span><br/>
+							<span>Suivez un Octobus</span>
 						</div>
 						<div class="clearfix"></div>
 					</div>	
