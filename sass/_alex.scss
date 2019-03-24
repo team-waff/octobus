@@ -501,6 +501,7 @@ $selectric-font-size:       12px !default;                                      
 /* SELECT */
 .select_day_bloc, .select_hour_bloc, .btn_bloc_valid{
 	display: none;
+	margin-bottom: 30px;
 }
 
 *{
@@ -747,5 +748,48 @@ $selectric-font-size:       12px !default;                                      
 }
 
 
+/* SELECTRIC */
+.slide--select{
+	text-align: left;
+	color: #fff;
+	h1{
+		line-height: 1.2;
+		margin: 40px 0 0;
+		padding: 0;
+	}
+	label{
+		display: block;
+		margin: 20px 0 6px;
+    	color: #7beaa5;
+	}
+}
+
+.selectric .button{
+	padding: 20px !important;
+}
+
+.selectric .label{
+	margin: 0 10px;
+	font-size: 15px;
+}
+
+.btn_bloc_valid{
+	text-align: center;
+}
+
+.selectric {
+    border: 1px solid #DDD;
+    background: #fff;
+    position: relative;
+    padding: 10px;
+    overflow: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.selectric .button{
+	height: 100%;
+	background-color: #fff;
+}
 
 

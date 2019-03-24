@@ -83,8 +83,8 @@ button, input, optgroup, select, textarea {
 	margin-left: auto;
 	margin-right: auto;
 	@include mq("mobile"){
-		padding-left: 30px;
-		padding-right: 30px;
+		padding-left: 20px;
+		padding-right: 20px;
 	}
 }
 
@@ -150,6 +150,56 @@ button, input, optgroup, select, textarea {
 	Parent
     ==========================================================================  */
 
+.parent__view-top {
+	margin-bottom: 30px;
+	overflow: hidden;
+	@include mq("tablet"){
+		text-align: center;
+	}
+	padding-bottom: 30px;
+	border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.h1--white {
+	float: left;
+	color: #fff;
+	margin: 0;
+	padding: 0 !important;
+	@include mq("tablet"){
+		float: none;
+		margin-bottom: 20px;
+	}
+}
+
+.button--register {
+	float: right;
+	cursor: pointer;
+	@include mq("tablet"){
+		float: none;
+		display: inline-block;
+	}
+	@include mq("mobile"){
+		width: 100%;
+		display: block;
+	}
+}
+
+.btn--return-parent {
+	position: absolute;
+    display: inline-block;
+    z-index: 20;
+    top: 30px;
+    left: 20px;
+    text-indent: -9999px;
+    border-radius: 50%;
+    background: #7beaa5 url(../../graphics/btn_return.png) no-repeat center left 17px;
+    background-size: 12px;
+    color: #fff;
+    font-weight: 800;
+    height: 50px;
+    width: 50px;
+}
+
 .parent__view {
 	display: none;
 }
@@ -187,10 +237,16 @@ button, input, optgroup, select, textarea {
 	color: #fff;
 	padding: 35px 0;
 	font-size: 24px;
+	@include mq("mobile"){
+		padding: 20px 0;
+	}
 }
 
 .parent__view-child-trajets {
 	margin-top: 10px;
+	@include mq("mobile"){
+		margin-top: 20px;
+	}
 }
 
 .parent__view-child-trajets-item {
@@ -217,6 +273,9 @@ button, input, optgroup, select, textarea {
 	display: inline-block;
 	margin-right: 10px;
 	color: rgba(255,255,255,0.5);
+	@include mq("mobile"){
+		display: block;
+	}
 }
 
 .json_trajet_active_start {
@@ -311,7 +370,7 @@ button, input, optgroup, select, textarea {
 
 	.notif {
 		position: fixed;
-		padding: 20px 0;
+		padding: 20px;
 		bottom: 0;
 		right: 0;
 		left: 0;
@@ -324,6 +383,7 @@ button, input, optgroup, select, textarea {
 		-webkit-transform: translateY(100%);
 			-ms-transform: translateY(100%);
 				transform: translateY(100%);
+
 	}
 
 	.notif--visible {
@@ -337,6 +397,17 @@ button, input, optgroup, select, textarea {
 		padding: 20px 30px;
 		background: #fff;
 		border-radius: 10px;
+		position: relative;
+		&:after{
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: block;
+			width: 6px;
+			height: 100%;
+			background: #7beaa5;
+		}		
 	}
 
 /*  ==========================================================================
