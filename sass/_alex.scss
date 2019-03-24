@@ -501,6 +501,7 @@ $selectric-font-size:       12px !default;                                      
 /* SELECT */
 .select_day_bloc, .select_hour_bloc, .btn_bloc_valid{
 	display: none;
+	margin-bottom: 30px;
 }
 
 *{
@@ -745,6 +746,31 @@ $selectric-font-size:       12px !default;                                      
     background: #fff;
     z-index: 99;
 }
+
+
+/* SELECTRIC */
+.slide--select{
+	text-align: left;
+	color: #fff;
+	h1{
+		line-height: 1.2;
+		margin: 20px 0 30px;
+	}
+	label{
+		display: block;
+		text-align: center;
+		margin-bottom: 6px;
+	}
+}
+
+.selectric .button{
+	padding: 20px !important;
+}
+
+.selectric .label{
+	margin: 0 10px;
+}
+
 
 
 

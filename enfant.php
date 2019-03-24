@@ -7,10 +7,9 @@ $page = "enfant";
 // HEADER
 include('includes/header.php');
 ?>
-	<!-- <a href="#" class="btn btn_slide btn_slide--select" data-direction="select">SELECT</a> -->
+	
 
 <section class="global global--enfant">
-
 
 	<div class="slide slide--home active" data-slide="home">
 		<div class="footer_child">
@@ -38,7 +37,7 @@ include('includes/header.php');
 				</a>
 			</div>
 			<h1 class="h1">John Doe</h1>
-			<p class="p_ttu">Progression : <span class="green">37%</span></p>
+			<p class="p_ttu">Progression : <span class="green">74%</span></p>
 			<p class="cla">Plus que 3 cartes pour atteindre le niveau suivant !</p>
 			<div class="procent">
 				<div class="procent_inner"></div>
@@ -151,124 +150,27 @@ include('includes/header.php');
 
 	<div class="slide slide--select slide-away" data-slide="select">
 		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
-		<div class="inner">
+		<div class="inner container">
+			<h1 class="h1">Inscription de votre enfant à une tournée.</h1>
 			<div class="select_child_bloc">
-				<label for="select--child">Sélectionnez l'enfant que vous voulez suivre</label>
+				<label for="select--child">Sélectionnez votre enfant</label>
 				<select id="select_child" class="select"></select>
 			</div>
 			<div class="select_day_bloc">
-				<label for="select--day">Sélectionnez le jour de son trajet</label>
+				<label for="select--day">Sélectionnez le jour et l'heure</label>
 				<select id="select_day" class="select">
-				    <option value="Lundi">Lundi</option>
-				    <option value="Mardi">Mardi</option>
-				    <option value="Jeudi">Jeudi</option>
-				    <option value="Vendredi">Vendredi</option>
-				</select>
-			</div>
-			<div class="select_hour_bloc">
-				<label for="select--hour">Sélectionnez l'heure de départ</label>
-				<select id="select_hour" class="select">
-				    <option value="08:00">08:00</option>
-				    <option value="08:30">08:30</option>
-				    <option value="09:00">09:00</option>
-				    <option value="09:30">09:30</option>
-				    <option value="10:00">10:00</option>
+				    <option value="lundi-08:00">Lundi - 08:00</option>
+				    <option value="mardi-08:30">Mardi - 08:30</option>
+				    <option value="jeudi-07:00">Jeudi - 07:00</option>
+				    <option value="vendredi-07:30">Vendredi - 07:30</option>
 				</select>
 			</div>
 			<div class="btn_bloc_valid">
-				<a href="#" class="btn btn--validation_select">J'inscris mon enfant</a>
+				<a href="#" class="btn btn--validation_select button button--green">Je l'inscris</a>
 			</div>
 		</div>
 	</div>
 
-<!-- 
-	<div class="slide slide--avatar slide-away" data-slide="avatar">
-		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
-		<div class="inner">
-			<div class="slider_avatar">
-				<div class="slider_avatar_item">
-					<img src="graphics/avatar_1.png" alt="">
-				</div>
-				<div class="slider_avatar_item">
-					<img src="graphics/avatar_2.png" alt="">
-				</div>
-				<div class="slider_avatar_item">
-					<img src="graphics/avatar_3.png" alt="">
-				</div>
-				<div class="slider_avatar_item">
-					<img src="graphics/avatar_4.png" alt="">
-				</div>
-			</div>
-			<a href="#" class="btn btn--validation_avatar">OK</a>
-		</div>
-	</div>
-
-	<div class="slide slide--avatar slide-away" data-slide="avatar">
-		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
-		<div class="avatar--change">
-			<div class="arrow_change arrow_change--top">
-				<div class="arrow_changer arrow_changer_left"></div>
-					<div class="avatar_element avatar_element--head">
-						<span>A</span>
-					</div>
-				<div class="arrow_changer arrow_changer_right"></div>
-			</div>
-		</div>
-	</div>
-
-	<div class="slide slide--travel slide-away" data-slide="travel">
-		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
-		<div class="inner">
-			<div class="enter-anim">A</div>
-			<div class="enter-anim">B</div>
-			<div class="enter-anim">C</div>
-			<div class="enter-anim">D</div>
-		</div>
-	</div>
-
-	<div class="slide slide--trophy slide-away" data-slide="trophy">
-		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
-		<div class="inner">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!</div>
-	</div>
-
-	<div class="slide slide--trophy-eco slide-away" data-slide="trophy-eco">
-		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
-		<div class="inner">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos similique quaerat distinctio odio neque. Voluptate facilis ad veniam minus! Laudantium quasi, ullam iure alias, consequuntur consectetur sequi delectus amet nulla!Lorem ipsum dolor sit amet, consectetur adipisicing elit</div>
-	</div>
-
-	<div class="slide slide--select slide-away" data-slide="select">
-		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
-		<div class="inner">
-			<div class="select_child_bloc">
-				<label for="select--child">Sélectionnez l'enfant que vous voulez suivre</label>
-				<select id="select_child" class="select"></select>
-			</div>
-			<div class="select_day_bloc">
-				<label for="select--day">Sélectionnez le jour de son trajet</label>
-				<select id="select_day" class="select">
-				    <option value="Lundi">Lundi</option>
-				    <option value="Mardi">Mardi</option>
-				    <option value="Jeudi">Jeudi</option>
-				    <option value="Vendredi">Vendredi</option>
-				</select>
-			</div>
-			<div class="select_hour_bloc">
-				<label for="select--hour">Sélectionnez l'heure de départ</label>
-				<select id="select_hour" class="select">
-				    <option value="08:00">08:00</option>
-				    <option value="08:30">08:30</option>
-				    <option value="09:00">09:00</option>
-				    <option value="09:30">09:30</option>
-				    <option value="10:00">10:00</option>
-				</select>
-			</div>
-			<div class="btn_bloc_valid">
-				<a href="#" class="btn btn--validation_select">J'inscris mon enfant</a>
-			</div>
-		</div>
-	</div>
-
- -->
 </section>
 
 <?php 
