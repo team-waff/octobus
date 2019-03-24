@@ -9,10 +9,13 @@ class ChildDAO extends DAO{
         $this->table = "child";
     }
 
-    public function getById($id,$flag=true) {
+    public function getById($id, $flag=true) {
         if(!$flag){
             $data = $this->get($id['fk_child']);
-        }else{
+        } else {
+            if(!is_bool($flag)) {
+                $flag = true;
+            }
             $data = $this->get($id);
         }
         return $this->createObject($data, $flag);
@@ -28,10 +31,11 @@ class ChildDAO extends DAO{
     }
 
     public function createObject($data,$flag=true){
+
         $rides=null;
         if($flag){
             $rideDAO = new RideDAO();
-            $rides = $rideDAO->getByIds(getChildsRide($data['pk']));
+            $rides = $rideDAO->getByIds($this->getChildsRide($data['pk']));
         }
         $obj = new Child(
             $data['pk'],
