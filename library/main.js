@@ -108,7 +108,7 @@ $(document).ready(function() {
     		$(".json_children_active__item").each(function(){
     			var child_id = $(this).data("id");
     			$.getJSON('app/child/'+child_id).done(function(response) {
-    				// console.info(response,1);
+    				console.info(response,1);
     				for (var i = 0, len = response.rides.length; i < len; i++) {
     					var n = new Date(response.rides[i].start_time);
 	    				var cloned_child = $(".json_children_active__item[data-id="+child_id+"]").find(".json_trajets .json_trajet_active").last().clone(true);
@@ -131,9 +131,6 @@ $(document).ready(function() {
 
 	if($(".json_children_active").is(":visible")){
 		displayActiveChildren();
-		$.getJSON('app/course/1').done(function(response) {
-			console.info(response,1);
-		});
 	}
 
     $('body').on('click', '.json_trajet_active', function (e){
