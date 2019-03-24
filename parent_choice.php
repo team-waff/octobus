@@ -43,6 +43,18 @@
 </div>
 
 <?php
+if(isset($_GET['id'])){
+	$id_parent = $_GET['id'];
+} else {
+	$id_parent = 4;
+}
+?>
+
+<script>
+	var id_parent_global = <?= $id_parent; ?>;
+</script>
+
+<?php
 	// FOOTER
 	include('includes/footer.php');
 ?>
