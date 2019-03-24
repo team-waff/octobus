@@ -327,6 +327,24 @@ button, input, optgroup, select, textarea {
 	margin-right: auto;
 }
 
+.registration__step--step2 {
+	display: none;
+}
+
+.registration__step-parag {
+	font-size: 18px;
+	margin: 30px 0;
+}
+
+.registration__step-picture {
+	max-width: 600px;
+	margin-top: 30px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+}
+
 /*  ==========================================================================
 	Enfant
     ==========================================================================  */

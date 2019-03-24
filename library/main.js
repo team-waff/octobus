@@ -56,7 +56,7 @@ $(document).ready(function() {
     ==========================================================================  */
 
     function displayChildren(){
-	    $.getJSON('app/accountable/4').done(function(response) {
+	    $.getJSON('app/accountable/'+id_parent_global).done(function(response) {
 	    	console.info(response,1);
 	    	// info parent
 	    	$(".js_redirect_parent").attr('data-id',response.pk);
@@ -107,7 +107,7 @@ $(document).ready(function() {
     ==========================================================================  */
 
     function displayActiveChildren(){
-	    $.getJSON('app/accountable/4').done(function(response) {
+	    $.getJSON('app/accountable/'+id_parent_global).done(function(response) {
 
 	    	// list children
 	    	for (var i = 0, len = response.childs.length; i < len; i++) {
@@ -389,7 +389,7 @@ $(document).ready(function() {
 
     	// populate selects
 
-    	$.getJSON('app/accountable/4').done(function(response) {
+    	$.getJSON('app/accountable/'+id_parent_global).done(function(response) {
     		for (var i = 0, len = response.childs.length; i < len; i++) {
 				$('#select_child').append('<option value="'+response.childs[i].pk+'">' + (response.childs[i].firstname ? response.childs[i].firstname : 'Empty') + '</option>');
     		}
@@ -397,13 +397,44 @@ $(document).ready(function() {
     	});
 
     	$.getJSON('app/ride').done(function(response) {
-    		console.info(response,1);
     		for (var i = 0, len = response.length; i < len; i++) {
 				$('#select_day').append('<option value="'+response[i].pk+'">' + (response[i].start_time ? response[i].start_time : 'Empty') + '</option>');
     		}
 			$('#select_day').selectric('refresh');
     	});
+
 	}
+
+/*  ==========================================================================
+    Parent view : send data
+    ==========================================================================  */
+
+    var is_registered = false;
+
+    $(".js_register_child").click(function(e){
+    	e.preventDefault();
+
+    	var error = 0;
+    	$(".slide--select-parent").find("select").each(function(){
+    		if($(this).val()==0){
+    			error++;
+    		}
+    	});
+
+   		if(error==0){
+	    	if(!is_registered){
+	    		$.post( "app/ride", { child: $('#select_child').val(), ride: $('#select_day').val()} );
+	    		is_registered = true;
+	    		$(".registration__step--step1").hide();
+	    		$(".registration__step--step2").show();
+	    	}
+    	}
+    });
+
+    $(".js_close_child").click(function(e){
+    	e.preventDefault();
+    	$(".btn--return").trigger("click");
+    });
 
 /*  ==========================================================================
     Parent view : finish ride

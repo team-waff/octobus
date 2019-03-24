@@ -69,22 +69,46 @@ include('includes/header.php');
 		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
 		<div class="parent__maxwidth">
 			<div class="inner container">
-				<h1 class="h1">Inscription de votre enfant à une tournée.</h1>
 
-				<div class="select_child_bloc">
-					<label for="select--child">Sélectionnez votre enfant</label>
-					<select id="select_child" class="select">
-					</select>
+				<div class="registration__step registration__step--step1">
+
+					<h1 class="h1">Inscription de votre enfant à une tournée.</h1>
+
+					<div class="select_child_bloc">
+						<label for="select--child">Sélectionnez votre enfant</label>
+						<select id="select_child" class="select">
+							<option value="0">Sélectionnez une option</option>
+						</select>
+					</div>
+
+					<div class="select_day_bloc">
+						<label for="select--day">Sélectionnez le jour et l'heure</label>
+						<select id="select_day" class="select">
+							<option value="0">Sélectionnez une option</option>
+						</select>
+					</div>
+					<div class="btn_bloc_valid">
+						<a href="#" class="btn btn--validation_select button button--green js_register_child">Je l'inscris</a>
+					</div>
+
 				</div>
 
-				<div class="select_day_bloc">
-					<label for="select--day">Sélectionnez le jour et l'heure</label>
-					<select id="select_day" class="select">
-					</select>
+				<div class="registration__step registration__step--step2">
+
+					<h1 class="h1">Votre enfant est bien&nbsp;inscrit !</h1>
+
+					<img src="graphics/gift.png" class="registration__step-picture" />
+
+					<p class="registration__step-parag">
+						Vous pouvez ensuite le suivre via votre interface. Vous serez averti des déplacements du bus en temps réel.
+					</p>
+
+					<div class="btn_bloc_valid">
+						<a href="#" class="btn btn--validation_select button button--green js_close_child">Continuer</a>
+					</div>
+
 				</div>
-				<div class="btn_bloc_valid">
-					<a href="#" class="btn btn--validation_select button button--green">Je l'inscris</a>
-				</div>
+
 			</div>
 		</div>
 	</div>
@@ -96,6 +120,18 @@ include('includes/header.php');
 	</div>
 
 </section>
+
+<?php
+if(isset($_GET['id'])){
+	$id_parent = $_GET['id'];
+} else {
+	$id_parent = 4;
+}
+?>
+
+<script>
+	var id_parent_global = <?= $id_parent; ?>;
+</script>
 
 <?php
 // FOOTER
