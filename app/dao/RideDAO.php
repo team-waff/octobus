@@ -12,7 +12,7 @@ class RideDAO extends DAO{
         $data = parent::getAll();
         $rides = array();
         foreach($data as $d) {
-            array_push($rides,$this->createObject($d));
+            array_push($rides, $this->createObject($d));
         }
         return $rides;
     }
@@ -32,9 +32,14 @@ class RideDAO extends DAO{
         foreach($ids as $id) {
             array_push($rides, $this->getById($id));
         }
+
+        usort($rides,array('RideDAO','cmp'));
         return $rides;
     }
-
+    private static function cmp( $a, $b ) {
+      if(  $a->start_time ==  $b->start_time ){ return 0 ; }
+      return ($a->start_time < $b->start_time) ? -1 : 1;
+    }
 
     public function createObject($data){
         $courseDAO = new CourseDAO(false);
