@@ -280,7 +280,17 @@ $selectric-font-size:       12px !default;                                      
 	padding-top: 30px;
 	padding-bottom: 30px;
 	.h1.mr{
-		margin: 20px 20px 30px;
+		margin: 20px 20px 10px;
+	}
+	.paragraph{
+		margin-bottom: 0px !important;
+		padding: 0 20px;
+	}
+}
+
+.slide--travel{
+	.paragraph{
+		margin-bottom: 30px !important;
 	}
 }
 
@@ -685,7 +695,7 @@ $selectric-font-size:       12px !default;                                      
 		top: 0;
 		left: 0;
 		border-radius: 20px;
-		width: 80%;
+		width: 0%;
 		background: #7beaa5;
 		height: 100%;
 		z-index: 1;
@@ -727,7 +737,7 @@ $selectric-font-size:       12px !default;                                      
 }
 
 .gift_img{
-	width: 100%;
+	width: calc(100% - 40px);
 	margin: 30px 0;
 }
 
@@ -828,4 +838,7 @@ $selectric-font-size:       12px !default;                                      
     font-weight: 300;
 }
 
+.floating_avatar .green{
+	opacity: 0;
+}
 
