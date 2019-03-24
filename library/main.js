@@ -137,7 +137,7 @@ $(document).ready(function() {
 			    		.attr('data-status',response.rides[i].status)
 			    		.attr('data-name',response.firstname)
 			    		.attr('data-avatar',response.avatar)
-			    		.find(".json_trajet_active_start").text(n.getDate() + "/" + n.getMonth() + " - " + n.getHours() + ":" + n.getMinutes())
+			    		.find(".json_trajet_active_start").text(n.getDate() + "/" + n.getMonth() + " - " + (n.getHours()<10 ? '0'+n.getHours() : n.getHours()) + ":" + (n.getMinutes()<10 ? '0'+n.getMinutes() : n.getMinutes()))
 			    		.parents(".json_trajet_active")
 			    		.find(".json_trajet_active_place").text(response.rides[i].course.name)
 			    		.parents(".json_trajet_active")
