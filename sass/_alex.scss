@@ -754,12 +754,13 @@ $selectric-font-size:       12px !default;                                      
 	color: #fff;
 	h1{
 		line-height: 1.2;
-		margin: 20px 0 30px;
+		margin: 40px 0 0;
+		padding: 0;
 	}
 	label{
 		display: block;
-		text-align: center;
-		margin-bottom: 6px;
+		margin: 20px 0 6px;
+    	color: #7beaa5;
 	}
 }
 
@@ -769,9 +770,26 @@ $selectric-font-size:       12px !default;                                      
 
 .selectric .label{
 	margin: 0 10px;
+	font-size: 15px;
 }
 
+.btn_bloc_valid{
+	text-align: center;
+}
 
+.selectric {
+    border: 1px solid #DDD;
+    background: #fff;
+    position: relative;
+    padding: 10px;
+    overflow: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+}
 
+.selectric .button{
+	height: 100%;
+	background-color: #fff;
+}
 
 
