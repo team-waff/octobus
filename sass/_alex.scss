@@ -1,0 +1,795 @@
+$selectric-main-color:      #DDD !default;                                              // Color used in border
+$selectric-secondary-color: #BBB !default;                                              // Color used in button
+$selectric-text-color:      #444 !default;                                              // Color used in label
+$selectric-bg-color:        #F8F8F8 !default;                                           // Background color
+$selectric-btn-bg-color:    #F8f8f8 !default;                                           // Button background color
+$selectric-height:          40px !default;                                              // Outer height
+$selectric-spacing:         10px !default;                                              // Label left padding
+$selectric-border-width:    1px !default;                                               // Outer border width
+$selectric-border-radius:   0px !default;                                               // Border radius
+$selectric-inner-height:    $selectric-height - ($selectric-border-width * 2) !default; // Inner height
+$selectric-font-size:       12px !default;                                              // Font size
+
+.selectric-wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.selectric-responsive {
+  width: 100%;
+}
+
+.selectric {
+  border: $selectric-border-width solid $selectric-main-color;
+  border-radius: $selectric-border-radius;
+  background: $selectric-bg-color;
+  position: relative;
+  overflow: hidden;
+
+  .label {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 $selectric-inner-height 0 $selectric-spacing;
+    font-size: $selectric-font-size;
+    line-height: $selectric-inner-height;
+    color: $selectric-text-color;
+    height: $selectric-inner-height;
+    user-select: none;
+  }
+
+  .button {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: $selectric-inner-height;
+    height: $selectric-inner-height;
+    line-height: $selectric-inner-height;
+    background-color: $selectric-btn-bg-color;
+    color: $selectric-secondary-color;
+    text-align: center;
+    font: 0/0 a;
+    *font: 20px/#{$selectric-inner-height} Lucida Sans Unicode, Arial Unicode MS, Arial;
+
+    &:after {
+      content: " ";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      width: 0;
+      height: 0;
+      border: 4px solid transparent;
+      border-top-color: $selectric-secondary-color;
+      border-bottom: none;
+    }
+  }
+}
+
+.selectric-focus .selectric {
+  border-color: darken($selectric-main-color, 20%);
+}
+
+.selectric-hover .selectric {
+  border-color: darken($selectric-main-color, 10%);
+
+  .button {
+    color: darken($selectric-secondary-color, 10%);
+
+    &:after {
+      border-top-color: darken($selectric-secondary-color, 10%);
+    }
+  }
+}
+
+.selectric-open {
+  z-index: 9999;
+
+  .selectric {
+    border-color: darken($selectric-main-color, 10%);
+  }
+
+  .selectric-items {
+    display: block;
+  }
+}
+
+.selectric-disabled {
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+  cursor: default;
+  user-select: none;
+}
+
+.selectric-hide-select {
+  position: relative;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+
+  select {
+    position: absolute;
+    left: -100%;
+  }
+
+  &.selectric-is-native {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+
+    select {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      border: none;
+      z-index: 1;
+      box-sizing: border-box;
+      opacity: 0;
+    }
+  }
+}
+
+.selectric-input {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  outline: none !important;
+  border: none !important;
+  *font: 0/0 a !important;
+  background: none !important;
+}
+
+.selectric-temp-show {
+  position: absolute !important;
+  visibility: hidden !important;
+  display: block !important;
+}
+
+/* Items box */
+.selectric-items {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: $selectric-bg-color;
+  border: 1px solid darken($selectric-main-color, 10%);
+  z-index: -1;
+  box-shadow: 0 0 10px -6px;
+
+  .selectric-scroll {
+    height: 100%;
+    overflow: auto;
+  }
+
+  .selectric-above & {
+    top: auto;
+    bottom: 100%;
+  }
+
+  ul, li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: $selectric-font-size;
+    line-height: 20px;
+    min-height: 20px;
+  }
+
+  li {
+    display: block;
+    padding: 10px;
+    color: #666;
+    cursor: pointer;
+
+    &.selected {
+      background: #E0E0E0;
+      color: #444;
+    }
+
+    &.highlighted {
+      background: #D0D0D0;
+      color: #444;
+    }
+
+    &:hover {
+      background: #D5D5D5;
+      color: #444;
+    }
+  }
+
+  .disabled {
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+    cursor: default !important;
+    background: none !important;
+    color: #666 !important;
+    user-select: none;
+  }
+
+  .selectric-group {
+    .selectric-group-label {
+      font-weight: bold;
+      padding-left: 10px;
+      cursor: default;
+      user-select: none;
+      background: none;
+      color: #444;
+    }
+
+    &.disabled li {
+      filter: alpha(opacity=100);
+      opacity: 1;
+    }
+
+    li {
+      padding-left: 25px;
+    }
+  }
+}
+
+
+
+.global--enfant{
+	position: fixed;
+    top: 0;
+    overflow: hidden;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.slide{
+	display: block;
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	overflow: hidden;
+	overflow-y: auto;
+	left: 0;
+	top: 0;
+	z-index: 10;
+	background: #26a6dc;
+	&.slide-away{
+		left: 100%;		
+	}
+}
+
+.inner{
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+.inner_away{
+	text-align: center;
+	color: #fff;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	.h1.mr{
+		margin: 20px 20px 30px;
+	}
+}
+
+.enter-anim{
+	position: relative;
+	opacity: 1;
+}
+
+.travel_pad{
+	color: #fff;
+	background: #2297c9;
+	padding: 24px 26px;
+	border-radius: 10px;
+	overflow: hidden;
+	display: block;
+	width: calc(100% - 60px);
+	max-width: 350px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	font-weight: 800;
+	text-align: left;
+	position: relative;
+	&.actual{
+		color: #2297c9;
+		background: #fff;
+	}
+	&.actual:after{
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: block;
+		width: 6px;
+		height: 100%;
+		background: #7beaa5;
+	}
+}
+
+.travel_hour{
+	position: absolute;
+	top: 24px;
+	right: 26px;
+	&.actual{
+		color: #26a6dc;
+	}
+}
+
+.trophy_pad{
+	color: #fff;
+	background: transparent;
+	border: 4px dashed #2297c9;
+	padding: 24px 92px 24px 26px;
+	border-radius: 10px;
+	overflow: hidden;
+	display: block;
+	width: calc(100% - 40px);
+	max-width: 350px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	font-weight: 800;
+	text-align: left;
+	position: relative;
+	&.actual{
+		border: 0;
+		color: #2297c9;
+		background: #fff;
+	}
+}
+
+.trophy_hour{
+	position: absolute;
+	top: 24px;
+	right: 26px;
+	&.actual{
+		color: #26a6dc;
+	}
+}
+
+.eco_patch{
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 20px;
+	width: 50px;
+	height: 100%;
+	background: #7beaa5 url(../../graphics/eco_patch.png) no-repeat center;
+	background-size: 30px;
+	&:after{
+		content: "";
+		display: block;
+		width: 2px;
+		height: 100%;
+		position: absolute;
+		left: -6px;
+		background: #7beaa5;
+	}&:before{
+		content: "";
+		display: block;
+		width: 2px;
+		height: 100%;
+		position: absolute;
+		right: -6px;
+		background: #7beaa5;
+	}
+}
+
+.eco_patch--2{
+	background: #ffe744 url(../../graphics/stars.png) no-repeat center;
+	background-size: 30px;
+	&:after{
+		background: #ffe744;
+	}&:before{
+		background: #ffe744;
+	}
+}
+
+/* AVATAR CHANGE */
+.avatar--change{
+	display: block;
+    width: 220px;
+    height: 300px;
+    background: blue;
+    position: absolute;
+    top: 30%;
+	left: 50%;
+	margin-top: -110px;
+	margin-left: -110px;
+}
+
+.arrow_change{
+	position: absolute;
+	display: block;
+	width: calc(100% + 80px);
+	margin-left: -40px;
+	&.arrow_change--top{
+		background: rgba(255, 243, 222, 0.4);
+		top: 0;
+		height: 100%;
+		margin-top: 0;
+	}
+}
+
+.arrow_changer{
+	display: block;
+	position: absolute;
+	z-index: 2;
+	top: 50%;
+	width: 40px;
+	height: 40px;
+	margin-top: -20px;
+	background: green;
+	cursor: pointer;
+}.arrow_changer_left{
+	left: 0;
+}.arrow_changer_right{
+	right: 0;
+}
+
+.avatar_element{
+	display: block;
+	position: absolute;
+	z-index: 1;
+	width: 220px;
+	background: purple;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	overflow: hidden;
+	span{
+		display: block;
+		position: absolute;
+		top: 0%;
+		left: 0%;
+		width: 100%;
+		height: 100%;
+		background: blue;
+	}
+}
+
+/* Choice_bloc */
+.choice_bloc{
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	overflow: hidden;
+	font-size: 0px;
+}
+.choice{
+	display: inline-block;
+	width: 50%;
+	padding-top: 50%;
+	position: relative;
+	font-size: 16px;
+}
+.centering{
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	img{
+		max-width: 90%;
+	}
+}
+
+.bg_inner{
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 0;
+	top: 0;
+	left: 0;
+	background: #f6f6f6;
+}
+
+
+/* SELECT */
+.select_day_bloc, .select_hour_bloc, .btn_bloc_valid{
+	display: none;
+	margin-bottom: 30px;
+}
+
+*{
+	outline: none !important;
+}
+
+/* Slick */
+.slider_avatar{
+	text-align: center;
+	margin-top: 60px;
+	color: #fff;
+}
+.slider_avatar_item{
+	display: block;
+	width: 100%;
+	img{
+		max-width: calc(76% - 120px);
+    	margin: 0 auto;
+	}
+	&.locked{
+		opacity: .4;
+	}
+}
+
+.slick-slide, .slick-track, .slick-list{
+	.button, button{
+		outline: none !important;
+	}
+}
+
+.button--blue{
+	background-color: #97d6eb;
+}
+
+.slick-list{
+	padding: 0px !important;
+}
+
+.slick-arrow{
+	overflow: hidden;
+	display: block;
+	width: 40px;
+	height: 40px;
+	border: 0;
+	text-indent: -999999px;
+	position: absolute;
+	top: 60%;
+	z-index: 9;
+	border-radius: 20px;
+	transform: translateY(-50%);
+	outline: none;
+	&:hover, &.active{
+		background-color: #1b87b5;
+	}
+	&.slick-prev{
+		left: 20px;
+		background: #2297c9 url(../../graphics/arrow_prev.png) no-repeat center;
+		background-size: 10px;
+	}
+	&.slick-next{
+		right: 20px;
+		background: #2297c9 url(../../graphics/arrow_next.png) no-repeat center;
+		background-size: 10px;
+	}
+}
+
+
+/* FOOTER */
+.footer_child{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+	background: white;
+	color: #26a6dc;
+	font-size: 1px;
+	z-index: 12;
+	.footer_child_item{
+		display: inline-block;
+		width: 100%;
+		max-width: 33%;
+		padding: 14px 4px;
+		font-size: 14px;
+		img{
+			width: 50px;
+		}
+	}
+}
+
+.green{
+	color: #7beaa5;
+}
+
+.ttu{
+	text-transform: uppercase;
+}
+
+.floating_avatar{
+	position: relative;
+	top: 20%;
+	text-align: center;
+	color: #fff;
+	.cla{
+		font-size: 14px;
+    	padding: 10px 40px;	
+	}
+}
+
+.h1{
+	font-weight: 800;
+	font-size: 30px;
+	margin-top: 16px;
+	padding: 0 20px;
+}
+.p_ttu{
+	font-weight: 800;
+	font-size: 12px;
+}.p_ttu_2{
+	font-size: 12px;
+	margin-bottom: 30px;
+}.p_ttu_3{
+    font-weight: 300;
+    font-size: 14px;
+    display: inline-block;
+    margin-top: 8px;
+    color: #666666;
+}
+
+.avatar{
+	position: relative;
+	display: block;
+	width: 160px;
+	height: 160px;
+	margin: 0 auto;
+}
+
+.avatar_inner{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	border-radius: 10px;
+	background: #2297c9;
+	position: relative;
+	img{
+		position: absolute;
+		display: block;
+		top: 38%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		max-width: calc(100% - 60px);
+	}
+}
+
+.procent{
+	display: block;
+	margin: 0 auto;
+	width: 50%;
+	max-width: 290px;
+	height: 8px;
+	position: relative;
+	overflow: hidden;
+	border-radius: 20px;
+	background: #2297c9;
+	.procent_inner{
+		position: absolute;
+		top: 0;
+		left: 0;
+		border-radius: 20px;
+		width: 80%;
+		background: #7beaa5;
+		height: 100%;
+		z-index: 1;
+	}
+}
+
+.btn_slide--avatar{
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: -18px;
+    border-radius: 20px;
+    right: -15px;
+    background: #7beaa5 url(../../graphics/rouage.png) no-repeat center;
+    background-size: 18px;
+    .notif_avatar{
+    	display: inline-block;
+    	position: absolute;
+    	top: -10px;
+    	right: -10px;
+    	width: 25px;
+    	height: 25px;
+    	border-radius: 20px;
+    	font-size: 14px;
+    	padding: 3px;
+    	color: #488760;
+    	background: #fff;
+    }
+}
+
+.btn--return{
+    display: inline-block;
+    padding: 10px 20px 10px 40px;
+    background: url(../../graphics/btn_return.png) no-repeat center left 14px;
+    background-size: 12px;
+    color: #fff;
+    font-weight: 800;
+}
+
+.gift_img{
+	width: 100%;
+	margin: 30px 0;
+}
+
+.popup__container{
+	.btn--return{
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	}
+	.h1{
+		font-size: 40px;
+		margin-top: 66px;
+	}
+}
+
+.white{
+	color: #fff;
+}
+
+.btn_slide--select{
+	display: block;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 40px;
+    background: #fff;
+    z-index: 99;
+}
+
+
+/* SELECTRIC */
+.slide--select{
+	text-align: left;
+	color: #fff;
+	h1{
+		line-height: 1.2;
+		margin: 40px 0 0;
+		padding: 0;
+	}
+	label{
+		display: block;
+		margin: 20px 0 6px;
+    	color: #7beaa5;
+	}
+}
+
+.selectric .button{
+	padding: 20px !important;
+}
+
+.selectric .label{
+	margin: 0 10px;
+	font-size: 15px;
+}
+
+.btn_bloc_valid{
+	text-align: center;
+}
+
+.selectric {
+    border: 1px solid #DDD;
+    background: #fff;
+    position: relative;
+    padding: 10px;
+    overflow: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.selectric .button{
+	height: 100%;
+	background-color: #fff;
+}
+
+

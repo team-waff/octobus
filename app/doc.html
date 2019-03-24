@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="doc.css">
+    <title>Document</title>
+</head>
+<body style="font-family:'Open Sans';color: #232323">
+    <h1>Available routes</h1>
+    <h2>ACCOUNTABLE</h2>
+    <h3>$get: app/accountable/</h3>
+    <ul>
+        <li>returns all accountable</li>
+        <li><a href="app/accountable/">Show output</a></li>
+    </ul>
+    <h3>$get: app/accountable/:id</h3>
+    <ul>
+        <li>returns accountable at id</li>
+        <li><a href="app/accountable/5">Show output</a></li>
+    </ul>
+    <br><br>
+
+    <h2>CHILD</h2>
+    <h3>$get: app/child/</h3>
+    <ul>
+        <li>returns all childs</li>
+        <li><a href="app/child/">Show output</a></li>
+    </ul>
+    <h3>$get: app/child/:id</h3>
+    <ul>
+        <li>returns child at id</li>
+        <li><a href="app/child/4">Show output</a></li>
+    </ul>
+    <h3>$post: app/child/ride</h3>
+    <ul>
+        <li>adds a child to a ride</li>
+        <li>Route: app/child/ride</li>
+        <li>POST args : {child: ID, ride_id}</li>
+    </ul>
+
+    <br><br>
+
+    <h2>RIDE</h2>
+    <h3>$get: app/ride/</h3>
+    <ul>
+        <li>returns all rides</li>
+        <li><a href="app/ride/">Show output</a></li>
+    </ul>
+    <h3>$get: app/ride/:id</h3>
+    <ul>
+        <li>returns ride at id</li>
+        <li><a href="app/ride/1">Show output</a></li>
+    </ul>
+
+<br><br>
+
+    <h2>TRACK</h2>
+    <h3>$get: app/track/:id</h3>
+    <ul>
+        <li>returns all track points at id</li>
+        <li><a href="app/track/1">Show output</a></li>
+    </ul>
+    <h3>$get: app/track/:id?points=:point_id</h3>
+    <ul>
+        <li>returns track point at point id</li>
+        <li><a href="app/track/1?points=3">Show output</a></li>
+    </ul>
+</body>
+</html>
