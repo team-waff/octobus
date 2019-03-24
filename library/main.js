@@ -8,6 +8,17 @@ var baseroot = $("body").data("baseroot");
 $(document).ready(function() {
 
 /*  ==========================================================================
+    Child view : get name
+    ==========================================================================  */
+
+    if($(".enfant_detail_name").is(":visible")){
+    	$.getJSON('app/child/'+id_enfant).done(function(response) {
+    		$(".enfant_detail_name").text(response.firstname + " " + response.name);
+    		$(".enfant_detail_picture").attr("src","graphics/avatar_"+response.avatar+".png");
+    	});
+    }
+
+/*  ==========================================================================
     Login
     ==========================================================================  */
 
