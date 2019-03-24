@@ -34,7 +34,7 @@ include('includes/header.php');
 						<div class="parent__view-child-name">
 							<span class="json_children_active-firstname"></span>
 							<span class="json_children_active-lastname"></span><br/>
-							<span>Suivez un Octobus</span>
+							<!-- <span>Suivez un Octobus</span> -->
 						</div>
 						<div class="clearfix"></div>
 					</div>	

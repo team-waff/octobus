@@ -398,7 +398,9 @@ $(document).ready(function() {
 
     	$.getJSON('app/ride').done(function(response) {
     		for (var i = 0, len = response.length; i < len; i++) {
-				$('#select_day').append('<option value="'+response[i].pk+'">' + (response[i].start_time ? response[i].start_time : 'Empty') + '</option>');
+    			var n = new Date(response[i].start_time);
+    			var n_rew = response[i].course.name + " - " + n.getDate() + "/" + n.getMonth() + " - " + (n.getHours()<10 ? '0'+n.getHours() : n.getHours()) + ":" + (n.getMinutes()<10 ? '0'+n.getMinutes() : n.getMinutes());
+				$('#select_day').append('<option value="'+response[i].pk+'">' + (n_rew ? n_rew : 'Empty') + '</option>');
     		}
 			$('#select_day').selectric('refresh');
     	});
