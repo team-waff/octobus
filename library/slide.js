@@ -70,7 +70,7 @@ $(document).ready(function() {
 		closeslide(direction, away);
 	})
 
-	openslide('select');
+	// openslide('select');
 
 
 	// SELECT
@@ -140,6 +140,13 @@ $(document).ready(function() {
 		closeslide(direction, away);
 	})
 
+
+	// ANIMATION PROCENT
+	if ($(".global--enfant").is(':visible')) {
+		var tl_procent = new TimelineMax();
+		tl_procent.to($(".floating_avatar .green"), .6, { autoAlpha:1 });
+		tl_procent.to($(".procent_inner"), 1, { width:"73%"}, .5);
+	}
 
 });
 

@@ -30,13 +30,13 @@ include('includes/header.php');
 		<div class="floating_avatar">
 			<div class="avatar">
 				<div class="avatar_inner">
-					<img src="graphics/avatar_0.png" alt="">
+					<img class="enfant_detail_picture" src="graphics/avatar_0.png" alt="">
 				</div>
 				<a href="#" class="btn btn_slide btn_slide--avatar" data-direction="avatar">
 					<span class="notif_avatar">2</span>
 				</a>
 			</div>
-			<h1 class="h1">John Doe</h1>
+			<h1 class="h1">&nbsp;<span class="enfant_detail_name"></span>&nbsp;</h1>
 			<p class="p_ttu">Progression : <span class="green">74%</span></p>
 			<p class="cla">Plus que 3 cartes pour atteindre le niveau suivant !</p>
 			<div class="procent">
@@ -52,43 +52,43 @@ include('includes/header.php');
 				<div class="slider_avatar_item">
 					<img src="graphics/avatar_1.png" alt="">
 					<h1 class="h1">Indien</h1>
-					<p class="p_ttu_2">Hissez-haut matelot !</p>
+					<p class="p_ttu_2">Ugh'</p>
 					<a href="#" class="btn btn--validation_avatar button button--green" data-direction="home">Sélectionner</a>
 				</div>
 				<div class="slider_avatar_item">
 					<img src="graphics/avatar_2.png" alt="">
 					<h1 class="h1">Pirate</h1>
-					<p class="p_ttu_2">Plus rapide que la lumière !</p>
+					<p class="p_ttu_2">Hissez-haut matelot !</p>
 					<a href="#" class="btn btn--validation_avatar button button--green" data-direction="home">Sélectionner</a>
 				</div>
 				<div class="slider_avatar_item">
 					<img src="graphics/avatar_3.png" alt="">
 					<h1 class="h1">Paul</h1>
-					<p class="p_ttu_2">Plus rapide que la lumière !</p>
+					<p class="p_ttu_2">Un style au top !</p>
 					<a href="#" class="btn btn--validation_avatar button button--green" data-direction="home">Sélectionner</a>
 				</div>
 				<div class="slider_avatar_item">
 					<img src="graphics/avatar_5.png" alt="">
 					<h1 class="h1">Lily</h1>
-					<p class="p_ttu_2">Plus rapide que la lumière !</p>
+					<p class="p_ttu_2">Plus d'un tour dans son sac !</p>
 					<a href="#" class="btn btn--validation_avatar button button--green" data-direction="home">Sélectionner</a>
 				</div>
 				<div class="slider_avatar_item">
 					<img src="graphics/avatar_6.png" alt="">
 					<h1 class="h1">Harry</h1>
-					<p class="p_ttu_2">Plus rapide que la lumière !</p>
+					<p class="p_ttu_2">Wingardium leviosa !</p>
 					<a href="#" class="btn btn--validation_avatar button button--green" data-direction="home">Sélectionner</a>
 				</div>
 				<div class="slider_avatar_item">
 					<img src="graphics/avatar_7.png" alt="">
 					<h1 class="h1">Diablo</h1>
-					<p class="p_ttu_2">Plus rapide que la lumière !</p>
+					<p class="p_ttu_2">Un personnage plein de malice !</p>
 					<a href="#" class="btn btn--validation_avatar button button--green" data-direction="home">Sélectionner</a>
 				</div>
 				<div class="slider_avatar_item">
 					<img src="graphics/avatar_0.png" alt="">
 					<h1 class="h1">Classique</h1>
-					<p class="p_ttu_2">Ugh'</p>
+					<p class="p_ttu_2">Ton premier avatar !</p>
 					<a href="#" class="btn btn--validation_avatar button button--green" data-direction="home">Sélectionner</a>
 				</div>
 				<div class="slider_avatar_item locked">
@@ -105,6 +105,7 @@ include('includes/header.php');
 		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
 		<div class="inner inner_away">
 			<h1 class="h1 mr">Mes trajets</h1>
+			<p class="container paragraph">Les trajets de ma semaine</p>
 			<p class="enter-anim travel_pad actual">Aujourd’hui<span class="travel_hour">07:30</span></p>
 			<p class="enter-anim travel_pad">Mardi<span class="travel_hour">08:00</span></p>
 			<p class="enter-anim travel_pad">Jeudi<span class="travel_hour">08:30</span></p>
@@ -115,7 +116,8 @@ include('includes/header.php');
 	<div class="slide slide--trophy slide-away" data-slide="trophy">
 		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
 		<div class="inner inner_away">
-			<h1 class="h1">Mes trophées</h1>
+			<h1 class="h1 mr">Mes trophées</h1>
+			<p class="container paragraph">Tu trouveras ici l'ensemble des récompenses récoltées au cours de ton épopée.</p>
 			<img src="graphics/gift.png" alt="" class="gift_img">
 			<p class="enter-anim trophy_pad actual">Première sortie<br/><span class="p_ttu_3">Bravo, tu as pris le bus pour la première fois !</span><b class="eco_patch eco_patch--2"></b></p>
 			<p class="enter-anim trophy_pad">Hiver rude</p>
@@ -134,7 +136,8 @@ include('includes/header.php');
 	<div class="slide slide--trophy--eco slide-away" data-slide="trophy--eco">
 		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
 		<div class="inner inner_away">
-			<h1 class="h1">Je fais pousser mon arbre</h1>
+			<h1 class="h1 mr">Je fais pousser mon arbre</h1>
+			<p class="container paragraph">Développe tes compétences d'apprenti écolo et fais pousser ton arbre. Ces récompenses peuvent également cacher d'autres surprises... à toi de jouer !</p>
 			<img src="graphics/trophy-eco.png" alt="" class="gift_img">
 			<p class="enter-anim trophy_pad actual">Apprenti écolo<br/><span class="p_ttu_3">Tu es sur la bonne voie, tu as collecté une carte écolo.</span><b class="eco_patch"></b></p>
 			<p class="enter-anim trophy_pad">Main verte</p>
@@ -177,6 +180,10 @@ include('includes/header.php');
 	</div>
 
 </section>
+
+<script>
+	var id_enfant = <?= $_GET['id']; ?>;
+</script>
 
 <?php 
 // FOOTER

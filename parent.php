@@ -19,8 +19,8 @@ include('includes/header.php');
 
 		<div class="parent__view-top">
 			<div class="container">
-				<h1 class="h1 h1--white">Les trajets de mes enfants</h1>
-				<div class="button button--green button--register">J'inscris mon enfant</div>
+				<h1 class="h1 h1--white">Les trajets de mes&nbsp;enfants</h1>
+				<div class="button button--green button--register js_open_register">J'inscris mon enfant</div>
 			</div>
 		</div>
 
@@ -33,7 +33,8 @@ include('includes/header.php');
 						<img alt="" class="img_100 parent__view-child-picture json_children_active-picture">
 						<div class="parent__view-child-name">
 							<span class="json_children_active-firstname"></span>
-							<span class="json_children_active-lastname"></span>
+							<span class="json_children_active-lastname"></span><br/>
+							<!-- <span class="desk_travel">Suivez un Octobus</span> -->
 						</div>
 						<div class="clearfix"></div>
 					</div>	
@@ -65,6 +66,54 @@ include('includes/header.php');
 
 	</div>
 
+	<div class="slide slide--select slide--select-parent slide-away" data-slide="select">
+		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
+		<div class="parent__maxwidth">
+			<div class="inner container">
+
+				<div class="registration__step registration__step--step1">
+
+					<h1 class="h1">Inscription de votre enfant à une tournée.</h1>
+
+					<div class="select_child_bloc">
+						<label for="select--child">Sélectionnez votre enfant</label>
+						<select id="select_child" class="select">
+							<option value="0">Sélectionnez une option</option>
+						</select>
+					</div>
+
+					<div class="select_day_bloc">
+						<label for="select--day">Sélectionnez le jour et l'heure</label>
+						<select id="select_day" class="select">
+							<option value="0">Sélectionnez une option</option>
+						</select>
+					</div>
+					<div class="btn_bloc_valid">
+						<a href="#" class="btn btn--validation_select button button--green js_register_child">Je l'inscris</a>
+					</div>
+
+				</div>
+
+				<div class="registration__step registration__step--step2">
+
+					<h1 class="h1">Votre enfant est bien&nbsp;inscrit !</h1>
+
+					<img src="graphics/gift.png" class="registration__step-picture" />
+
+					<p class="registration__step-parag">
+						Vous pouvez ensuite le suivre via votre interface. Vous serez averti des déplacements du bus en temps réel.
+					</p>
+
+					<div class="btn_bloc_valid">
+						<a href="#" class="btn btn--validation_select button button--green js_close_child">Continuer</a>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
 	<div class="notif">
 		<div class="notif__popup">
 			Le trajet de votre enfant <span class="json_map_name"></span> est terminé !
@@ -72,6 +121,18 @@ include('includes/header.php');
 	</div>
 
 </section>
+
+<?php
+if(isset($_GET['id'])){
+	$id_parent = $_GET['id'];
+} else {
+	$id_parent = 4;
+}
+?>
+
+<script>
+	var id_parent_global = <?= $id_parent; ?>;
+</script>
 
 <?php
 // FOOTER

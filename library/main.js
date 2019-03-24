@@ -8,6 +8,17 @@ var baseroot = $("body").data("baseroot");
 $(document).ready(function() {
 
 /*  ==========================================================================
+    Child view : get name
+    ==========================================================================  */
+
+    if($(".enfant_detail_name").is(":visible")){
+    	$.getJSON('app/child/'+id_enfant).done(function(response) {
+    		$(".enfant_detail_name").text(response.firstname + " " + response.name);
+    		$(".enfant_detail_picture").attr("src","graphics/avatar_"+response.avatar+".png");
+    	});
+    }
+
+/*  ==========================================================================
     Login
     ==========================================================================  */
 
@@ -31,12 +42,21 @@ $(document).ready(function() {
 		} 	
     });
 
+	  $(".login__form").on('keyup keypress', function (e) {
+	    var keyCode = e.keyCode || e.which;
+	    if (keyCode == 13) {
+	      e.preventDefault();
+	      $(".js_login").trigger("click");
+	      return false;
+	    }
+	  });
+
 /*  ==========================================================================
     Parent view : children
     ==========================================================================  */
 
     function displayChildren(){
-	    $.getJSON('app/accountable/4').done(function(response) {
+	    $.getJSON('app/accountable/'+id_parent_global).done(function(response) {
 	    	console.info(response,1);
 	    	// info parent
 	    	$(".js_redirect_parent").attr('data-id',response.pk);
@@ -87,7 +107,7 @@ $(document).ready(function() {
     ==========================================================================  */
 
     function displayActiveChildren(){
-	    $.getJSON('app/accountable/4').done(function(response) {
+	    $.getJSON('app/accountable/'+id_parent_global).done(function(response) {
 
 	    	// list children
 	    	for (var i = 0, len = response.childs.length; i < len; i++) {
@@ -117,7 +137,7 @@ $(document).ready(function() {
 			    		.attr('data-status',response.rides[i].status)
 			    		.attr('data-name',response.firstname)
 			    		.attr('data-avatar',response.avatar)
-			    		.find(".json_trajet_active_start").text(n.getDate() + "/" + n.getMonth() + " - " + n.getHours() + ":" + n.getMinutes())
+			    		.find(".json_trajet_active_start").text(n.getDate() + "/" + n.getMonth() + " - " + (n.getHours()<10 ? '0'+n.getHours() : n.getHours()) + ":" + (n.getMinutes()<10 ? '0'+n.getMinutes() : n.getMinutes()))
 			    		.parents(".json_trajet_active")
 			    		.find(".json_trajet_active_place").text(response.rides[i].course.name)
 			    		.parents(".json_trajet_active")
@@ -148,11 +168,61 @@ $(document).ready(function() {
     });
 
 /*  ==========================================================================
+    Parent view : open register
+    ==========================================================================  */
+
+	var opencomplete_parent = function(){
+	    $(".global--parent").removeClass("animating");
+	    // enter_animate();
+	};
+
+	var closecomplete_parent = function(){
+	    $(".global--parent").removeClass("animating");
+	    leave_animate_parent();
+	};
+
+	function enter_animate_parent(){
+		var tl_enter = new TimelineMax();
+		var element_enter = $(".open .enter-anim");
+		tl_enter.staggerFrom(element_enter, .3, { left: -60, autoAlpha:0}, 0.1);
+	}
+
+	function leave_animate_parent(){
+		var tl_enter = new TimelineMax();
+		var element_enter = $(".enter-anim");
+		tl_enter.set(element_enter, { left: 0, autoAlpha:1});
+	}
+
+    $(".js_open_register").click(function(e){
+    	e.preventDefault();
+		if (!$(".global--parent").hasClass("animating")) {
+			$(".global--enfant").addClass("animating");
+			var tl = new TimelineMax();
+			var element = $(".slide[data-slide=select]");
+			element.addClass('open');
+			enter_animate_parent();
+			tl.to(element, .5, { left: 0, ease: Power3.easeOut, onComplete: opencomplete_parent });
+		}
+    });
+
+	function registerOk(direction, away){
+		if (!$(".global--parent.animating").length) {
+			$(".global--parent").addClass("animating");
+			var tl = new TimelineMax();
+			var element = away;
+			element.removeClass('open');
+			tl.to(element, .3, { css : {left: "100%"}, ease: Power3.easeIn, onComplete: closecomplete_parent });
+		}
+	}
+
+/*  ==========================================================================
     Parent view : notif
     ==========================================================================  */
 
-    $(".notif--visible").click(function(){
-    	$(this).removeClass("notif--visible");
+    $(".notif").click(function(){
+    	if($(this).hasClass("notif--visible")){
+    		$(this).removeClass("notif--visible");
+    	}
     });
 
 /*  ==========================================================================
@@ -310,6 +380,63 @@ $(document).ready(function() {
     	});
 
 	}
+
+/*  ==========================================================================
+    Parent view : select register
+    ==========================================================================  */
+
+    if($("body").hasClass("page_parent")){
+
+    	// populate selects
+
+    	$.getJSON('app/accountable/'+id_parent_global).done(function(response) {
+    		for (var i = 0, len = response.childs.length; i < len; i++) {
+				$('#select_child').append('<option value="'+response.childs[i].pk+'">' + (response.childs[i].firstname ? response.childs[i].firstname : 'Empty') + '</option>');
+    		}
+			$('#select_child').selectric('refresh');
+    	});
+
+    	$.getJSON('app/ride').done(function(response) {
+    		for (var i = 0, len = response.length; i < len; i++) {
+    			var n = new Date(response[i].start_time);
+    			var n_rew = response[i].course.name + " - " + n.getDate() + "/" + n.getMonth() + " - " + (n.getHours()<10 ? '0'+n.getHours() : n.getHours()) + ":" + (n.getMinutes()<10 ? '0'+n.getMinutes() : n.getMinutes());
+				$('#select_day').append('<option value="'+response[i].pk+'">' + (n_rew ? n_rew : 'Empty') + '</option>');
+    		}
+			$('#select_day').selectric('refresh');
+    	});
+
+	}
+
+/*  ==========================================================================
+    Parent view : send data
+    ==========================================================================  */
+
+    var is_registered = false;
+
+    $(".js_register_child").click(function(e){
+    	e.preventDefault();
+
+    	var error = 0;
+    	$(".slide--select-parent").find("select").each(function(){
+    		if($(this).val()==0){
+    			error++;
+    		}
+    	});
+
+   		if(error==0){
+	    	if(!is_registered){
+	    		$.post( "app/ride", { child: $('#select_child').val(), ride: $('#select_day').val()} );
+	    		is_registered = true;
+	    		$(".registration__step--step1").hide();
+	    		$(".registration__step--step2").show();
+	    	}
+    	}
+    });
+
+    $(".js_close_child").click(function(e){
+    	e.preventDefault();
+    	$(".btn--return").trigger("click");
+    });
 
 /*  ==========================================================================
     Parent view : finish ride
