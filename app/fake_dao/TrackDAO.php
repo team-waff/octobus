@@ -4,17 +4,17 @@ class TrackDAO {
 
     public function __construct() {
         $this->POINTS = [
-            ['lat'=> 40.5, 'lng'=>42.5],
-            ['lat'=> 40.2, 'lng'=>42.1],
-            ['lat'=> 40.2, 'lng'=>42.1],
-            ['lat'=> 40.2, 'lng'=>42.1],
-            ['lat'=> 40.2, 'lng'=>42.1],
-            ['lat'=> 40.2, 'lng'=>42.1]
+            ['lat'=> 40.5, 'lng'=>44.5],
+            ['lat'=> 40.7, 'lng'=>46.1],
+            ['lat'=> 41.2, 'lng'=>48.1],
+            ['lat'=> 42.2, 'lng'=>50.1],
+            ['lat'=> 43.2, 'lng'=>51.1],
+            ['lat'=> 44.2, 'lng'=>53.1]
         ];
     }
 
     public function getAll() {
-        echo 'in get all track dao';
+        return false;
     }
 
     private function getLastPos($point_id) {
