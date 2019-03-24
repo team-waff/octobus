@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 23 mars 2019 à 21:44
+-- Généré le :  Dim 24 mars 2019 à 00:50
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -364,17 +364,20 @@ CREATE TABLE IF NOT EXISTS `ride` (
   `fk_course` int(11) NOT NULL,
   `start_time` datetime NOT NULL,
   `moment` date NOT NULL,
-  `status` int(11) NOT NULL COMMENT '1 = en attente 2 = demarrer 3 = arreter',
+  `status` int(11) NOT NULL COMMENT '0 = start 1 = running 2= stop',
   PRIMARY KEY (`pk`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `ride`
 --
 
 INSERT INTO `ride` (`pk`, `fk_course`, `start_time`, `moment`, `status`) VALUES
-(1, 1, '2019-03-23 06:23:42', '2019-03-23', 2),
-(2, 2, '2019-03-23 06:35:48', '2019-03-23', 1);
+(1, 1, '2019-03-23 08:20:00', '2019-03-23', 2),
+(2, 2, '2019-03-23 07:00:00', '2019-03-23', 1),
+(3, 1, '2019-03-25 07:00:00', '2019-03-25', 1),
+(4, 1, '2019-03-26 08:00:00', '2019-03-26', 1),
+(5, 1, '2019-03-27 07:30:00', '2019-03-27', 1);
 
 -- --------------------------------------------------------
 
@@ -384,9 +387,22 @@ INSERT INTO `ride` (`pk`, `fk_course`, `start_time`, `moment`, `status`) VALUES
 
 DROP TABLE IF EXISTS `ride_child`;
 CREATE TABLE IF NOT EXISTS `ride_child` (
+  `pk` int(11) NOT NULL AUTO_INCREMENT,
   `fk_ride` int(11) NOT NULL,
-  `fk_child` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `fk_child` int(11) NOT NULL,
+  PRIMARY KEY (`pk`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `ride_child`
+--
+
+INSERT INTO `ride_child` (`pk`, `fk_ride`, `fk_child`) VALUES
+(4, 3, 11),
+(7, 3, 14),
+(8, 1, 11),
+(9, 2, 14),
+(10, 1, 14);
 
 -- --------------------------------------------------------
 

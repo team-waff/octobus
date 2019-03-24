@@ -8,6 +8,17 @@ var baseroot = $("body").data("baseroot");
 $(document).ready(function() {
 
 /*  ==========================================================================
+    Child view : get name
+    ==========================================================================  */
+
+    if($(".enfant_detail_name").is(":visible")){
+    	$.getJSON('app/child/'+id_enfant).done(function(response) {
+    		$(".enfant_detail_name").text(response.firstname + " " + response.name);
+    		$(".enfant_detail_picture").attr("src","graphics/avatar_"+response.avatar+".png");
+    	});
+    }
+
+/*  ==========================================================================
     Login
     ==========================================================================  */
 
@@ -24,7 +35,7 @@ $(document).ready(function() {
     	});
    		if(error==0){
     		if($("input[name=username]").val()=="enfant"){
-    			window.location.href = "enfant.php";
+    			window.location.href = "enfant.php?id=14";
     		} else {
     			window.location.href = "parent_choice.php";
     		}
@@ -113,7 +124,10 @@ $(document).ready(function() {
     					var n = new Date(response.rides[i].start_time);
 	    				var cloned_child = $(".json_children_active__item[data-id="+child_id+"]").find(".json_trajets .json_trajet_active").last().clone(true);
 			    		cloned_child.appendTo(".json_children_active__item[data-id="+child_id+"] .json_trajets")
-			    		.attr('data-id',response.rides[i].pk)
+			    		.attr('data-id',response.rides[i].course.pk)
+			    		.attr('data-status',response.rides[i].status)
+			    		.attr('data-name',response.firstname)
+			    		.attr('data-avatar',response.avatar)
 			    		.find(".json_trajet_active_start").text(n.getDate() + "/" + n.getMonth() + " - " + n.getHours() + ":" + n.getMinutes())
 			    		.parents(".json_trajet_active")
 			    		.find(".json_trajet_active_place").text(response.rides[i].course.name)
@@ -130,6 +144,38 @@ $(document).ready(function() {
 		displayActiveChildren();
 	}
 
+    $('body').on('click', '.json_trajet_active', function (e){
+    	e.preventDefault();
+    	var status = $(this).data("status");
+    	var id = $(this).data("id");
+    	var name = $(this).data("name");
+    	var avatar = $(this).data("avatar");
+    	$(".json_map_name").text(name);
+    	$(".json_map_avatar").attr("src","graphics/avatar_"+avatar+".png");
+    	if(status=="running" || status=="start"){
+			initMapParent(id,true);
+			initMapParent(id,false);
+    	}
+    });
+
+/*  ==========================================================================
+    Parent view : notif
+    ==========================================================================  */
+
+    $(".notif--visible").click(function(){
+    	$(this).removeClass("notif--visible");
+    });
+
+/*  ==========================================================================
+    Parent view : back view
+    ==========================================================================  */
+
+    $(".btn--return-parent").click(function(e){
+    	e.preventDefault();
+    	$(".parent__view--listing").addClass("parent__view--active");
+		$(".parent__view--map").removeClass("parent__view--active");
+    });
+
 /*  ==========================================================================
     Parent view : map
     ==========================================================================  */
@@ -141,7 +187,7 @@ $(document).ready(function() {
 
 		// init
 
-		var mymap_parent = L.map('map_parent');
+		var mymap_parent = L.map('map_parent', { zoomControl:false });
 
 		// kill
 
@@ -151,26 +197,26 @@ $(document).ready(function() {
 			return false;
 		}
 
-    	$.getJSON('data/trajet.php').done(function(response) {
+    	$.getJSON('app/course/1').done(function(response) {
 
     		// start coords
 
-    		var start_lat = response.start_lat;
-    		var start_lng = response.start_lng;
+    		var start_lat = response.start_pos.lat;
+    		var start_lng = response.start_pos.lng;
 
     		// end coords
 
-    		var end_lat = response.end_lat;
-    		var end_lng = response.end_lng;
+    		// var end_lat = response.end_lat;
+    		// var end_lng = response.end_lng;
 
     		// init
 
-    		mymap_parent.setView([start_lat,start_lng], 18);
+    		mymap_parent.setView([start_lat,start_lng], 16);
 
 			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 			    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-			    maxZoom: 22,
 			    id: 'mapbox.streets',
+			    zoomControl:false,
 			    accessToken: 'pk.eyJ1Ijoib2N0b2J1cyIsImEiOiJjanRrcmt2cnQxdTU5NDRteGluMnpxM2p1In0.Zm24PvVRygwc5BoipCjvMg'
 			}).addTo(mymap_parent);
 
@@ -213,53 +259,75 @@ $(document).ready(function() {
 
 			// create end marker & bus marker
 
-			L.marker([response.end_lat,response.end_lng], {icon: end_icon}).addTo(mymap_parent);
+			L.marker([response.points[response.points.length-1].lat,response.points[response.points.length-1].lng], {icon: end_icon}).addTo(mymap_parent);
 			var marker_bus = L.marker([start_lat,start_lng], {icon: moving_icon}).addTo(mymap_parent);
+
+			// create route with all points
+
+			for (var i = 0, len = response.points.length; i < len; i++) {
+				L.circle([response.points[i].lat,response.points[i].lng], {
+				    color: '#2297c9',
+				    fillColor: '#fff',
+				    fillOpacity: 1,
+				    radius: 2
+				}).addTo(mymap_parent);				
+			}
 
 			// refresh
 
 			var is_started = false;
 
-			setInterval(function(){
+			// move bus
 
-				$.getJSON('data/trajet.php').done(function(response) {
+			var i_inter = 0;
 
-					var status_bus = response.status;
-					console.log(status_bus);		
+			status_bus = "riding";
 
-					if(status_bus=="riding"){
+			interval = setInterval(function(){
 
-						if(!is_started){
-							L.marker([response.start_lat,response.start_lng], {icon: start_icon}).addTo(mymap_parent);
-						}
+				var now_lat = response.points[i_inter].lat;
+				var now_lng = response.points[i_inter].lng;
 
-						is_started = true;
+				if(status_bus=="riding"){
 
-						// remove last marker then recreate & update pos
-						mymap_parent.removeLayer(marker_bus);
-						marker_bus = L.marker([response.now_lat,response.now_lng], {icon: moving_icon}).addTo(mymap_parent);
-
-						L.circle([response.now_lat,response.now_lng], {
-						    color: '#2297c9',
-						    fillColor: '#fff',
-						    fillOpacity: 1,
-						    radius: 2
-						}).addTo(mymap_parent);
-						mymap_parent.panTo([response.now_lat, response.now_lng]);
-
+					if(!is_started){
+						L.marker([response.start_pos.lat,response.start_pos.lng], {icon: start_icon}).addTo(mymap_parent);
 					}
 
-				});
+					is_started = true;
 
-			},2000);
+					// remove last marker then recreate & update pos
+					mymap_parent.removeLayer(marker_bus);
+					marker_bus = L.marker([now_lat,now_lng], {icon: moving_icon}).addTo(mymap_parent);
+
+					mymap_parent.panTo([now_lat, now_lng]);
+
+				}	
+
+					console.log(status_bus);
+				// finish
+
+				if(i_inter==response.points.length-1){
+					status_bus = "stop";
+					finishRide();
+					window.clearInterval(interval);
+				} else {
+					i_inter++;			
+				}
+
+
+			},1500);
 
     	});
 
 	}
 
-	if($("body").hasClass("page_parent")){
-		// initMapParent(5,true);
-		// initMapParent(5,false);
+/*  ==========================================================================
+    Parent view : finish ride
+    ==========================================================================  */
+
+	function finishRide(){
+		$(".notif").addClass("notif--visible");
 	}
 
 });

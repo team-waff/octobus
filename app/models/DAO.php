@@ -37,14 +37,12 @@ include_once('Connect.php');
         $query = "DELETE FROM ".$this->table." WHERE pk = ".$pk;
         $q = $this->pdo->getDb()->prepare($query);
         $q->execute();
-        //var_dump($q);
     }
 
     public function trunc(){
         $query = "TRUNCATE TABLE ".$this->table;
         $q = $this->pdo->getDb()->prepare($query);
         $q->execute();
-        //var_dump($q);
     }
 
 

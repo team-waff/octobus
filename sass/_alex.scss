@@ -257,24 +257,14 @@ $selectric-font-size:       12px !default;                                      
 	width: 100vw;
 	height: 100vh;
 	position: absolute;
-	overflow: auto;
+	overflow: hidden;
+	overflow-y: auto;
 	left: 0;
 	top: 0;
 	z-index: 10;
+	background: #26a6dc;
 	&.slide-away{
 		left: 100%;		
-	}
-	&:before {
-	    content: '';
-	    position: absolute;
-	    top: 0;
-	    left: 0;
-	    width: 100%;
-	    height: 100%;
-	    z-index: -2;
-	    background: #26a6dc;
-	    background: -webkit-gradient(linear, left top, left bottom, from(#26a6dc), to(#41bcca));
-	    background: linear-gradient(to bottom, #26a6dc 0%, #41bcca 100%);
 	}
 }
 
@@ -284,11 +274,128 @@ $selectric-font-size:       12px !default;                                      
 	left: 0;
 }
 
-.enter-anim{
-	position: relative;
-	opacity: 0;
+.inner_away{
+	text-align: center;
+	color: #fff;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	.h1.mr{
+		margin: 20px 20px 30px;
+	}
 }
 
+.enter-anim{
+	position: relative;
+	opacity: 1;
+}
+
+.travel_pad{
+	color: #fff;
+	background: #2297c9;
+	padding: 24px 26px;
+	border-radius: 10px;
+	overflow: hidden;
+	display: block;
+	width: calc(100% - 60px);
+	max-width: 350px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	font-weight: 800;
+	text-align: left;
+	position: relative;
+	&.actual{
+		color: #2297c9;
+		background: #fff;
+	}
+	&.actual:after{
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: block;
+		width: 6px;
+		height: 100%;
+		background: #7beaa5;
+	}
+}
+
+.travel_hour{
+	position: absolute;
+	top: 24px;
+	right: 26px;
+	&.actual{
+		color: #26a6dc;
+	}
+}
+
+.trophy_pad{
+	color: #fff;
+	background: transparent;
+	border: 4px dashed #2297c9;
+	padding: 24px 92px 24px 26px;
+	border-radius: 10px;
+	overflow: hidden;
+	display: block;
+	width: calc(100% - 40px);
+	max-width: 350px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	font-weight: 800;
+	text-align: left;
+	position: relative;
+	&.actual{
+		border: 0;
+		color: #2297c9;
+		background: #fff;
+	}
+}
+
+.trophy_hour{
+	position: absolute;
+	top: 24px;
+	right: 26px;
+	&.actual{
+		color: #26a6dc;
+	}
+}
+
+.eco_patch{
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 20px;
+	width: 50px;
+	height: 100%;
+	background: #7beaa5 url(../../graphics/eco_patch.png) no-repeat center;
+	background-size: 30px;
+	&:after{
+		content: "";
+		display: block;
+		width: 2px;
+		height: 100%;
+		position: absolute;
+		left: -6px;
+		background: #7beaa5;
+	}&:before{
+		content: "";
+		display: block;
+		width: 2px;
+		height: 100%;
+		position: absolute;
+		right: -6px;
+		background: #7beaa5;
+	}
+}
+
+.eco_patch--2{
+	background: #ffe744 url(../../graphics/stars.png) no-repeat center;
+	background-size: 30px;
+	&:after{
+		background: #ffe744;
+	}&:before{
+		background: #ffe744;
+	}
+}
 
 /* AVATAR CHANGE */
 .avatar--change{
@@ -394,6 +501,7 @@ $selectric-font-size:       12px !default;                                      
 /* SELECT */
 .select_day_bloc, .select_hour_bloc, .btn_bloc_valid{
 	display: none;
+	margin-bottom: 30px;
 }
 
 *{
@@ -508,6 +616,7 @@ $selectric-font-size:       12px !default;                                      
 	font-weight: 800;
 	font-size: 30px;
 	margin-top: 16px;
+	padding: 0 20px;
 }
 .p_ttu{
 	font-weight: 800;
@@ -515,6 +624,12 @@ $selectric-font-size:       12px !default;                                      
 }.p_ttu_2{
 	font-size: 12px;
 	margin-bottom: 30px;
+}.p_ttu_3{
+    font-weight: 300;
+    font-size: 14px;
+    display: inline-block;
+    margin-top: 8px;
+    color: #666666;
 }
 
 .avatar{
@@ -620,9 +735,61 @@ $selectric-font-size:       12px !default;                                      
 	color: #fff;
 }
 
+.btn_slide--select{
+	display: block;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 40px;
+    background: #fff;
+    z-index: 99;
+}
 
 
+/* SELECTRIC */
+.slide--select{
+	text-align: left;
+	color: #fff;
+	h1{
+		line-height: 1.2;
+		margin: 40px 0 0;
+		padding: 0;
+	}
+	label{
+		display: block;
+		margin: 20px 0 6px;
+    	color: #7beaa5;
+	}
+}
 
+.selectric .button{
+	padding: 20px !important;
+}
 
+.selectric .label{
+	margin: 0 10px;
+	font-size: 15px;
+}
+
+.btn_bloc_valid{
+	text-align: center;
+}
+
+.selectric {
+    border: 1px solid #DDD;
+    background: #fff;
+    position: relative;
+    padding: 10px;
+    overflow: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.selectric .button{
+	height: 100%;
+	background-color: #fff;
+}
 
 

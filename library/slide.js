@@ -24,13 +24,13 @@ $(document).ready(function() {
 	function enter_animate(){
 		var tl_enter = new TimelineMax();
 		var element_enter = $(".open .enter-anim");
-		tl_enter.staggerTo(element_enter, .3, { left: 20, autoAlpha:1}, 0.1);
+		tl_enter.staggerFrom(element_enter, .3, { left: -60, autoAlpha:0}, 0.1);
 	}
 
 	function leave_animate(){
 		var tl_enter = new TimelineMax();
 		var element_enter = $(".enter-anim");
-		tl_enter.set(element_enter, { left: 0, autoAlpha:0});
+		tl_enter.set(element_enter, { left: 0, autoAlpha:1});
 	}
 
 	function openslide(direction){
@@ -41,7 +41,7 @@ $(document).ready(function() {
 			element.addClass('open');
 			enter_animate();
 			if (direction == 'select') {
-				show_select_child('John', 'terry');
+				// show_select_child('John', 'terry');
 			}
 			tl.to(element, .5, { left: 0, ease: Power3.easeOut, onComplete: opencomplete });
 		}
@@ -70,15 +70,15 @@ $(document).ready(function() {
 		closeslide(direction, away);
 	})
 
+	openslide('select');
+
 
 	// SELECT
 	// Call when needed !
 	// show_select_child('John', 'terry');
 	function show_select_child(value, value_2){
 		var value = value;
-		var value_2 = value_2;
 		$('#select_child').append('<option>' + (value ? value : 'Empty') + '</option>');
-		$('#select_child').append('<option>' + (value_2 ? value_2 : 'Empty') + '</option>');
 		$('#select_child').selectric('refresh');
 	}
 
@@ -99,13 +99,17 @@ $(document).ready(function() {
 
 	$('#select_day').on('change', function() {
 	    var value = $(this).val();
-	    show_select_hour(value);
-	});
-
-	$('#select_hour').on('change', function() {
-	    var value = $(this).val();
 	    $(".btn_bloc_valid").show();
 	});
+
+
+	$(".btn--validation_select").click(function(e){
+		e.preventDefault();
+		var child_id = 1;
+		var ride_id = 2;
+		$.post( "app/ride", { child: child_id, ride: ride_id} );
+	});
+
 
  	// SLICK 
  	$('.slider_avatar').slick({
