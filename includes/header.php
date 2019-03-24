@@ -48,12 +48,18 @@
             <div class="menu__header">
                 <a href="#" class="menu__logo"><img src="graphics/logo.png" alt="" class="img_100"></a>
             </div>
+            <?php if($page=="enfant"){ ?>
             <ul class="menu__list">
-                <li class="menu__item"><a href="#">item</a></li>
-                <li class="menu__item"><a href="#">item</a></li>
-                <li class="menu__item"><a href="#">item</a></li>
-                <li class="menu__item"><a href="#">item</a></li>
+                <li class="menu__item"><a href="enfant.php">Retour à l'accueil</a></li>
+                <li class="menu__item"><a href="login.php">Déconnexion</a></li>
             </ul>
+            <?php } else { ?>
+            <ul class="menu__list">
+                <li class="menu__item"><a href="parent.php?id=4">Retour à l'accueil</a></li>
+                <li class="menu__item"><a href="parent_choice.php">Choix du profil</a></li>
+                <li class="menu__item"><a href="login.php">Déconnexion</a></li>
+            </ul>              
+            <?php } ?>
             <div class="menu__close js_menu_close">close</div>
         </div>
     </div>

@@ -41,6 +41,9 @@
         padding-top: 100%;
         border-radius: 10px;
         overflow: hidden;
+        @include mq("mobile"){
+            padding-top: 130%;
+        }
     }
 
     .parent_choice__link--parent {
@@ -72,6 +75,10 @@
         font-size: 20px;
         font-weight: 600;
         color: #fff;
+        padding: 0 15px;
+        @include mq("mobile"){
+            font-size: 16px;
+        }
     }
 
 /*  ==========================================================================
@@ -243,8 +250,12 @@
 
     .menu__logo {
         display: block;
-        width: 250px;
+        width: 220px;
         margin: 0 auto;
+        @include mq("mobile"){
+            width: 200px;
+            margin: 0;
+        }
     }
 
     .menu__item {
@@ -263,7 +274,7 @@
 
     .menu__close {
         position: absolute;
-        top: 30px;
+        top: 43px;
         right: 20px;
         width: 35px;
         height: 35px;

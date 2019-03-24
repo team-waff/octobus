@@ -24,7 +24,7 @@ $(document).ready(function() {
     	});
    		if(error==0){
     		if($("input[name=username]").val()=="enfant"){
-    			window.location.href = "enfant.php";
+    			window.location.href = "enfant.php?id=14";
     		} else {
     			window.location.href = "parent_choice.php";
     		}
@@ -108,7 +108,7 @@ $(document).ready(function() {
     		$(".json_children_active__item").each(function(){
     			var child_id = $(this).data("id");
     			$.getJSON('app/child/'+child_id).done(function(response) {
-    				// console.info(response,1);
+    				console.info(response,1);
     				for (var i = 0, len = response.rides.length; i < len; i++) {
     					var n = new Date(response.rides[i].start_time);
 	    				var cloned_child = $(".json_children_active__item[data-id="+child_id+"]").find(".json_trajets .json_trajet_active").last().clone(true);
@@ -131,9 +131,6 @@ $(document).ready(function() {
 
 	if($(".json_children_active").is(":visible")){
 		displayActiveChildren();
-		$.getJSON('app/course/1').done(function(response) {
-			console.info(response,1);
-		});
 	}
 
     $('body').on('click', '.json_trajet_active', function (e){
@@ -151,6 +148,24 @@ $(document).ready(function() {
     });
 
 /*  ==========================================================================
+    Parent view : notif
+    ==========================================================================  */
+
+    $(".notif--visible").click(function(){
+    	$(this).removeClass("notif--visible");
+    });
+
+/*  ==========================================================================
+    Parent view : back view
+    ==========================================================================  */
+
+    $(".btn--return-parent").click(function(e){
+    	e.preventDefault();
+    	$(".parent__view--listing").addClass("parent__view--active");
+		$(".parent__view--map").removeClass("parent__view--active");
+    });
+
+/*  ==========================================================================
     Parent view : map
     ==========================================================================  */
 
@@ -161,7 +176,7 @@ $(document).ready(function() {
 
 		// init
 
-		var mymap_parent = L.map('map_parent');
+		var mymap_parent = L.map('map_parent', { zoomControl:false });
 
 		// kill
 
@@ -189,8 +204,8 @@ $(document).ready(function() {
 
 			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 			    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-			    maxZoom: 22,
 			    id: 'mapbox.streets',
+			    zoomControl:false,
 			    accessToken: 'pk.eyJ1Ijoib2N0b2J1cyIsImEiOiJjanRrcmt2cnQxdTU5NDRteGluMnpxM2p1In0.Zm24PvVRygwc5BoipCjvMg'
 			}).addTo(mymap_parent);
 
@@ -255,9 +270,9 @@ $(document).ready(function() {
 
 			var i_inter = 0;
 
-			setInterval(function(){
+			status_bus = "riding";
 
-				status_bus = "riding";
+			interval = setInterval(function(){
 
 				var now_lat = response.points[i_inter].lat;
 				var now_lng = response.points[i_inter].lng;
@@ -278,175 +293,30 @@ $(document).ready(function() {
 
 				}	
 
-				i_inter++;			
+					console.log(status_bus);
+				// finish
 
-			},500);
+				if(i_inter==response.points.length-1){
+					status_bus = "stop";
+					finishRide();
+					window.clearInterval(interval);
+				} else {
+					i_inter++;			
+				}
 
-			// setInterval(function(){
 
-			// 	$.getJSON('app/course/1').done(function(response) {
-
-			// 		// var status_bus = response.status;
-			// 		// console.log(status_bus);
-
-			// 		status_bus = "riding";		
-
-			// 		if(status_bus=="riding"){
-
-			// 			if(!is_started){
-			// 				L.marker([response.start_lat,response.start_lng], {icon: start_icon}).addTo(mymap_parent);
-			// 			}
-
-			// 			is_started = true;
-
-			// 			// remove last marker then recreate & update pos
-			// 			mymap_parent.removeLayer(marker_bus);
-			// 			marker_bus = L.marker([response.now_lat,response.now_lng], {icon: moving_icon}).addTo(mymap_parent);
-
-			// 			L.circle([response.now_lat,response.now_lng], {
-			// 			    color: '#2297c9',
-			// 			    fillColor: '#fff',
-			// 			    fillOpacity: 1,
-			// 			    radius: 2
-			// 			}).addTo(mymap_parent);
-			// 			mymap_parent.panTo([response.now_lat, response.now_lng]);
-
-			// 		}
-
-			// 	});
-
-			// },2000);
+			},1500);
 
     	});
 
 	}
 
-	// function initMapParent(id,kill){
+/*  ==========================================================================
+    Parent view : finish ride
+    ==========================================================================  */
 
-	// 	$(".parent__view--listing").removeClass("parent__view--active");
-	// 	$(".parent__view--map").addClass("parent__view--active");
-
-	// 	// init
-
-	// 	var mymap_parent = L.map('map_parent');
-
-	// 	// kill
-
-	// 	if(kill){
-	// 		mymap_parent.off();
-	// 		mymap_parent.remove();
-	// 		return false;
-	// 	}
-
- //    	$.getJSON('data/trajet.php').done(function(response) {
-
- //    		// start coords
-
- //    		var start_lat = response.start_lat;
- //    		var start_lng = response.start_lng;
-
- //    		// end coords
-
- //    		var end_lat = response.end_lat;
- //    		var end_lng = response.end_lng;
-
- //    		// init
-
- //    		mymap_parent.setView([start_lat,start_lng], 18);
-
-	// 		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-	// 		    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-	// 		    maxZoom: 22,
-	// 		    id: 'mapbox.streets',
-	// 		    accessToken: 'pk.eyJ1Ijoib2N0b2J1cyIsImEiOiJjanRrcmt2cnQxdTU5NDRteGluMnpxM2p1In0.Zm24PvVRygwc5BoipCjvMg'
-	// 		}).addTo(mymap_parent);
-
-	// 		// start icon
-
-	// 		var start_icon = L.icon({
-	// 		    iconUrl: 'graphics/marker_start.png',
-	// 		    shadowUrl: 'graphics/shadow.png',
-	// 		    iconSize:     [50, 50],
-	// 		    shadowSize:   [50, 50],
-	// 		    iconAnchor:   [25, 25],
-	// 		    shadowAnchor: [25, 25],
-	// 		    popupAnchor:  [-3, -76]
-	// 		});
-
-	// 		// end icon
-
-	// 		var end_icon = L.icon({
-	// 		    iconUrl: 'graphics/marker_end.png',
-	// 		    shadowUrl: 'graphics/shadow.png',
-	// 		    iconSize:     [50, 50],
-	// 		    shadowSize:   [50, 50],
-	// 		    iconAnchor:   [25, 25],
-	// 		    shadowAnchor: [25, 25],
-	// 		    popupAnchor:  [-3, -76]
-	// 		});
-
-	// 		// moving icon
-
-	// 		var moving_icon = L.icon({
-	// 		    iconUrl: 'graphics/marker_moving.png',
-	// 		    shadowUrl: 'graphics/shadow.png',
-	// 		    iconSize:     [50, 50],
-	// 		    shadowSize:   [50, 50],
-	// 		    iconAnchor:   [25, 25],
-	// 		    shadowAnchor: [25, 25],
-	// 		    popupAnchor:  [-3, -76]
-	// 		});	
-
-
-	// 		// create end marker & bus marker
-
-	// 		L.marker([response.end_lat,response.end_lng], {icon: end_icon}).addTo(mymap_parent);
-	// 		var marker_bus = L.marker([start_lat,start_lng], {icon: moving_icon}).addTo(mymap_parent);
-
-	// 		// refresh
-
-	// 		var is_started = false;
-
-	// 		setInterval(function(){
-
-	// 			$.getJSON('data/trajet.php').done(function(response) {
-
-	// 				var status_bus = response.status;
-	// 				console.log(status_bus);		
-
-	// 				if(status_bus=="riding"){
-
-	// 					if(!is_started){
-	// 						L.marker([response.start_lat,response.start_lng], {icon: start_icon}).addTo(mymap_parent);
-	// 					}
-
-	// 					is_started = true;
-
-	// 					// remove last marker then recreate & update pos
-	// 					mymap_parent.removeLayer(marker_bus);
-	// 					marker_bus = L.marker([response.now_lat,response.now_lng], {icon: moving_icon}).addTo(mymap_parent);
-
-	// 					L.circle([response.now_lat,response.now_lng], {
-	// 					    color: '#2297c9',
-	// 					    fillColor: '#fff',
-	// 					    fillOpacity: 1,
-	// 					    radius: 2
-	// 					}).addTo(mymap_parent);
-	// 					mymap_parent.panTo([response.now_lat, response.now_lng]);
-
-	// 				}
-
-	// 			});
-
-	// 		},2000);
-
- //    	});
-
-	// }
-
-	if($("body").hasClass("page_parent")){
-		// initMapParent(5,true);
-		// initMapParent(5,false);
+	function finishRide(){
+		$(".notif").addClass("notif--visible");
 	}
 
 });
