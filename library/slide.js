@@ -70,7 +70,7 @@ $(document).ready(function() {
 		closeslide(direction, away);
 	})
 
-	openslide('select');
+	// openslide('select');
 
 
 	// SELECT

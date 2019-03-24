@@ -30,13 +30,13 @@ include('includes/header.php');
 		<div class="floating_avatar">
 			<div class="avatar">
 				<div class="avatar_inner">
-					<img src="graphics/avatar_0.png" alt="">
+					<img class="enfant_detail_picture" src="graphics/avatar_0.png" alt="">
 				</div>
 				<a href="#" class="btn btn_slide btn_slide--avatar" data-direction="avatar">
 					<span class="notif_avatar">2</span>
 				</a>
 			</div>
-			<h1 class="h1">John Doe</h1>
+			<h1 class="h1"><span class="enfant_detail_name"></span></h1>
 			<p class="p_ttu">Progression : <span class="green">74%</span></p>
 			<p class="cla">Plus que 3 cartes pour atteindre le niveau suivant !</p>
 			<div class="procent">
@@ -177,6 +177,10 @@ include('includes/header.php');
 	</div>
 
 </section>
+
+<script>
+	var id_enfant = <?= $_GET['id']; ?>;
+</script>
 
 <?php 
 // FOOTER
