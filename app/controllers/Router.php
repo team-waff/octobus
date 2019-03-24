@@ -26,7 +26,6 @@ class Router {
             echo json_encode($this->get($model, $parsed_uri));
 
         } else if ($parsed_uri[0] == 'doc'){
-
             include('doc.html');
             return 0;
         } else {

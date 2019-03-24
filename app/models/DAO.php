@@ -43,7 +43,6 @@ include_once('Connect.php');
         $query = "TRUNCATE TABLE ".$this->table;
         $q = $this->pdo->getDb()->prepare($query);
         $q->execute();
-        //var_dump($q);
     }
 
 
