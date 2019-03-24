@@ -150,6 +150,17 @@ button, input, optgroup, select, textarea {
 	Parent
     ==========================================================================  */
 
+.global--parent {
+	overflow: hidden;
+	position: relative;
+}
+
+.slide--select-parent {
+	position: fixed !important;
+	top: 0 !important;
+	height: 100% !important;
+}
+
 .parent__view-top {
 	margin-bottom: 30px;
 	overflow: hidden;
@@ -163,11 +174,11 @@ button, input, optgroup, select, textarea {
 .h1--white {
 	float: left;
 	color: #fff;
-	margin: 0;
+	margin: 0 !important;
 	padding: 0 !important;
 	@include mq("tablet"){
 		float: none;
-		margin-bottom: 20px;
+		margin-bottom: 20px !important;
 	}
 }
 
@@ -185,7 +196,7 @@ button, input, optgroup, select, textarea {
 }
 
 .btn--return-parent {
-	position: absolute;
+	position: fixed;
     display: inline-block;
     z-index: 20;
     top: 30px;
@@ -308,6 +319,26 @@ button, input, optgroup, select, textarea {
 .parent__view-child-trajets-item[data-status="start"],
 .parent__view-child-trajets-item[data-status="running"] {
 	cursor: pointer;
+}
+
+.parent__maxwidth {
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*  ==========================================================================
+	Enfant
+    ==========================================================================  */
+
+.gift_img{
+	width: 100%;
+	max-width: 600px;
+	margin: 30px auto;
+}
+
+.trophy_pad {
+	max-width: 600px !important;
 }
 
 /*  ==========================================================================

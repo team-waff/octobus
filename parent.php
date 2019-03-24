@@ -20,7 +20,7 @@ include('includes/header.php');
 		<div class="parent__view-top">
 			<div class="container">
 				<h1 class="h1 h1--white">Les trajets de mes enfants</h1>
-				<div class="button button--green button--register">J'inscris mon enfant</div>
+				<div class="button button--green button--register js_open_register">J'inscris mon enfant</div>
 			</div>
 		</div>
 
@@ -63,6 +63,30 @@ include('includes/header.php');
 			</div>
 		</div>
 
+	</div>
+
+	<div class="slide slide--select slide--select-parent slide-away" data-slide="select">
+		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
+		<div class="parent__maxwidth">
+			<div class="inner container">
+				<h1 class="h1">Inscription de votre enfant à une tournée.</h1>
+
+				<div class="select_child_bloc">
+					<label for="select--child">Sélectionnez votre enfant</label>
+					<select id="select_child" class="select">
+					</select>
+				</div>
+
+				<div class="select_day_bloc">
+					<label for="select--day">Sélectionnez le jour et l'heure</label>
+					<select id="select_day" class="select">
+					</select>
+				</div>
+				<div class="btn_bloc_valid">
+					<a href="#" class="btn btn--validation_select button button--green">Je l'inscris</a>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<div class="notif">

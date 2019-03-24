@@ -607,23 +607,35 @@ $selectric-font-size:       12px !default;                                      
 	text-align: center;
 	color: #fff;
 	.cla{
-		font-size: 14px;
-    	padding: 10px 40px;	
+		font-size: 16px;
+		padding: 20px 40px;	
+    	@include mq("mobile"){
+    		padding: 10px 40px;	
+    		font-size: 14px;
+    	}
 	}
 }
 
 .h1{
 	font-weight: 800;
-	font-size: 30px;
-	margin-top: 16px;
+	font-size: 42px;
+	margin-top: 30px;
 	padding: 0 20px;
+	@include mq("mobile"){
+		font-size: 30px;
+		margin-top: 16px;
+	}
 }
 .p_ttu{
 	font-weight: 800;
-	font-size: 12px;
+	@include mq("mobile"){
+		font-size: 12px;
+	}
 }.p_ttu_2{
-	font-size: 12px;
 	margin-bottom: 30px;
+	@include mq("mobile"){
+		font-size: 12px;
+	}	
 }.p_ttu_3{
     font-weight: 300;
     font-size: 14px;
