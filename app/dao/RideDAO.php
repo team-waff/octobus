@@ -32,7 +32,7 @@ class RideDAO extends DAO{
         foreach($ids as $id) {
             array_push($rides, $this->getById($id));
         }
-        return $rides;
+         return $rides;
     }
 
 
