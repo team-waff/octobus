@@ -41,7 +41,7 @@ $(document).ready(function() {
 			element.addClass('open');
 			enter_animate();
 			if (direction == 'select') {
-				show_select_child('John', 'terry');
+				// show_select_child('John', 'terry');
 			}
 			tl.to(element, .5, { left: 0, ease: Power3.easeOut, onComplete: opencomplete });
 		}
@@ -100,6 +100,14 @@ $(document).ready(function() {
 	$('#select_day').on('change', function() {
 	    var value = $(this).val();
 	    $(".btn_bloc_valid").show();
+	});
+
+
+	$(".btn--validation_select").click(function(e){
+		e.preventDefault();
+		var child_id = 1;
+		var ride_id = 2;
+		$.post( "app/ride", { child: child_id, ride: ride_id} );
 	});
 
 

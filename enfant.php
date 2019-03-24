@@ -152,10 +152,15 @@ include('includes/header.php');
 		<a href="#" class="btn btn--return" data-direction="home">Retour</a>
 		<div class="inner container">
 			<h1 class="h1">Inscription de votre enfant à une tournée.</h1>
+
 			<div class="select_child_bloc">
 				<label for="select--child">Sélectionnez votre enfant</label>
-				<select id="select_child" class="select"></select>
+				<select id="select_child" class="select">
+					<option value="John">John</option>
+				    <option value="Fred">Fred</option>
+				</select>
 			</div>
+
 			<div class="select_day_bloc">
 				<label for="select--day">Sélectionnez le jour et l'heure</label>
 				<select id="select_day" class="select">
